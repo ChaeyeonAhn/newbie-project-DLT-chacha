@@ -34,14 +34,14 @@ const HomePage = () => {
 
   return (
     <div>
-      <header>
+      <header class="header">
         <h3 class="DLT">Daily Life Tracker</h3>
       </header>
-      <button onClick={(e) => addPost()}>New Post!</button>
-      <ul>
+      <button class="add-post-button" onClick={(e) => addPost()}>New Post!</button>
+      <ul class="post-list">
         {
           SPostlist.map(POST => (
-            <li key = {POST.id}>
+            <li class="post-element" key = {POST.id}>
               <p>{POST.date}</p>
             </li>
           ))
