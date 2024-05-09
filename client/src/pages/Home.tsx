@@ -12,9 +12,13 @@ const HomePage = () => {
   useEffect(() => {
     const getPost = async () => {
       const POSTS = await axios.get('http://localhost:8080/posts');
+      console.log(POSTS);
       setSPostlist(POSTS);
-    }
+    };
+    getPost().catch((e) => window.alert(`Error while Running API Call: ${e}`));
   }, [NPostCount]);
+
+
 
 
 
@@ -23,7 +27,13 @@ const HomePage = () => {
     <div>
       <button>New Post!</button>
       <ul>
-
+        {
+          SPostlist.map(POST => (
+            <li key = {POST.id}>
+              <p>{POST.title}</p>
+            </li>
+          ))
+        }
       </ul>
     </div>
   )
