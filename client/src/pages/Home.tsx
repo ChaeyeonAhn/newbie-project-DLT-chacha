@@ -1,5 +1,6 @@
 import React from 'react'; 
 import { useEffect, useState } from 'react'; /* 외부 API 와 교류 */
+import "./css/Home.css";
 
 
 /* 여기다가 지금까지 쓴 post 들을 띄우고 싶으니, 백에서 그들을 가져오는 axios가 필요하다. */
@@ -33,6 +34,9 @@ const HomePage = () => {
 
   return (
     <div>
+      <header>
+        <h3 class="DLT">Daily Life Tracker</h3>
+      </header>
       <button onClick={(e) => addPost()}>New Post!</button>
       <ul>
         {

@@ -47,7 +47,7 @@ app.post('/posts', (req, res) => {
   const { date, goal } = req.body;
   const addPost = {
     id: POSTS.length + 1,
-    date: title,
+    date: date,
     goal: goal
   };
   POSTS.push(addPost);
