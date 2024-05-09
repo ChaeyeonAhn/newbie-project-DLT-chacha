@@ -6,5 +6,25 @@ import useState from 'react';
 import axios from 'axios';
 
 const HomePage = () => {
-  const 
+  const [SPostlist, setSPostlist] = React.useState([]);
+  const [NPostCount, setNPostCount] = React.useState(0);
+
+  useEffect(() => {
+    const getPost = async () => {
+      const POSTS = await axios.get('http://localhost:8080/posts');
+      setSPostlist(POSTS);
+    }
+  }, [NPostCount]);
+
+
+
+
+  return (
+    <div>
+      <button>New Post!</button>
+      <ul>
+
+      </ul>
+    </div>
+  )
 }
