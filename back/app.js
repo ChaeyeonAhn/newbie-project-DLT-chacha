@@ -32,7 +32,7 @@ const corsOptions = {
 app.use(cors(corsOptions)); 
 
 let POSTS = [
-  { id: 1, title: '2024.05.09', table: 'First Table', diet: 'First Diet', consume: 'First Consumption', diary: 'First Diary'}
+  { id: 1, date: '2024.05.09', goal: 'First Goal'}
 ];
 
 app.get('/', (req, res) => {
@@ -42,6 +42,17 @@ app.get('/', (req, res) => {
 app.get('/posts', (req, res) => {
   res.json(POSTS);
 });
+
+app.post('/posts', (req, res) => {
+  const { date, goal } = req.body;
+  const addPost = {
+    id: POSTS.length + 1,
+    date: title,
+    goal: goal
+  };
+  POSTS.push(addPost);
+  return res.status(200).json({ isOk: true });
+})
 
 app.listen(port, () => {
   console.log(`Running Server: http://localhost:${port}`);

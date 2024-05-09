@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
-import HomePage from '/pages/Home.tsx';
-import PostPage from '/pages/Post.tsx';
+import HomePage from './/pages/Home.tsx';
+import PostPage from './/pages/Post.tsx';
+
+import { createContext } from 'react';
 
 import './App.css';
 
