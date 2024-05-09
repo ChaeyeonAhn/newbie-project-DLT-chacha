@@ -42,7 +42,8 @@ const HomePage = () => {
         {
           SPostlist.map(POST => (
             <li class="post-element" key = {POST.id}>
-              <p>{POST.date}</p>
+              <p class="post-date">{POST.date}</p>
+              <p class="post-goal">{POST.goal}</p>
             </li>
           ))
         }

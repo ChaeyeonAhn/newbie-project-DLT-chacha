@@ -32,7 +32,7 @@ const corsOptions = {
 app.use(cors(corsOptions)); 
 
 let POSTS = [
-  { id: 1, date: '2024.05.09', goal: 'First Goal'}
+  { id: 1, date: '2024.05.09', goal: '알차게 행복하게 살자! :)'}
 ];
 
 app.get('/', (req, res) => {
