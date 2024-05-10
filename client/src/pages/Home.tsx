@@ -1,6 +1,7 @@
 import React from 'react'; 
 import { useEffect, useState } from 'react'; /* 외부 API 와 교류 */
 import LogIn from './LogIn.tsx';
+import Register from './Register.tsx';
 import "./css/Home.css";
 
 
@@ -11,10 +12,11 @@ const HomePage = () => {
   const [SPostlist, setSPostlist] = useState([]);
   const [NPostCount, setNPostCount] = useState(0);
   const [SShowLogIn, setSShowLogIn] = useState(false);
+  const [SShowRegister, setSShowRegister] = useState(false);
 
   useEffect(() => {
     const getPost = async () => {
-      const POSTS = await axios.get('http://localhost:8000/posts');
+      const POSTS = await axios.get('http://localhost:8000/posts/get');
       console.log(POSTS);
       setSPostlist(POSTS.data); /* json.data */
     };
@@ -40,23 +42,32 @@ const HomePage = () => {
     setSShowLogIn(false);
   }
 
+  const showRegister = () => {
+    setSShowRegister(true);
+  };
+
+  const closeRegister = () => {
+    setSShowRegister(false);
+  }
+
   
 
   return (
     <div>
-      <header class="header">
-        <h3 class="DLT">Daily Life Tracker</h3>
+      <header className="header">
+        <h3 className="DLT">Daily Life Tracker</h3>
         <button onClick={(e) => showLogIn()}>Log In</button>
         <LogIn pop={SShowLogIn} close={closeLogIn}/>
-        <button>Register</button>
+        <button onClick={(e) => showRegister()}>Register</button>
+        <Register pop={SShowRegister} close={closeRegister}/>
       </header>
-      <button class="add-post-button" onClick={(e) => addPost()}>New Post!</button>
-      <ul class="post-list">
+      <button className="add-post-button" onClick={(e) => addPost()}>New Post!</button>
+      <ul className="post-list">
         {
           SPostlist.map(POST => (
-            <li class="post-element" key = {POST.id}>
-              <p class="post-date">{POST.date}</p>
-              <p class="post-goal">{POST.goal}</p>
+            <li className="post-element" key = {POST.id}>
+              <p className="post-date">{POST.date}</p>
+              <p className="post-goal">{POST.goal}</p>
             </li>
           ))
         }

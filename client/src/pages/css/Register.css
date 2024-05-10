@@ -1,0 +1,9 @@
+.regisPopUp {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 기준점을 중앙으로 배치 */
+  background-color: azure;
+  box-shadow: 3px 3px 3px 3px #ccc;
+  padding: 20px;
+}

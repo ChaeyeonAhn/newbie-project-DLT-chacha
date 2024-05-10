@@ -11,6 +11,7 @@ app.use(express.json()); /* Parsing */
 const homeRouter = require('./routes/Home.js');
 const pageRouter = require('./routes/Post.js');
 const logInRouter = require('./routes/LogIn.js');
+const regisRouter = require('./routes/Register.js');
 
 const whitelist = ['http://localhost:3000']; 
 
@@ -37,6 +38,7 @@ app.use(cors(corsOptions));
 app.use('/', homeRouter);
 app.use('/posts', pageRouter);
 app.use('/login', logInRouter);
+app.use('/register', regisRouter);
 
 
 
