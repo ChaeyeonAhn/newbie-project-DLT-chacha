@@ -3,6 +3,9 @@ import { useState } from 'react';
 import "./css/LogIn.css"
 import axios from 'axios';
 
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const LogIn = ({ pop, close }) => {
   const [SNickname, setSNickname] = useState("");
   const [SPassword, setSPassword] = useState("");
@@ -30,13 +33,17 @@ const LogIn = ({ pop, close }) => {
   else {
     return (
       <div className="loginPopUp">
-        <h3>Log In</h3>
-        <input type="text" value={SNickname} onChange={e => setSNickname(e.target.value)} placeholder="Enter SPARCS nickname"/>
-        <br />
-        <input type="text" value={SPassword} onChange={e => setSPassword(e.target.value)} placeholder="Enter Password"/>
-        <br />
-        <button onClick={(e) => sendLogIn()}>Confirm</button>
-        <button onClick={close}>Close</button>
+        <div id="login-titlebox">
+          <p id="login-title">Log In</p>
+        </div>
+        <div id="login-input">
+          <input className="nickname" type="text" value={SNickname} onChange={e => setSNickname(e.target.value)} placeholder="Enter SPARCS nickname"/>
+          <input className="password" type="text" value={SPassword} onChange={e => setSPassword(e.target.value)} placeholder="Enter Password"/>
+        </div>
+        <div id="login-button">
+          <button id="confirm" onClick={(e) => sendLogIn()}><FontAwesomeIcon icon={faCheck} /></button>
+          <button id ="close" onClick={close}><FontAwesomeIcon icon={faXmark} /></button>
+        </div>
         <h3>{SResultMessage}</h3>
       </div>
     )
