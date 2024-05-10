@@ -9,6 +9,7 @@ import axios from 'axios';
 const HomePage = () => {
   const [SPostlist, setSPostlist] = useState([]);
   const [NPostCount, setNPostCount] = useState(0);
+  const [SShowLogIn, setSShowLogIn] = useState(false);
 
   useEffect(() => {
     const getPost = async () => {
@@ -30,12 +31,18 @@ const HomePage = () => {
     asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
   }
 
+  const showLogIn = () => {
+    
+  }
+
 
 
   return (
     <div>
       <header class="header">
         <h3 class="DLT">Daily Life Tracker</h3>
+        <button onClick={(e) => showLogIn()}>Log In</button>
+        <button>Register</button>
       </header>
       <button class="add-post-button" onClick={(e) => addPost()}>New Post!</button>
       <ul class="post-list">

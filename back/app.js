@@ -4,10 +4,13 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const port = 8080;
+const port = 8000;
 
 app.use(express.json()); /* Parsing */
- 
+
+const homeRouter = require('./routes/Home.js');
+const pageRouter = require('./routes/Post.js');
+
 const whitelist = ['http://localhost:3000']; 
 
 const corsOptions = {
@@ -30,29 +33,14 @@ const corsOptions = {
 
 /* 미들웨어, 처리한 값을 다음 단계로 넘겨준다. */
 app.use(cors(corsOptions)); 
+app.use('/', homeRouter);
+app.use('/posts', pageRouter);
 
-let POSTS = [
-  { id: 1, date: '2024.05.09', goal: '알차게 행복하게 살자! :)'}
-];
+
 
 app.get('/', (req, res) => {
   res.send('Server chacha');
 });
-
-app.get('/posts', (req, res) => {
-  res.json(POSTS);
-});
-
-app.post('/posts', (req, res) => {
-  const { date, goal } = req.body;
-  const addPost = {
-    id: POSTS.length + 1,
-    date: date,
-    goal: goal
-  };
-  POSTS.push(addPost);
-  return res.status(200).json({ isOk: true });
-})
 
 app.listen(port, () => {
   console.log(`Running Server: http://localhost:${port}`);
