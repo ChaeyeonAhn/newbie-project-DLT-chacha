@@ -32,7 +32,9 @@ const LogIn = ({ pop, close }) => {
       <div className="loginPopUp">
         <h3>Log In</h3>
         <input type="text" value={SNickname} onChange={e => setSNickname(e.target.value)} placeholder="Enter SPARCS nickname"/>
+        <br />
         <input type="text" value={SPassword} onChange={e => setSPassword(e.target.value)} placeholder="Enter Password"/>
+        <br />
         <button onClick={(e) => sendLogIn()}>Confirm</button>
         <button onClick={close}>Close</button>
         <h3>{SResultMessage}</h3>

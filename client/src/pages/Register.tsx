@@ -30,8 +30,8 @@ const Register = ({ pop, close }) => {
     return (
       <div className="regisPopUp">
         <h3>Register</h3>
-        <input type="text" value={SNickname} onChange={e => setSNickname(e.target.value)} placeholder="Enter SPARCS nickname"/>
-        <input type="text" value={SPassword} onChange={e => setSPassword(e.target.value)} placeholder="Enter Password"/>
+        <input className="nickname" type="text" value={SNickname} onChange={e => setSNickname(e.target.value)} placeholder="Enter SPARCS nickname"/>
+        <input className="password" type="text" value={SPassword} onChange={e => setSPassword(e.target.value)} placeholder="Enter Password"/>
         <button onClick={(e) => sendRegister()}>Confirm</button>
         <button onClick={close}>Close</button>
         <h3>{SResultMessage}</h3>

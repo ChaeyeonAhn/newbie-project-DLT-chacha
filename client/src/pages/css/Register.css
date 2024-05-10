@@ -1,4 +1,25 @@
+@font-face {
+  font-family: 'Roboto-Slab';
+  src: url('./fonts/RobotoSlab-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: 'KoPub-dotum';
+  src: url('./fonts/KoPubWorld\ Dotum\ Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Laundry-Gothic';
+  src: url("./fonts/런드리고딕OTF\ Regular.otf");
+}
+
+@font-face {
+  font-family: 'Samlip-outline';
+  src: url("./fonts/SDSamliphopangcheOutline.otf")
+}
+
 .regisPopUp {
+  font-family: 'Laundry-Gothic';
   position: fixed;
   top: 50%;
   left: 50%;
@@ -6,4 +27,10 @@
   background-color: azure;
   box-shadow: 3px 3px 3px 3px #ccc;
   padding: 20px;
+  height: fit-content;
+  
+}
+
+.nickname {
+
 }

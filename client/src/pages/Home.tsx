@@ -4,7 +4,7 @@ import LogIn from './LogIn.tsx';
 import Register from './Register.tsx';
 import "./css/Home.css";
 
-import { faRightToBracket, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { faRightToBracket, faUserPlus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -58,15 +58,18 @@ const HomePage = () => {
   return (
     <div>
       <header className="header">
-        <h3 className="DLT">Daily Life Tracker</h3>
+        <div className="title">
+          <p className="DLT">Daily Life Tracker</p>
+        </div>
         <div className="buttons">
+        <button className="add-post-button" onClick={(e) => addPost()}><FontAwesomeIcon icon={faPlus} /></button>
           <button className="login" onClick={(e) => showLogIn()}><FontAwesomeIcon icon={faRightToBracket} /></button>
           <LogIn pop={SShowLogIn} close={closeLogIn}/>
           <button className="register" onClick={(e) => showRegister()}><FontAwesomeIcon icon={faUserPlus} /></button>
           <Register pop={SShowRegister} close={closeRegister}/>
         </div>
       </header>
-      <button className="add-post-button" onClick={(e) => addPost()}>New Post!</button>
+      
       <ul className="post-list">
         {
           SPostlist.map(POST => (
