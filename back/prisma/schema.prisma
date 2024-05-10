@@ -21,16 +21,16 @@ model Consume {
   content4 String?   @db.VarChar(20)
   spend5   Int?
   content5 String?   @db.VarChar(20)
-  Post     Post?     @relation(fields: [date], references: [date], onDelete: NoAction, onUpdate: NoAction, map: "Consume_ibfk_1")
+  Post     Post?     @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Consume_ibfk_1")
 
-  @@index([date], map: "date")
+  @@index([date], map: "Consume_ibfk_1")
 }
 
 model Diary {
   id      Int       @id @default(autoincrement())
   date    DateTime? @unique(map: "date") @db.Date
   content String?   @db.VarChar(200)
-  Post    Post?     @relation(fields: [date], references: [date], onDelete: NoAction, onUpdate: NoAction, map: "Diary_ibfk_1")
+  Post    Post?     @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Diary_ibfk_1")
 }
 
 model Diet {
@@ -50,9 +50,9 @@ model Diet {
   content6 String?   @db.VarChar(20)
   calorie7 Int?
   content7 String?   @db.VarChar(20)
-  Post     Post?     @relation(fields: [date], references: [date], onDelete: NoAction, onUpdate: NoAction, map: "Diet_ibfk_1")
+  Post     Post?     @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Diet_ibfk_1")
 
-  @@index([date], map: "date")
+  @@index([date], map: "Diet_ibfk_1")
 }
 
 model Member {
@@ -71,10 +71,10 @@ model Post {
   Consume  Consume[]
   Diary    Diary?
   Diet     Diet[]
-  Member   Member?    @relation(fields: [nickname], references: [nickname], onDelete: NoAction, onUpdate: NoAction, map: "Post_ibfk_1")
+  Member   Member?    @relation(fields: [nickname], references: [nickname], onDelete: Cascade, onUpdate: NoAction, map: "Post_ibfk_1")
   Schedule Schedule[]
 
-  @@index([nickname], map: "nickname")
+  @@index([nickname], map: "Post_ibfk_1")
 }
 
 model Schedule {
@@ -96,7 +96,7 @@ model Schedule {
   pmContent4 String?   @db.VarChar(20)
   pmTime5    String?   @db.VarChar(20)
   pmContent5 String?   @db.VarChar(20)
-  Post       Post?     @relation(fields: [date], references: [date], onDelete: NoAction, onUpdate: NoAction, map: "Schedule_ibfk_1")
+  Post       Post?     @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Schedule_ibfk_1")
 
-  @@index([date], map: "date")
+  @@index([date], map: "Schedule_ibfk_1")
 }
