@@ -1,5 +1,6 @@
 import React from 'react'; 
 import { useEffect, useState } from 'react'; /* 외부 API 와 교류 */
+import LogIn from './LogIn.tsx';
 import "./css/Home.css";
 
 
@@ -13,7 +14,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const getPost = async () => {
-      const POSTS = await axios.get('http://localhost:8080/posts');
+      const POSTS = await axios.get('http://localhost:8000/posts');
       console.log(POSTS);
       setSPostlist(POSTS.data); /* json.data */
     };
@@ -22,26 +23,31 @@ const HomePage = () => {
 
   const addPost = () => {
     const asyncFun = async () => {
-      await axios.post('http://localhost:8080/posts', {
+      await axios.post('http://localhost:8000/posts', {
         date: 'New Date',
         goal: 'New Goal'
       }); 
       setNPostCount(NPostCount + 1);
     }
     asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
-  }
+  };
 
   const showLogIn = () => {
-    
+    setSShowLogIn(true);
+  };
+
+  const closeLogIn = () => {
+    setSShowLogIn(false);
   }
 
-
+  
 
   return (
     <div>
       <header class="header">
         <h3 class="DLT">Daily Life Tracker</h3>
         <button onClick={(e) => showLogIn()}>Log In</button>
+        <LogIn pop={SShowLogIn} close={closeLogIn}/>
         <button>Register</button>
       </header>
       <button class="add-post-button" onClick={(e) => addPost()}>New Post!</button>

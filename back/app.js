@@ -10,6 +10,7 @@ app.use(express.json()); /* Parsing */
 
 const homeRouter = require('./routes/Home.js');
 const pageRouter = require('./routes/Post.js');
+const logInRouter = require('./routes/LogIn.js');
 
 const whitelist = ['http://localhost:3000']; 
 
@@ -35,6 +36,7 @@ const corsOptions = {
 app.use(cors(corsOptions)); 
 app.use('/', homeRouter);
 app.use('/posts', pageRouter);
+app.use('/login', logInRouter);
 
 
 
