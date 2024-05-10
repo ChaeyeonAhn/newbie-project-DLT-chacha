@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 router.post('/new', async (req, res) => {
   const { nickname, password } = req.body;
 
-  const found_nn = await prisma.member.findOne({
+  const found_nn = await prisma.member.findUnique({
     where: {
       nickname: nickname
     },
@@ -16,6 +16,8 @@ router.post('/new', async (req, res) => {
       nickname: true
     }
   });
+
+  console.log(found_nn);
 
   if (!found_nn) {
     const newMem = await prisma.member.create({

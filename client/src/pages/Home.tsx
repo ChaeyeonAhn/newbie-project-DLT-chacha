@@ -4,6 +4,9 @@ import LogIn from './LogIn.tsx';
 import Register from './Register.tsx';
 import "./css/Home.css";
 
+import { faRightToBracket, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 /* 여기다가 지금까지 쓴 post 들을 띄우고 싶으니, 백에서 그들을 가져오는 axios가 필요하다. */
 import axios from 'axios';
@@ -56,10 +59,12 @@ const HomePage = () => {
     <div>
       <header className="header">
         <h3 className="DLT">Daily Life Tracker</h3>
-        <button onClick={(e) => showLogIn()}>Log In</button>
-        <LogIn pop={SShowLogIn} close={closeLogIn}/>
-        <button onClick={(e) => showRegister()}>Register</button>
-        <Register pop={SShowRegister} close={closeRegister}/>
+        <div className="buttons">
+          <button className="login" onClick={(e) => showLogIn()}><FontAwesomeIcon icon={faRightToBracket} /></button>
+          <LogIn pop={SShowLogIn} close={closeLogIn}/>
+          <button className="register" onClick={(e) => showRegister()}><FontAwesomeIcon icon={faUserPlus} /></button>
+          <Register pop={SShowRegister} close={closeRegister}/>
+        </div>
       </header>
       <button className="add-post-button" onClick={(e) => addPost()}>New Post!</button>
       <ul className="post-list">

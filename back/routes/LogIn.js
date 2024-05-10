@@ -8,20 +8,30 @@ const prisma = new PrismaClient();
 router.post('/check', async (req, res) => {
   const { nickname, password } = req.body;
 
-  const found_pw = await prisma.member.findOne({
+  const found_pw = await prisma.member.findUnique({
     where: {
       nickname: nickname
     },
     select: {
-      password: true
+      password: true,
+      nickname: true
     }
   });
 
+  console.log(found_pw);
+
   if (!found_pw) return res.status(400).json({ message: "No Such Member" });
   else {
-    const found_password = found_pw.map((e) => (e.password));
-    if (password === found_password) res.status(200).json({ message: `Welcome, ${nickname}!` });
-    else return res.status(400).json({ message: "Incorrect Password" });
+    const found_password = found_pw.password;
+    if (password === found_password) {
+      return { message: `Welcome, ${nickname}!` };
+    }
+    
+    else {
+      res.status(400).json({ message: "Incorrect Password" });
+      return { message: "Incorrect Password" };
+    }
+    
   }
 
 })

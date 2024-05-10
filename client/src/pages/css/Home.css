@@ -18,10 +18,25 @@
 }
 
 .DLT {
-
   margin-left: 2%;
   margin-top: 2%;
+
   font-family: 'Roboto-Slab';
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.login {
+  height: 30px;
+  align-items: center;
+}
+
+.register {
+  height: 30px;
+  float: right;
 }
 
 .add-post-button {
@@ -66,3 +81,4 @@
   margin-top: 0.05%;
   font-size: small;
 }
+
