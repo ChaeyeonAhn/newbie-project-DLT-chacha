@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,4 +5,98 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Consume {
+  id       Int       @id @default(autoincrement())
+  date     DateTime? @db.Date
+  budget   Int?
+  spend1   Int?
+  content1 String?   @db.VarChar(20)
+  spend2   Int?
+  content2 String?   @db.VarChar(20)
+  spend3   Int?
+  content3 String?   @db.VarChar(20)
+  spend4   Int?
+  content4 String?   @db.VarChar(20)
+  spend5   Int?
+  content5 String?   @db.VarChar(20)
+  Post     Post?     @relation(fields: [date], references: [date], onDelete: NoAction, onUpdate: NoAction, map: "Consume_ibfk_1")
+
+  @@index([date], map: "date")
+}
+
+model Diary {
+  id      Int       @id @default(autoincrement())
+  date    DateTime? @unique(map: "date") @db.Date
+  content String?   @db.VarChar(200)
+  Post    Post?     @relation(fields: [date], references: [date], onDelete: NoAction, onUpdate: NoAction, map: "Diary_ibfk_1")
+}
+
+model Diet {
+  id       Int       @id @default(autoincrement())
+  date     DateTime? @db.Date
+  calorie1 Int?
+  content1 String?   @db.VarChar(20)
+  calorie2 Int?
+  content2 String?   @db.VarChar(20)
+  calorie3 Int?
+  content3 String?   @db.VarChar(20)
+  calorie4 Int?
+  content4 String?   @db.VarChar(20)
+  calorie5 Int?
+  content5 String?   @db.VarChar(20)
+  calorie6 Int?
+  content6 String?   @db.VarChar(20)
+  calorie7 Int?
+  content7 String?   @db.VarChar(20)
+  Post     Post?     @relation(fields: [date], references: [date], onDelete: NoAction, onUpdate: NoAction, map: "Diet_ibfk_1")
+
+  @@index([date], map: "date")
+}
+
+model Member {
+  id       Int     @id @default(autoincrement())
+  nickname String? @unique(map: "nickname") @db.VarChar(20)
+  password String? @db.VarChar(24)
+  Post     Post[]
+}
+
+model Post {
+  id       Int        @id @default(autoincrement())
+  nickname String?    @db.VarChar(20)
+  date     DateTime?  @unique(map: "date") @db.Date
+  goal     String?    @db.VarChar(30)
+  mood     String?    @db.VarChar(10)
+  Consume  Consume[]
+  Diary    Diary?
+  Diet     Diet[]
+  Member   Member?    @relation(fields: [nickname], references: [nickname], onDelete: NoAction, onUpdate: NoAction, map: "Post_ibfk_1")
+  Schedule Schedule[]
+
+  @@index([nickname], map: "nickname")
+}
+
+model Schedule {
+  id         Int       @id @default(autoincrement())
+  date       DateTime? @db.Date
+  amTime1    String?   @db.VarChar(20)
+  amContent1 String?   @db.VarChar(20)
+  amTime2    String?   @db.VarChar(20)
+  amContent2 String?   @db.VarChar(20)
+  amTime3    String?   @db.VarChar(20)
+  amContent3 String?   @db.VarChar(20)
+  pmTime1    String?   @db.VarChar(20)
+  pmContent1 String?   @db.VarChar(20)
+  pmTime2    String?   @db.VarChar(20)
+  pmContent2 String?   @db.VarChar(20)
+  pmTime3    String?   @db.VarChar(20)
+  pmContent3 String?   @db.VarChar(20)
+  pmTime4    String?   @db.VarChar(20)
+  pmContent4 String?   @db.VarChar(20)
+  pmTime5    String?   @db.VarChar(20)
+  pmContent5 String?   @db.VarChar(20)
+  Post       Post?     @relation(fields: [date], references: [date], onDelete: NoAction, onUpdate: NoAction, map: "Schedule_ibfk_1")
+
+  @@index([date], map: "date")
 }
