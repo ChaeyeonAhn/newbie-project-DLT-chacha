@@ -4,7 +4,7 @@ import LogIn from './LogIn.tsx';
 import Register from './Register.tsx';
 import "./css/Home.css";
 
-import { faRightToBracket, faUserPlus, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faRightToBracket, faRightFromBracket, faUserPlus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -39,6 +39,11 @@ const HomePage = () => {
     asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
   };
 
+  const LogOut = () => {
+    setSLogInStatus(false);
+    window.alert(`Signed Out. Bye, ${SUsername}`);
+    setSUsername("");
+  }
   const showLogIn = () => {
     setSShowLogIn(true);
   };
@@ -59,8 +64,9 @@ const HomePage = () => {
     setSLogInStatus(true);
     setSShowLogIn(false);
     const username = JSON.stringify(user.SNickname);
-    setSUsername(username);
-    console.log(username);
+    const userId = username.replace(/^"+|"+$/g, '');
+    setSUsername(userId);
+    console.log(userId);
   }
 
   
@@ -72,9 +78,9 @@ const HomePage = () => {
           <p className="DLT">Daily Life Tracker</p>
         </div>
         <div className="buttons">
-          {SLogInStatus ? <p>{SUsername}</p> : <p>Sign In to Start!</p>}
+          {SLogInStatus ? <p className="username">{SUsername}</p> : <p className="username">   </p>}
           <button className="add-post-button" onClick={(e) => addPost()}><FontAwesomeIcon icon={faPlus} /></button>
-          <button className="login" onClick={(e) => showLogIn()}><FontAwesomeIcon icon={faRightToBracket} /></button>
+          {SLogInStatus ? <button className="login" onClick={(e) => LogOut()}><FontAwesomeIcon icon={faRightFromBracket} /></button> : <button className="login" onClick={(e) => showLogIn()}><FontAwesomeIcon icon={faRightToBracket} /></button>}
           <LogIn pop={SShowLogIn} close={closeLogIn} handleLogin={handleLogin}/>
           <button className="register" onClick={(e) => showRegister()}><FontAwesomeIcon icon={faUserPlus} /></button>
           <Register pop={SShowRegister} close={closeRegister}/>
