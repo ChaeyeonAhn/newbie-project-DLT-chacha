@@ -1,0 +1,103 @@
+@font-face {
+  font-family: 'Roboto-Slab';
+  src: url('./fonts/RobotoSlab-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: 'KoPub-dotum';
+  src: url('./fonts/KoPubWorld\ Dotum\ Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Laundry-Gothic';
+  src: url("./fonts/런드리고딕OTF\ Regular.otf");
+}
+
+@font-face {
+  font-family: 'Samlip-outline';
+  src: url("./fonts/SDSamliphopangcheOutline.otf")
+}
+
+.AddPostPopUp {
+  font-family: 'Laundry-Gothic';
+  height: 40%;
+  width: 300px;
+  position: fixed;
+  top: 45%;
+  left: 80%;
+  transform: translate(-50%, -50%); /* 기준점을 중앙으로 배치 */
+  background-color: white;
+  border: 4px solid #7D93E7;
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px 3px #ccc;
+  padding: 20px;
+
+  
+}
+
+#post-titlebox {
+ display: flex;
+ margin-top: 10%;
+}
+
+#post-title {
+  font-family: 'Samlip-outline';
+  margin: auto;
+  font-size: xx-large;
+}
+
+#post-input {
+
+  margin-top: 10%;
+
+}
+
+.goal {
+  padding: 10px;
+
+  width: 70%;
+  border: 2.5px solid #7D93E7;
+  border-radius: 30px;
+}
+
+#post-button {
+  margin-top: 10%;
+  display: flex;
+  align-items: center;
+}
+
+#confirm {
+  padding: 10px;
+  margin-left: auto;
+  margin-right: 10px;
+  height: 50px;
+  width: 50px;
+  font-size: larger;
+  border-radius: 25px;
+  border: 3px solid #7D93E7;
+  background-color: #e9edff;
+  box-shadow: 1px 1px 1px 2px #ccc;
+}
+
+#close {
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: auto;
+  height: 50px;
+  width: 50px;
+  font-size: larger;
+  border-radius: 25px;
+  border: 3px solid #7D93E7;
+  background-color: #e9edff;
+  box-shadow: 1px 1px 1px 2px #ccc;
+}
+
+#confirm:hover, #close:hover {
+  cursor: pointer;
+  background-color: #d0d8fc;
+}
+#confirm:active, #close:active {
+  position: relative;
+  box-shadow: 0.5px 0.5px 0 #ccc;
+  top: 2px;
+}

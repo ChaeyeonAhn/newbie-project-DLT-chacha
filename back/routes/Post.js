@@ -4,22 +4,41 @@ const router = express.Router();
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-let POSTS = [
-  { id: 1, date: '2024.05.09', goal: '알차게 행복하게 살자! :)'}
-];
+router.post('/get', async (req, res) => {
+  const { username }= req.body;
+  const user = JSON.stringify(username);
+  console.log();
 
-router.get('/get', (req, res) => {
-  res.json(POSTS);
+  if (!username) {
+    return res.status(400).json({ message: 'Please Log In.' });
+    // return res.status(400).json({ message: "Please Sign In." });
+  }
+  const posts = await prisma.post.findMany({
+    where: {
+      nickname: username
+    },
+    select: {
+      date: true,
+      goal: true
+    }
+  });
+  console.log(posts);
+  res.json(posts);
+
 });
 
-router.post('/add', (req, res) => {
-  const { date, goal } = req.body;
-  const addPost = {
-    id: POSTS.length + 1,
-    date: date,
-    goal: goal
-  };
-  POSTS.push(addPost);
+router.post('/add', async (req, res) => {
+  const { date, goal, username } = req.body;
+  if (username == "") return res.status(400).json({ message: "No Such Member" });
+  const addPost = await prisma.post.create({
+    data: {
+      nickname: username,
+      date: date,
+      goal: goal,
+      mood: null
+    }
+  });
+
   return res.status(200).json({ isOk: true });
 })
 

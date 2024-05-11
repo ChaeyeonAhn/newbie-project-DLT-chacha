@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react'; /* 외부 API 와 교류 */
 import LogIn from './LogIn.tsx';
 import Register from './Register.tsx';
+import AddPost from './AddPost.tsx';
 import "./css/Home.css";
 
 import { faRightToBracket, faRightFromBracket, faUserPlus, faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -16,23 +17,31 @@ const HomePage = () => {
   const [NPostCount, setNPostCount] = useState(0);
   const [SShowLogIn, setSShowLogIn] = useState(false);
   const [SShowRegister, setSShowRegister] = useState(false);
+  const [SShowAddPost, setSShowAddPost] = useState(false);
   const [SLogInStatus, setSLogInStatus] = useState(false);
   const [SUsername, setSUsername] = useState("");
 
   useEffect(() => {
     const getPost = async () => {
-      const POSTS = await axios.get('http://localhost:8000/posts/get');
+      if (SUsername == "") {
+        // const POSTS = [];
+        // console.log(POSTS);
+        // setSPostlist(POSTS.data); /* json.data */
+        return;
+      }
+      const POSTS = await axios.post('http://localhost:8000/posts/get', {username: SUsername});
       console.log(POSTS);
       setSPostlist(POSTS.data); /* json.data */
     };
     getPost().catch((e) => window.alert(`Error while Running API Call: ${e}`));
-  }, [NPostCount]);
+  }, [NPostCount, SUsername, SLogInStatus]);
 
   const addPost = () => {
     const asyncFun = async () => {
-      await axios.post('http://localhost:8000/posts', {
-        date: 'New Date',
-        goal: 'New Goal'
+      await axios.post('http://localhost:8000/posts/add', {
+        date: new Date(),
+        goal: 'New Goal',
+        username: SUsername
       }); 
       setNPostCount(NPostCount + 1);
     }
@@ -41,8 +50,10 @@ const HomePage = () => {
 
   const LogOut = () => {
     setSLogInStatus(false);
+    setSPostlist([]);
     window.alert(`Signed Out. Bye, ${SUsername}`);
     setSUsername("");
+    setNPostCount(0);
   }
   const showLogIn = () => {
     setSShowLogIn(true);
@@ -50,7 +61,7 @@ const HomePage = () => {
 
   const closeLogIn = () => {
     setSShowLogIn(false);
-  }
+  };
 
   const showRegister = () => {
     setSShowRegister(true);
@@ -58,7 +69,17 @@ const HomePage = () => {
 
   const closeRegister = () => {
     setSShowRegister(false);
+  };
+
+  const showAddPost = () => {
+    setSShowAddPost(true);
+  };
+
+  const closeAddPost = () => {
+    setSShowAddPost(false);
   }
+
+
 
   const handleLogin = (user) => {
     setSLogInStatus(true);
@@ -79,7 +100,8 @@ const HomePage = () => {
         </div>
         <div className="buttons">
           {SLogInStatus ? <p className="username">{SUsername}</p> : <p className="username">   </p>}
-          <button className="add-post-button" onClick={(e) => addPost()}><FontAwesomeIcon icon={faPlus} /></button>
+          <button className="add-post-button" onClick={(e) => showAddPost()}><FontAwesomeIcon icon={faPlus} /></button>
+          <AddPost pop={SShowAddPost} close={closeAddPost} username={SUsername} increase={setNPostCount} postcount={NPostCount}/>
           {SLogInStatus ? <button className="login" onClick={(e) => LogOut()}><FontAwesomeIcon icon={faRightFromBracket} /></button> : <button className="login" onClick={(e) => showLogIn()}><FontAwesomeIcon icon={faRightToBracket} /></button>}
           <LogIn pop={SShowLogIn} close={closeLogIn} handleLogin={handleLogin}/>
           <button className="register" onClick={(e) => showRegister()}><FontAwesomeIcon icon={faUserPlus} /></button>
