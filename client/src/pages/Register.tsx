@@ -9,17 +9,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Register = ({ pop, close }) => {
   const [SNickname, setSNickname] = useState(""); /* onChange 반드시 써 줘야, input 에 뭐 입력하는지 실시간으로 보임! */
   const [SPassword, setSPassword] = useState("");
-  const [SResultMessage, setSResultMessage] = useState("");
+
 
   const sendRegister = () => {
     const asyncFun = async () => {
-      const { message } = await axios.post("http://localhost:8000/register/new", {
+      const { data } = await axios.post("http://localhost:8000/register/new", {
         nickname: SNickname,
         password: SPassword
       });
       setSNickname("");
       setSPassword("");
-      setSResultMessage(message);
+      window.alert(`Signed Up! ${JSON.stringify(data.message)}`);
     }
     asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
   }
@@ -43,7 +43,6 @@ const Register = ({ pop, close }) => {
           <button id="confirm" onClick={(e) => sendRegister()}><FontAwesomeIcon icon={faCheck} /></button>
           <button id ="close" onClick={close}><FontAwesomeIcon icon={faXmark} /></button>
         </div>
-        <h3>{SResultMessage}</h3>
       </div>
     )
   }

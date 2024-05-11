@@ -24,7 +24,7 @@ router.post('/check', async (req, res) => {
   else {
     const found_password = found_pw.password;
     if (password === found_password) {
-      return { message: `Welcome, ${nickname}!` };
+      return res.status(200).json({ message: `Welcome, ${nickname}!` });
     }
     
     else {

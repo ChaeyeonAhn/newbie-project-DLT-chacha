@@ -16,6 +16,8 @@ const HomePage = () => {
   const [NPostCount, setNPostCount] = useState(0);
   const [SShowLogIn, setSShowLogIn] = useState(false);
   const [SShowRegister, setSShowRegister] = useState(false);
+  const [SLogInStatus, setSLogInStatus] = useState(false);
+  const [SUsername, setSUsername] = useState("");
 
   useEffect(() => {
     const getPost = async () => {
@@ -53,6 +55,14 @@ const HomePage = () => {
     setSShowRegister(false);
   }
 
+  const handleLogin = (user) => {
+    setSLogInStatus(true);
+    setSShowLogIn(false);
+    const username = JSON.stringify(user.SNickname);
+    setSUsername(username);
+    console.log(username);
+  }
+
   
 
   return (
@@ -62,9 +72,10 @@ const HomePage = () => {
           <p className="DLT">Daily Life Tracker</p>
         </div>
         <div className="buttons">
-        <button className="add-post-button" onClick={(e) => addPost()}><FontAwesomeIcon icon={faPlus} /></button>
+          {SLogInStatus ? <p>{SUsername}</p> : <p>Sign In to Start!</p>}
+          <button className="add-post-button" onClick={(e) => addPost()}><FontAwesomeIcon icon={faPlus} /></button>
           <button className="login" onClick={(e) => showLogIn()}><FontAwesomeIcon icon={faRightToBracket} /></button>
-          <LogIn pop={SShowLogIn} close={closeLogIn}/>
+          <LogIn pop={SShowLogIn} close={closeLogIn} handleLogin={handleLogin}/>
           <button className="register" onClick={(e) => showRegister()}><FontAwesomeIcon icon={faUserPlus} /></button>
           <Register pop={SShowRegister} close={closeRegister}/>
         </div>

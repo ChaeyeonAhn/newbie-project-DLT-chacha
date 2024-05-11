@@ -48,14 +48,13 @@
 
 #login-input {
 
-  margin: auto;
   margin-top: 10%;
 
 }
 
 .nickname {
   padding: 10px;
-  margin: auto;
+
   width: 70%;
   border: 2.5px solid #7D93E7;
   border-radius: 30px;
@@ -63,7 +62,7 @@
 
 .password {
   padding: 10px;
-  margin: auto;
+
   width: 70%;
   margin-top: 15px;
   border: 2.5px solid #7D93E7;
