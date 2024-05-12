@@ -22,8 +22,12 @@ router.post('/get', async (req, res) => {
       goal: true
     }
   });
-  console.log(posts);
-  res.json(posts);
+  const final_post = posts.map((e) => ({
+    date: e.date.toLocaleDateString('ko-KR'),
+    goal: e.goal
+  }));
+  console.log(final_post);
+  res.json(final_post);
 
 });
 
