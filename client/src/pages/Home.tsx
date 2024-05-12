@@ -6,7 +6,7 @@ import Register from './Register.tsx';
 import AddPost from './AddPost.tsx';
 import "./css/Home.css";
 
-import { faRightToBracket, faRightFromBracket, faUserPlus, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faRightToBracket, faRightFromBracket, faUserPlus, faPlus, faFaceMehBlank} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -114,10 +114,13 @@ const HomePage = () => {
       <ul className="post-list">
         {
           SPostlist.map(POST => (
-            <Link className="post-link" to={`/post/${POST.id}`}>
+            <Link className="post-link" to={`/post/${SUsername}/${POST.id}`}>
               <li className="post-element" key = {POST.id}>
                 <p className="post-date">{POST.date}</p>
-                <p className="post-goal">{POST.goal}</p>
+                <p className="post-goal-mood">
+                  <p className="post-goal">{POST.goal}</p>
+                  <p className="post-mood">{POST.mood ? <FontAwesomeIcon icon={faPlus} /> : <FontAwesomeIcon icon={faFaceMehBlank} />}</p>
+                </p>
               </li>
             </Link>
           ))

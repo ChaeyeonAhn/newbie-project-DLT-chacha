@@ -24,13 +24,17 @@ router.post('/get', async (req, res) => {
       nickname: username
     },
     select: {
+      id: true,
       date: true,
-      goal: true
+      goal: true,
+      mood: true
     }
   });
   const final_post = posts.map((e) => ({
+    id: e.id,
     date: e.date.toLocaleDateString('ko-KR'),
-    goal: e.goal
+    goal: e.goal,
+    mood: e.mood
   }));
   console.log(final_post);
   res.json(final_post);
@@ -44,6 +48,7 @@ router.post('/add', async (req, res) => {
   if (username == "") return res.status(400).json({ message: "No Such Member" });
   const addPost = await prisma.post.create({
     data: {
+      id: id,
       nickname: username,
       date: date,
       goal: goal,
