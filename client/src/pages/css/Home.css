@@ -116,6 +116,11 @@
   cursor: pointer;
 }
 
+.post-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .post-list {
   list-style: none;
   font-family: 'Laundry-Gothic';
@@ -132,6 +137,17 @@
   box-shadow: 3px 3px 1px 1px #ccc;
   border-radius: 50px;
   border: 1px solid #ccc;
+}
+
+.post-element:hover {
+  cursor: pointer;
+  background-color: rgb(241, 241, 241);
+}
+
+.post-element:active {
+  position: relative;
+  box-shadow: 0.5px 0.5px 1px 1px #ccc;
+  top: 3px;
 }
 
 .post-date{

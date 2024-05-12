@@ -1,3 +1,7 @@
+/*
+  회원가입 팝업
+*/
+
 import React from 'react'; 
 import { useState } from 'react';
 import "./css/Register.css"

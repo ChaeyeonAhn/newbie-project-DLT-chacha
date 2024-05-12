@@ -114,10 +114,12 @@ const HomePage = () => {
       <ul className="post-list">
         {
           SPostlist.map(POST => (
-            <li className="post-element" key = {POST.id}>
-              <Link to={`/post/${POST.id}`} className="post-date">{POST.date}</Link>
-              <p className="post-goal">{POST.goal}</p>
-            </li>
+            <Link className="post-link" to={`/post/${POST.id}`}>
+              <li className="post-element" key = {POST.id}>
+                <p className="post-date">{POST.date}</p>
+                <p className="post-goal">{POST.goal}</p>
+              </li>
+            </Link>
           ))
         }
       </ul>

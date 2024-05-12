@@ -9,7 +9,7 @@ const port = 8000;
 app.use(express.json()); /* Parsing */
 
 const homeRouter = require('./routes/Home.js');
-const pageRouter = require('./routes/Post.js');
+const postRouter = require('./routes/Post.js');
 const logInRouter = require('./routes/LogIn.js');
 const regisRouter = require('./routes/Register.js');
 
@@ -36,7 +36,7 @@ const corsOptions = {
 /* 미들웨어, 처리한 값을 다음 단계로 넘겨준다. */
 app.use(cors(corsOptions)); 
 app.use('/', homeRouter);
-app.use('/posts', pageRouter);
+app.use('/posts', postRouter);
 app.use('/login', logInRouter);
 app.use('/register', regisRouter);
 

@@ -1,3 +1,7 @@
+/*
+  포스트 생성 팝업
+*/
+
 import React from 'react'; 
 import { useState } from 'react';
 import "./css/AddPost.css"
@@ -8,7 +12,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const AddPost = ({ pop, close, username, increase, postcount }) => {
   const [SGoal, setSGoal] = useState("");
-
 
   const sendNewPost = () => {
     const asyncFun = async () => {
