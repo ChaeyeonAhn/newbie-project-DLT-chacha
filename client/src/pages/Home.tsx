@@ -24,9 +24,6 @@ const HomePage = () => {
   useEffect(() => {
     const getPost = async () => {
       if (SUsername == "") {
-        // const POSTS = [];
-        // console.log(POSTS);
-        // setSPostlist(POSTS.data); /* json.data */
         return;
       }
       const POSTS = await axios.post('http://localhost:8000/posts/get', {username: SUsername});
@@ -35,18 +32,6 @@ const HomePage = () => {
     };
     getPost().catch((e) => window.alert(`Error while Running API Call: ${e}`));
   }, [NPostCount, SUsername, SLogInStatus]);
-
-  const addPost = () => {
-    const asyncFun = async () => {
-      await axios.post('http://localhost:8000/posts/add', {
-        date: new Date(),
-        goal: 'New Goal',
-        username: SUsername
-      }); 
-      setNPostCount(NPostCount + 1);
-    }
-    asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
-  };
 
   const LogOut = () => {
     setSLogInStatus(false);
