@@ -1,5 +1,6 @@
 import React from 'react'; 
 import { useEffect, useState } from 'react'; /* 외부 API 와 교류 */
+import { Link } from 'react-router-dom';
 import LogIn from './LogIn.tsx';
 import Register from './Register.tsx';
 import AddPost from './AddPost.tsx';
@@ -20,15 +21,26 @@ const HomePage = () => {
   const [SShowAddPost, setSShowAddPost] = useState(false);
   const [SLogInStatus, setSLogInStatus] = useState(false);
   const [SUsername, setSUsername] = useState("");
+  // const [SToken, setSToken] = useState("");
 
   useEffect(() => {
     const getPost = async () => {
-      if (SUsername == "") {
-        return;
+      const token = localStorage.getItem('token');
+      if (token) {
+        setSUsername(token);
+        setSLogInStatus(true);
+        setSShowLogIn(false);
+        const POSTS = await axios.post('http://localhost:8000/posts/get', {username: token});
+        console.log(POSTS);
+        setSPostlist(POSTS.data); /* json.data */
       }
-      const POSTS = await axios.post('http://localhost:8000/posts/get', {username: SUsername});
-      console.log(POSTS);
-      setSPostlist(POSTS.data); /* json.data */
+      else if (SUsername) {
+        setSUsername(SUsername);
+        const POSTS = await axios.post('http://localhost:8000/posts/get', {username: SUsername});
+        console.log(POSTS);
+        setSPostlist(POSTS.data); /* json.data */
+      }
+      else return;
     };
     getPost().catch((e) => window.alert(`Error while Running API Call: ${e}`));
   }, [NPostCount, SUsername, SLogInStatus]);
@@ -36,6 +48,8 @@ const HomePage = () => {
   const LogOut = () => {
     setSLogInStatus(false);
     setSPostlist([]);
+    // setSToken("");
+    window.localStorage.removeItem('token');
     window.alert(`Signed Out. Bye, ${SUsername}`);
     setSUsername("");
     setNPostCount(0);
@@ -72,7 +86,10 @@ const HomePage = () => {
     const username = JSON.stringify(user.SNickname);
     const userId = username.replace(/^"+|"+$/g, '');
     setSUsername(userId);
-    console.log(userId);
+
+    // setSToken(userId);
+    window.localStorage.setItem('token', userId);
+
   }
 
   
@@ -98,7 +115,7 @@ const HomePage = () => {
         {
           SPostlist.map(POST => (
             <li className="post-element" key = {POST.id}>
-              <p className="post-date">{POST.date}</p>
+              <Link to={`/post/${POST.id}`} className="post-date">{POST.date}</Link>
               <p className="post-goal">{POST.goal}</p>
             </li>
           ))
