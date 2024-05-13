@@ -36,6 +36,10 @@
   align-items: center;
 }
 
+.logo {
+  height: 100px;
+}
+
 .DLT {
   font-family: 'Samlip-outline';
   font-size: 38px;

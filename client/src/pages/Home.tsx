@@ -5,6 +5,7 @@ import LogIn from './LogIn.tsx';
 import Register from './Register.tsx';
 import AddPost from './AddPost.tsx';
 import "./css/Home.css";
+import mainLogo from "./img/logo.png";
 
 import { faRightToBracket, faRightFromBracket, faUserPlus, faPlus, faFaceMehBlank} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -97,6 +98,7 @@ const HomePage = () => {
   return (
     <div>
       <header className="header">
+        <img className="logo" src={mainLogo}/>
         <div className="title">
           <p className="DLT">Daily Life Tracker</p>
         </div>
