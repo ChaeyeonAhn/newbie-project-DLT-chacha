@@ -116,6 +116,7 @@
 
 .schedule {
   font-family: 'Laundry-Gothic';
+  width: 700px;
 }
 
 .add-post-button:hover {
@@ -126,6 +127,28 @@
   /* border: 1px solid black; */
   height: fit-content;
   margin-bottom: 50px;
+}
+
+.modify-button {
+  height: 50px;
+  width: 50px;
+  float: right;
+  font-size: larger;
+  border-radius: 25px;
+  border: 3px solid #6DA9F5;
+  background-color: #eef6fc;
+  box-shadow: 1px 1px 1px 2px #ccc;
+}
+
+.modify-button:hover {
+  cursor: pointer;
+  background-color: #cfeafc;
+}
+
+.modify-button:active {
+  position: relative;
+  box-shadow: 0.5px 0.5px 0 #ccc;
+  top: 2px;
 }
 
 .schedule-title {
@@ -146,25 +169,34 @@
 
 
 .schedule-time {
-  width: 30%;
+  width: 200px;
+}
+
+.schedule-content {
+  width: 400px;
 }
 
 input {
-  border: none;
-  width: 100%;
+  font-family: 'Laundry-Gothic';
+  font-size: large;
+  
+
+
   display: flex;
   align-items: center;
+
   border: 2px solid #ccc;
-  border-radius: 20px;
-  height: 40px;
+  border-radius: 22.5px;
+  height: 45px;
   margin: 1%;
+  padding: 7px;
 }
 
 td {
   /* border: 2px solid #ccc; */
   border-radius: 20px;
   border-collapse: collapse;
-  height: 40px;
+
   /* display: flex; */
   /* align-items: center; */
 }
