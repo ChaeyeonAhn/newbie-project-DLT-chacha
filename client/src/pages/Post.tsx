@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const PostPage = () => {
 
-  const { username, id } = useParams();
+  const { username, date } = useParams();
   const navigate = useNavigate();
   const [SAMTime1, setSAMTime1] = useState("");
   const [SAMContent1, setSAMContent1] = useState("");
@@ -26,9 +26,36 @@ const PostPage = () => {
   const [SPMContent3, setSPMContent3] = useState("");
   const [SPMTime4, setSPMTime4] = useState("");
   const [SPMContent4, setSPMContent4] = useState("");
-
+  const [SPMTime5, setSPMTime5] = useState("");
+  const [SPMContent5, setSPMContent5] = useState("");
 
   console.log(username);
+
+  const sendPost = () => {
+    const asyncFun = async () => {
+      const { data } = await axios.post(`http://localhost:8000/posts/:${username}/:${id}`, {
+        username: username,
+        date: date,
+        amTime1: SAMTime1,
+        amContent1: SAMContent1,
+        amTime2: SAMTime2,
+        amContent2: SAMContent2,
+        amTime3: SAMTime3,
+        amContent3: SAMContent3,
+        pmTime1: SPMTime1,
+        pmContent1: SPMContent1,
+        pmTime2: SPMTime2,
+        pmContent2: SPMContent2,
+        pmTime3: SPMTime3,
+        pmContent3: SPMContent3,
+        pmTime4: SPMTime4,
+        pmContent4: SPMContent4,
+        pmTime5: SPMTime5,
+        pmContent5: SPMContent5
+      });
+      window.alert(`Successfully Modified!`);
+    }
+  };
 
   return (
     <div>
@@ -82,7 +109,11 @@ const PostPage = () => {
               <td className="schedule-time"><input type="text" placeholder="00:00" value={SPMTime4} onChange={(e) => setSPMTime4(e.target.value)} /></td>
               <td><input type="text" placeholder="Content" value={SPMContent4} onChange={(e) => setSPMContent4(e.target.value)} /></td>
             </tr>
-            <button>Done</button>
+            <tr>
+              <td className="schedule-time"><input type="text" placeholder="00:00" value={SPMTime5} onChange={(e) => setSPMTime5(e.target.value)} /></td>
+              <td><input type="text" placeholder="Content" value={SPMContent5} onChange={(e) => setSPMContent5(e.target.value)} /></td>
+            </tr>
+            <button onClick={(e) => sendPost()}>Done</button>
           </table>
 
         </div>

@@ -58,10 +58,57 @@ router.post('/add', async (req, res) => {
   });
   return res.status(200).json({ isOk: true });
  } catch(e){
-  res.status(400).json({message: "Already posted"})
+  res.status(400).json({message: "Already posted"});
   }
 });
 
 /* 포스트 상세 페이지에서 데이터 처리 */
+
+router.post('/:username/:date', async (req, res) => {
+  const { 
+    username,
+    date,
+    amTime1, 
+    amContent1,
+    amTime2,
+    amContent2,
+    amTime3,
+    amContent3,
+    pmTime1,
+    pmContent1,
+    pmTime2,
+    pmContent2,
+    pmTime3,
+    pmContent3,
+    pmTime4,
+    pmContent4,
+    pmTime5,
+    pmContent5
+  } = req.body;
+
+  const addPost = await prisma.schedule.create({
+    data: {
+      date: new Date(date),
+      amTime1: amTime1, 
+      amContent1: amContent1,
+      amTime2: amTime2,
+      amContent2: amContent2,
+      amTime3: amTime3,
+      amContent3: amContent3,
+      pmTime1: pmTime1,
+      pmContent1: pmContent1,
+      pmTime2: pmTime2,
+      pmContent2: pmContent2,
+      pmTime3: pmTime3,
+      pmContent3: pmContent3,
+      pmTime4: pmTime4,
+      pmContent4: pmContent4,
+      pmTime5: pmTime5,
+      pmContent5: pmContent5
+    }
+  });
+  return res.status(200).json({ isOk: true });
+  
+});
 
 module.exports = router;
