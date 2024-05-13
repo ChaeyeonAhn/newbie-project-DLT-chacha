@@ -12,20 +12,20 @@ const PostPage = () => {
 
   const { username, id } = useParams();
   const navigate = useNavigate();
-  const [SAmTime1, setSAmTime1] = useState("");
-  const [SAmContent1, setSAmContent1] = useState("");
-  const [SAmTime2, setSAmTime2] = useState("");
-  const [SAmContent2, setSAmContent2] = useState("");
-  const [SAmTime3, setSAmTime3] = useState("");
-  const [SAmContent3, setSAmContent3] = useState("");
-  const [SPmTime1, setSPmTime1] = useState("");
-  const [SPmContent1, setSPmContent1] = useState("");
-  const [SPmTime2, setSPmTime2] = useState("");
-  const [SPmContent2, setSPmContent2] = useState("");
-  const [SPmTime3, setSPmTime3] = useState("");
-  const [SPmContent3, setSPmContent3] = useState("");
-  const [SPmTime4, setSPmTime4] = useState("");
-  const [SPmContent4, setSPmContent4] = useState("");
+  const [SAMTime1, setSAMTime1] = useState("");
+  const [SAMContent1, setSAMContent1] = useState("");
+  const [SAMTime2, setSAMTime2] = useState("");
+  const [SAMContent2, setSAMContent2] = useState("");
+  const [SAMTime3, setSAMTime3] = useState("");
+  const [SAMContent3, setSAMContent3] = useState("");
+  const [SPMTime1, setSPMTime1] = useState("");
+  const [SPMContent1, setSPMContent1] = useState("");
+  const [SPMTime2, setSPMTime2] = useState("");
+  const [SPMContent2, setSPMContent2] = useState("");
+  const [SPMTime3, setSPMTime3] = useState("");
+  const [SPMContent3, setSPMContent3] = useState("");
+  const [SPMTime4, setSPMTime4] = useState("");
+  const [SPMContent4, setSPMContent4] = useState("");
 
 
   console.log(username);
@@ -43,40 +43,49 @@ const PostPage = () => {
           <button className="register"><FontAwesomeIcon icon={faUserPlus} /></button>
         </div>
       </header>
-      <div>
-        <p>오늘의 일과</p>
-        <table className="schedule-table">
-          <tr>
-            <td><input type="text" placeholder="00:00" value={SAmTime1} onChange={(e) => setSAMTime1(e.target.value)} /></td>
-            <td><input type="text" placeholder="Content" value={SAmContent1} onChange={(e) => setSAMContent1(e.target.value)} /></td>
-          </tr>
-          <tr>
-            <td><input type="text" placeholder="00:00" value={SAmTime2} onChange={(e) => setSAMTime2(e.target.value)} /></td>
-            <td><input type="text" placeholder="Content" value={SAmContent2} onChange={(e) => setSAMContent2(e.target.value)} /></td>
-          </tr>
-          <tr>
-            <td><input type="text" placeholder="00:00" value={SAmTime3} onChange={(e) => setSAMTime3(e.target.value)} /></td>
-            <td><input type="text" placeholder="Content" value={SAmContent3} onChange={(e) => setSAMContent3(e.target.value)} /></td>
-          </tr>
-        </table>
-        <table className="schedule-table">
-          <tr>
-            <td><input type="text" placeholder="00:00" value={SPmTime1} onChange={(e) => setSPMTime1(e.target.value)} /></td>
-            <td><input type="text" placeholder="Content" value={SPmContent1} onChange={(e) => setSPMContent1(e.target.value)} /></td>
-          </tr>
-          <tr>
-            <td><input type="text" placeholder="00:00" value={SPmTime2} onChange={(e) => setSPMTime2(e.target.value)} /></td>
-            <td><input type="text" placeholder="Content" value={SPmContent2} onChange={(e) => setSPMContent2(e.target.value)} /></td>
-          </tr>
-          <tr>
-            <td><input type="text" placeholder="00:00" value={SPmTime3} onChange={(e) => setSPMTime3(e.target.value)} /></td>
-            <td><input type="text" placeholder="Content" value={SPmContent3} onChange={(e) => setSPMContent3(e.target.value)} /></td>
-          </tr>
-          <tr>
-            <td><input type="text" placeholder="00:00" value={SPmTime4} onChange={(e) => setSPMTime4(e.target.value)} /></td>
-            <td><input type="text" placeholder="Content" value={SPmContent4} onChange={(e) => setSPMContent4(e.target.value)} /></td>
-          </tr>
-        </table>
+
+      <div className="schedule">
+        <div>
+          <p className="title">Schedule</p>
+        </div>
+        <br />
+        <br />
+        <div className="total-table">
+          <table className="schedule-table">
+            <tr>
+              <td className="schedule-time"><input type="text" placeholder="00:00" value={SAMTime1} onChange={(e) => setSAMTime1(e.target.value)} /></td>
+              <td><input type="text" placeholder="Content" value={SAMContent1} onChange={(e) => setSAMContent1(e.target.value)} /></td>
+            </tr>
+            <tr>
+              <td className="schedule-time"><input type="text" placeholder="00:00" value={SAMTime2} onChange={(e) => setSAMTime2(e.target.value)} /></td>
+              <td><input type="text" placeholder="Content" value={SAMContent2} onChange={(e) => setSAMContent2(e.target.value)} /></td>
+            </tr>
+            <tr>
+              <td className="schedule-time"><input type="text" placeholder="00:00" value={SAMTime3} onChange={(e) => setSAMTime3(e.target.value)} /></td>
+              <td><input type="text" placeholder="Content" value={SAMContent3} onChange={(e) => setSAMContent3(e.target.value)} /></td>
+            </tr>
+          </table>
+          <table className="schedule-table">
+            <tr>
+              <td className="schedule-time"><input type="text" placeholder="00:00" value={SPMTime1} onChange={(e) => setSPMTime1(e.target.value)} /></td>
+              <td><input type="text" placeholder="Content" value={SPMContent1} onChange={(e) => setSPMContent1(e.target.value)} /></td>
+            </tr>
+            <tr>
+              <td className="schedule-time"><input type="text" placeholder="00:00" value={SPMTime2} onChange={(e) => setSPMTime2(e.target.value)} /></td>
+              <td><input type="text" placeholder="Content" value={SPMContent2} onChange={(e) => setSPMContent2(e.target.value)} /></td>
+            </tr>
+            <tr>
+              <td className="schedule-time"><input type="text" placeholder="00:00" value={SPMTime3} onChange={(e) => setSPMTime3(e.target.value)} /></td>
+              <td><input type="text" placeholder="Content" value={SPMContent3} onChange={(e) => setSPMContent3(e.target.value)} /></td>
+            </tr>
+            <tr>
+              <td className="schedule-time"><input type="text" placeholder="00:00" value={SPMTime4} onChange={(e) => setSPMTime4(e.target.value)} /></td>
+              <td><input type="text" placeholder="Content" value={SPMContent4} onChange={(e) => setSPMContent4(e.target.value)} /></td>
+            </tr>
+            <button>Done</button>
+          </table>
+
+        </div>
       </div>
     </div>
   )
