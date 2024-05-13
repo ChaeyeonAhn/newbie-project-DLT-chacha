@@ -115,3 +115,18 @@
 .add-post-button:hover {
   cursor: pointer;
 }
+
+.schedule-table {
+  border: 1px solid black;
+  /* border-collapse: collapse; */
+}
+
+input {
+  border: none;
+}
+
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 30px;
+}
