@@ -12,6 +12,7 @@ const PostPage = () => {
 
   const { username, date } = useParams();
   const navigate = useNavigate();
+  const [SChange, setSChange] = useState(true);
   const [SAMTime1, setSAMTime1] = useState("");
   const [SAMContent1, setSAMContent1] = useState("");
   const [SAMTime2, setSAMTime2] = useState("");
@@ -29,11 +30,18 @@ const PostPage = () => {
   const [SPMTime5, setSPMTime5] = useState("");
   const [SPMContent5, setSPMContent5] = useState("");
 
-  console.log(username);
+  
+
+  useEffect(() => {
+    const getSchedule = async () => {
+      const schedule = await axios.get(`http://localhost:8000/posts/:${username}/:${date}`);
+      console.log(schedule);
+    }
+  }, [SChange])
 
   const sendPost = () => {
     const asyncFun = async () => {
-      const { data } = await axios.post(`http://localhost:8000/posts/:${username}/:${id}`, {
+      const { data } = await axios.post(`http://localhost:8000/posts/:${username}/:${date}`, {
         username: username,
         date: date,
         amTime1: SAMTime1,
@@ -54,6 +62,7 @@ const PostPage = () => {
         pmContent5: SPMContent5
       });
       window.alert(`Successfully Modified!`);
+      setSChange(!SChange);
     }
   };
 
@@ -79,6 +88,7 @@ const PostPage = () => {
         <br />
         <div className="total-table">
           <table className="schedule-table">
+            <tbody>
             <tr>
               <td className="schedule-time"><input type="text" placeholder="00:00" value={SAMTime1} onChange={(e) => setSAMTime1(e.target.value)} /></td>
               <td><input type="text" placeholder="Content" value={SAMContent1} onChange={(e) => setSAMContent1(e.target.value)} /></td>
@@ -91,8 +101,10 @@ const PostPage = () => {
               <td className="schedule-time"><input type="text" placeholder="00:00" value={SAMTime3} onChange={(e) => setSAMTime3(e.target.value)} /></td>
               <td><input type="text" placeholder="Content" value={SAMContent3} onChange={(e) => setSAMContent3(e.target.value)} /></td>
             </tr>
+            </tbody>
           </table>
           <table className="schedule-table">
+            <tbody>
             <tr>
               <td className="schedule-time"><input type="text" placeholder="00:00" value={SPMTime1} onChange={(e) => setSPMTime1(e.target.value)} /></td>
               <td><input type="text" placeholder="Content" value={SPMContent1} onChange={(e) => setSPMContent1(e.target.value)} /></td>
@@ -113,9 +125,9 @@ const PostPage = () => {
               <td className="schedule-time"><input type="text" placeholder="00:00" value={SPMTime5} onChange={(e) => setSPMTime5(e.target.value)} /></td>
               <td><input type="text" placeholder="Content" value={SPMContent5} onChange={(e) => setSPMContent5(e.target.value)} /></td>
             </tr>
-            <button onClick={(e) => sendPost()}>Done</button>
+            </tbody>
           </table>
-
+          <button onClick={(e) => sendPost()}>Done</button>
         </div>
       </div>
     </div>

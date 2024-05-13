@@ -111,4 +111,33 @@ router.post('/:username/:date', async (req, res) => {
   
 });
 
+router.get('/:username/:date', async (req, res) => {
+
+  const getPost = await prisma.schedule.findMany({
+    where: {
+      date: date
+    },
+    select: {
+      amTime1: true, 
+      amContent1: true,
+      amTime2: true,
+      amContent2: true,
+      amTime3: true,
+      amContent3: true,
+      pmTime1: true,
+      pmContent1: true,
+      pmTime2: true,
+      pmContent2: true,
+      pmTime3: true,
+      pmContent3: true,
+      pmTime4: true,
+      pmContent4: true,
+      pmTime5: true,
+      pmContent5: true
+    }
+  });
+  res.json(getPost);
+  
+});
+
 module.exports = router;
