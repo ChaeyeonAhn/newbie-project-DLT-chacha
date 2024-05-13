@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom'; 
+import mainLogo from "./img/logo.png";
 import './css/Post.css';
 
 import { faRightToBracket, faRightFromBracket, faUserPlus, faPlus, faFaceMehBlank, faArrowLeft} from "@fortawesome/free-solid-svg-icons";
@@ -71,6 +72,7 @@ const PostPage = () => {
       <header className="header">
         <div className="title">
           <button className="add-post-button" onClick={() => navigate(-1)}><FontAwesomeIcon icon={faArrowLeft} /></button>
+          <img className="logo" src={mainLogo}/>
           <p className="DLT"></p>
         </div>
         <div className="buttons">
@@ -81,8 +83,8 @@ const PostPage = () => {
       </header>
 
       <div className="schedule">
-        <div>
-          <p className="title">Schedule</p>
+        <div className="schedule-header">
+          <div className="schedule-title">Schedule</div>
         </div>
         <br />
         <br />
@@ -127,7 +129,7 @@ const PostPage = () => {
             </tr>
             </tbody>
           </table>
-          <button onClick={(e) => sendPost()}>Done</button>
+          <button onClick={sendPost()}>Done</button>
         </div>
       </div>
     </div>

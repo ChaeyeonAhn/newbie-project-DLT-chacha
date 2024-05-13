@@ -98,8 +98,8 @@ const HomePage = () => {
   return (
     <div>
       <header className="header">
-        <img className="logo" src={mainLogo}/>
         <div className="title">
+          <img className="logo" src={mainLogo}/>
           <p className="DLT">Daily Life Tracker</p>
         </div>
         <div className="buttons">

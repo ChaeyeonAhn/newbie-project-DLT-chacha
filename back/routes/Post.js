@@ -86,6 +86,8 @@ router.post('/:username/:date', async (req, res) => {
     pmContent5
   } = req.body;
 
+  console.log(new Date(date));
+
   const addPost = await prisma.schedule.create({
     data: {
       date: new Date(date),

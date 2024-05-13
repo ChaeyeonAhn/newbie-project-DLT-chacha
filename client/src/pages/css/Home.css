@@ -29,7 +29,7 @@
 }
 
 .title {
-  margin-left: 70px;
+  margin-left: 150px;
   margin-right: auto;
   float: left;
   display: flex;
@@ -43,7 +43,7 @@
 .DLT {
   font-family: 'Samlip-outline';
   font-size: 38px;
-  margin-right: 10px;
+  
 }
 
 .buttons {

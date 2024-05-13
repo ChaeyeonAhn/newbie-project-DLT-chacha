@@ -122,13 +122,26 @@
   cursor: pointer;
 }
 
-/* .total-table {
-  margin: 1%;
-} */
+.schedule-header {
+  /* border: 1px solid black; */
+  height: fit-content;
+  margin-bottom: 50px;
+}
+
+.schedule-title {
+  font-size: x-large;
+  margin-left: 70px;
+  margin-right: auto;
+  margin-bottom: 20px;
+  float: left;
+  display: flex;
+  align-items: center;
+  border-bottom: 3px solid #6DA9F5;
+}
 
 .schedule-table {
   margin: 3%;
-  margin-left: 4%;
+  margin-left: 70px;
 }
 
 
@@ -138,13 +151,17 @@
 
 input {
   border: none;
-  width: 90%;
+  width: 100%;
   display: flex;
   align-items: center;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  height: 40px;
+  margin: 1%;
 }
 
 td {
-  border: 2px solid #ccc;
+  /* border: 2px solid #ccc; */
   border-radius: 20px;
   border-collapse: collapse;
   height: 40px;
