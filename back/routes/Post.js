@@ -46,7 +46,9 @@ router.post('/get', async (req, res) => {
 router.post('/add', async (req, res) => {
   const { date, goal, username } = req.body;
   if (username == "") return res.status(400).json({ message: "No Such Member" });
-  const addPost = await prisma.post.create({
+  
+  try{
+    const addPost = await prisma.post.create({
     data: {
       nickname: username,
       date: date,
@@ -54,8 +56,10 @@ router.post('/add', async (req, res) => {
       mood: null
     }
   });
-
   return res.status(200).json({ isOk: true });
+ } catch(e){
+  res.status(400).json({message: "Already posted"})
+  }
 });
 
 /* 포스트 상세 페이지에서 데이터 처리 */
