@@ -166,25 +166,45 @@
 }
 
 .schedule-table {
-
+  margin-top: 18px;
   margin-left: 70px;
 }
 
 
 .schedule-time {
   width: 200px;
+  font-family: 'Laundry-Gothic';
+  font-size: large;
+  
+  display: flex;
+  align-items: center;
+
+  border: 2px solid #ccc;
+  border-radius: 22.5px;
+  height: 45px;
+  margin: 1%;
+  padding: 7px;
 }
 
 .schedule-content {
   width: 400px;
+  font-family: 'Laundry-Gothic';
+  font-size: large;
+
+  display: flex;
+  align-items: center;
+
+  border: 2px solid #ccc;
+  border-radius: 22.5px;
+  height: 45px;
+  margin: 1%;
+  padding: 7px;
 }
 
 input {
   font-family: 'Laundry-Gothic';
   font-size: large;
   
-
-
   display: flex;
   align-items: center;
 

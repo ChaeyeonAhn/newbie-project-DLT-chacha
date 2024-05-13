@@ -146,6 +146,8 @@ const PostPage = () => {
           
         </div>
       </div>
+      <footer>
+      </footer>
     </div>
   )
 }

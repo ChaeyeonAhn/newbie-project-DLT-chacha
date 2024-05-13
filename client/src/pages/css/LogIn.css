@@ -20,10 +20,10 @@
 
 .loginPopUp {
   font-family: 'Laundry-Gothic';
-  height: 40%;
+  height: 42%;
   width: 300px;
   position: fixed;
-  top: 45%;
+  top: 48%;
   left: 80%;
   transform: translate(-50%, -50%); /* 기준점을 중앙으로 배치 */
   background-color: white;
@@ -49,6 +49,9 @@
 #login-input {
 
   margin-top: 10%;
+  /* display: flex;
+  align-items: center; */
+  
 
 }
 
@@ -58,6 +61,8 @@
   width: 70%;
   border: 2.5px solid #7D93E7;
   border-radius: 30px;
+  height: 30px;
+  font-size:small;
 }
 
 .password {
@@ -67,6 +72,8 @@
   margin-top: 15px;
   border: 2.5px solid #7D93E7;
   border-radius: 30px;
+  height: 30px;
+  font-size:small;
 }
 
 #login-button {
