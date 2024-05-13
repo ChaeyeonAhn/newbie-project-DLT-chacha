@@ -8,49 +8,49 @@ datasource db {
 }
 
 model Consume {
-  id       Int       @id @default(autoincrement())
-  date     DateTime? @db.Date
+  id       Int     @id @default(autoincrement())
+  date     String? @db.VarChar(20)
   budget   Int?
   spend1   Int?
-  content1 String?   @db.VarChar(20)
+  content1 String? @db.VarChar(20)
   spend2   Int?
-  content2 String?   @db.VarChar(20)
+  content2 String? @db.VarChar(20)
   spend3   Int?
-  content3 String?   @db.VarChar(20)
+  content3 String? @db.VarChar(20)
   spend4   Int?
-  content4 String?   @db.VarChar(20)
+  content4 String? @db.VarChar(20)
   spend5   Int?
-  content5 String?   @db.VarChar(20)
-  Post     Post?     @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Consume_ibfk_1")
+  content5 String? @db.VarChar(20)
+  Post     Post?   @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Consume_ibfk_1")
 
   @@index([date], map: "Consume_ibfk_1")
 }
 
 model Diary {
-  id      Int       @id @default(autoincrement())
-  date    DateTime? @unique(map: "date") @db.Date
-  content String?   @db.VarChar(200)
-  Post    Post?     @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Diary_ibfk_1")
+  id      Int     @id @default(autoincrement())
+  date    String? @unique(map: "date") @db.VarChar(20)
+  content String? @db.VarChar(200)
+  Post    Post?   @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Diary_ibfk_1")
 }
 
 model Diet {
-  id       Int       @id @default(autoincrement())
-  date     DateTime? @db.Date
+  id       Int     @id @default(autoincrement())
+  date     String? @db.VarChar(20)
   calorie1 Int?
-  content1 String?   @db.VarChar(20)
+  content1 String? @db.VarChar(20)
   calorie2 Int?
-  content2 String?   @db.VarChar(20)
+  content2 String? @db.VarChar(20)
   calorie3 Int?
-  content3 String?   @db.VarChar(20)
+  content3 String? @db.VarChar(20)
   calorie4 Int?
-  content4 String?   @db.VarChar(20)
+  content4 String? @db.VarChar(20)
   calorie5 Int?
-  content5 String?   @db.VarChar(20)
+  content5 String? @db.VarChar(20)
   calorie6 Int?
-  content6 String?   @db.VarChar(20)
+  content6 String? @db.VarChar(20)
   calorie7 Int?
-  content7 String?   @db.VarChar(20)
-  Post     Post?     @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Diet_ibfk_1")
+  content7 String? @db.VarChar(20)
+  Post     Post?   @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Diet_ibfk_1")
 
   @@index([date], map: "Diet_ibfk_1")
 }
@@ -66,7 +66,7 @@ model Member {
 model Post {
   id       Int        @id @default(autoincrement())
   nickname String?    @db.VarChar(20)
-  date     DateTime?  @unique(map: "date") @db.Date
+  date     String?    @unique(map: "date") @db.VarChar(20)
   goal     String?    @db.VarChar(30)
   mood     String?    @db.VarChar(10)
   Consume  Consume[]
@@ -79,25 +79,25 @@ model Post {
 }
 
 model Schedule {
-  id         Int       @id @default(autoincrement())
-  date       DateTime? @db.Date
-  amTime1    String?   @db.VarChar(20)
-  amContent1 String?   @db.VarChar(20)
-  amTime2    String?   @db.VarChar(20)
-  amContent2 String?   @db.VarChar(20)
-  amTime3    String?   @db.VarChar(20)
-  amContent3 String?   @db.VarChar(20)
-  pmTime1    String?   @db.VarChar(20)
-  pmContent1 String?   @db.VarChar(20)
-  pmTime2    String?   @db.VarChar(20)
-  pmContent2 String?   @db.VarChar(20)
-  pmTime3    String?   @db.VarChar(20)
-  pmContent3 String?   @db.VarChar(20)
-  pmTime4    String?   @db.VarChar(20)
-  pmContent4 String?   @db.VarChar(20)
-  pmTime5    String?   @db.VarChar(20)
-  pmContent5 String?   @db.VarChar(20)
-  Post       Post?     @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Schedule_ibfk_1")
+  id         Int     @id @default(autoincrement())
+  date       String? @db.VarChar(20)
+  amTime1    String? @db.VarChar(20)
+  amContent1 String? @db.VarChar(20)
+  amTime2    String? @db.VarChar(20)
+  amContent2 String? @db.VarChar(20)
+  amTime3    String? @db.VarChar(20)
+  amContent3 String? @db.VarChar(20)
+  pmTime1    String? @db.VarChar(20)
+  pmContent1 String? @db.VarChar(20)
+  pmTime2    String? @db.VarChar(20)
+  pmContent2 String? @db.VarChar(20)
+  pmTime3    String? @db.VarChar(20)
+  pmContent3 String? @db.VarChar(20)
+  pmTime4    String? @db.VarChar(20)
+  pmContent4 String? @db.VarChar(20)
+  pmTime5    String? @db.VarChar(20)
+  pmContent5 String? @db.VarChar(20)
+  Post       Post?   @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Schedule_ibfk_1")
 
   @@index([date], map: "Schedule_ibfk_1")
 }

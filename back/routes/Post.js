@@ -32,7 +32,7 @@ router.post('/get', async (req, res) => {
   });
   const final_post = posts.map((e) => ({
     id: e.id,
-    date: e.date.toLocaleDateString('ko-KR'),
+    date: e.date,
     goal: e.goal,
     mood: e.mood
   }));
@@ -58,7 +58,7 @@ router.post('/add', async (req, res) => {
   });
   return res.status(200).json({ isOk: true });
  } catch(e){
-  res.status(400).json({message: "Already posted"});
+  res.status(400).json({message: `Already posted ${e}`});
   }
 });
 
@@ -86,38 +86,85 @@ router.post('/:username/:date', async (req, res) => {
     pmContent5
   } = req.body;
 
-  console.log(new Date(date));
+  console.log(req.body);
 
-  const addPost = await prisma.schedule.create({
-    data: {
-      date: new Date(date),
-      amTime1: amTime1, 
-      amContent1: amContent1,
-      amTime2: amTime2,
-      amContent2: amContent2,
-      amTime3: amTime3,
-      amContent3: amContent3,
-      pmTime1: pmTime1,
-      pmContent1: pmContent1,
-      pmTime2: pmTime2,
-      pmContent2: pmContent2,
-      pmTime3: pmTime3,
-      pmContent3: pmContent3,
-      pmTime4: pmTime4,
-      pmContent4: pmContent4,
-      pmTime5: pmTime5,
-      pmContent5: pmContent5
+    const findExist = await prisma.schedule.findMany({
+      where: {
+        date: date
+      },
+      select: {
+        id: true
+      }
+    });
+
+    if (findExist) {
+      await prisma.schedule.update({
+        where: {
+          date: date,
+          id: findExist[0].id
+        },
+        data: {
+          date: date,
+          amTime1: amTime1, 
+          amContent1: amContent1,
+          amTime2: amTime2,
+          amContent2: amContent2,
+          amTime3: amTime3,
+          amContent3: amContent3,
+          pmTime1: pmTime1,
+          pmContent1: pmContent1,
+          pmTime2: pmTime2,
+          pmContent2: pmContent2,
+          pmTime3: pmTime3,
+          pmContent3: pmContent3,
+          pmTime4: pmTime4,
+          pmContent4: pmContent4,
+          pmTime5: pmTime5,
+          pmContent5: pmContent5
+        }
+      });
     }
-  });
+
+    else {
+      await prisma.schedule.create({
+        data: {
+          date: date,
+          amTime1: amTime1, 
+          amContent1: amContent1,
+          amTime2: amTime2,
+          amContent2: amContent2,
+          amTime3: amTime3,
+          amContent3: amContent3,
+          pmTime1: pmTime1,
+          pmContent1: pmContent1,
+          pmTime2: pmTime2,
+          pmContent2: pmContent2,
+          pmTime3: pmTime3,
+          pmContent3: pmContent3,
+          pmTime4: pmTime4,
+          pmContent4: pmContent4,
+          pmTime5: pmTime5,
+          pmContent5: pmContent5
+        }
+      });
+    }
+    
+// } catch(e){
+//   res.status(400).json({message: `error: ${e}`});
+//   }
   return res.status(200).json({ isOk: true });
   
 });
 
 router.get('/:username/:date', async (req, res) => {
-
+  const { username, date } = req.params;
+  const date0 = date.replace(/^:+|:+$/g, '');
+  console.log(date0);
+  // const dateObject = new Date(date);
+  try {
   const getPost = await prisma.schedule.findMany({
     where: {
-      date: date
+      date: date0
     },
     select: {
       amTime1: true, 
@@ -138,7 +185,12 @@ router.get('/:username/:date', async (req, res) => {
       pmContent5: true
     }
   });
+  console.log(getPost);
   res.json(getPost);
+}catch(e){
+  res.status(400).json({message: `error: ${e}`});
+  }
+  
   
 });
 

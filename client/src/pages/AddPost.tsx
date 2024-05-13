@@ -16,7 +16,7 @@ const AddPost = ({ pop, close, username, increase, postcount }) => {
   const sendNewPost = () => {
     const asyncFun = async () => {
       await axios.post('http://localhost:8000/posts/add', {
-        date: new Date(),
+        date: new Date().toLocaleDateString('ko-KR'),
         goal: SGoal,
         username: username
       }); 

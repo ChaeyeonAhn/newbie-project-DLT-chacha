@@ -5,12 +5,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 import mainLogo from "./img/logo.png";
 import './css/Post.css';
 
-import { faRightToBracket, faRightFromBracket, faUserPlus, faPlus, faFaceMehBlank, faArrowLeft} from "@fortawesome/free-solid-svg-icons";
+import { faUserPlus, faPlus, faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const PostPage = () => {
-
   const { username, date } = useParams();
   const navigate = useNavigate();
   const [SChange, setSChange] = useState(true);
@@ -31,14 +30,28 @@ const PostPage = () => {
   const [SPMTime5, setSPMTime5] = useState("");
   const [SPMContent5, setSPMContent5] = useState("");
 
-  
-
   useEffect(() => {
     const getSchedule = async () => {
-      const schedule = await axios.get(`http://localhost:8000/posts/:${username}/:${date}`);
-      console.log(schedule);
+      const { data } = await axios.get(`http://localhost:8000/posts/:${username}/:${date}`);
+      setSAMTime1(data[0].amTime1);
+      setSAMContent1(data[0].amContent1);
+      setSAMTime2(data[0].amTime2);
+      setSAMContent2(data[0].amContent2);
+      setSAMTime3(data[0].amTime3);
+      setSAMContent3(data[0].amContent3);
+      setSPMTime1(data[0].pmTime1);
+      setSPMContent1(data[0].pmContent1);
+      setSPMTime2(data[0].pmTime2);
+      setSPMContent2(data[0].pmContent2);
+      setSPMTime3(data[0].pmTime3);
+      setSPMContent3(data[0].pmContent3);
+      setSPMTime4(data[0].pmTime4);
+      setSPMContent4(data[0].pmContent4);
+      setSPMTime5(data[0].pmTime5);
+      setSPMContent5(data[0].pmContent5);
     }
-  }, [SChange])
+    getSchedule().catch((e) => window.alert(`Error while Running API Call: ${e}`));
+  }, [SChange, date, username]);
 
   const sendPost = () => {
     const asyncFun = async () => {
@@ -62,9 +75,11 @@ const PostPage = () => {
         pmTime5: SPMTime5,
         pmContent5: SPMContent5
       });
+      console.log(data);
       window.alert(`Successfully Modified!`);
       setSChange(!SChange);
     }
+    asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
   };
 
   return (
@@ -72,7 +87,7 @@ const PostPage = () => {
       <header className="header">
         <div className="title">
           <button className="add-post-button" onClick={() => navigate(-1)}><FontAwesomeIcon icon={faArrowLeft} /></button>
-          <img className="logo" src={mainLogo}/>
+          <img className="logo" src={mainLogo} alt="logo"/>
           <p className="DLT"></p>
         </div>
         <div className="buttons">
@@ -129,7 +144,7 @@ const PostPage = () => {
             </tr>
             </tbody>
           </table>
-          <button onClick={sendPost()}>Done</button>
+          <button onClick={(e) => sendPost()}>Done</button>
         </div>
       </div>
     </div>
