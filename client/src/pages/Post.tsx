@@ -5,7 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import mainLogo from "./img/logo.png";
 import './css/Post.css';
 
-import { faUserPlus, faPlus, faArrowLeft, faPen } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -92,8 +92,6 @@ const PostPage = () => {
         </div>
         <div className="buttons">
           <p className="username">{username}</p>
-          <button className="add-post-button"><FontAwesomeIcon icon={faPlus} /></button>
-          <button className="register"><FontAwesomeIcon icon={faUserPlus} /></button>
         </div>
       </header>
 

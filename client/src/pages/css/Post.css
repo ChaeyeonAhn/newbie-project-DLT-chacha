@@ -125,8 +125,10 @@
 
 .schedule-header {
   /* border: 1px solid black; */
-  height: fit-content;
-  margin-bottom: 50px;
+  height: 50px;
+  margin-left: 80px;
+  display: flex;
+  justify-content: center;
 }
 
 .modify-button {
@@ -153,17 +155,18 @@
 
 .schedule-title {
   font-size: x-large;
-  margin-left: 70px;
+
   margin-right: auto;
-  margin-bottom: 20px;
+  
   float: left;
   display: flex;
   align-items: center;
+  justify-content: center;
   border-bottom: 3px solid #6DA9F5;
 }
 
 .schedule-table {
-  margin: 3%;
+
   margin-left: 70px;
 }
 
