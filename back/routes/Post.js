@@ -48,7 +48,6 @@ router.post('/add', async (req, res) => {
   if (username == "") return res.status(400).json({ message: "No Such Member" });
   const addPost = await prisma.post.create({
     data: {
-      id: id,
       nickname: username,
       date: date,
       goal: goal,

@@ -19,15 +19,16 @@ const PostPage = () => {
       <header className="header">
         <div className="title">
           <button className="add-post-button" onClick={() => navigate(-1)}><FontAwesomeIcon icon={faArrowLeft} /></button>
-          <p className="DLT">DLT</p>
+          <p className="DLT"></p>
         </div>
         <div className="buttons">
           <p className="username">{username}</p>
-          <button className="add-post-button" ><FontAwesomeIcon icon={faPlus} /></button>
-          <button className="register" ><FontAwesomeIcon icon={faUserPlus} /></button>
-          
+          <button className="add-post-button"><FontAwesomeIcon icon={faPlus} /></button>
+          <button className="register"><FontAwesomeIcon icon={faUserPlus} /></button>
         </div>
       </header>
+      <div>
+      </div>
     </div>
   )
 }

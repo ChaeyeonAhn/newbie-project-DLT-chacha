@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const LogIn = ({ pop, close, handleLogin }) => {
   const [SNickname, setSNickname] = useState("");
   const [SPassword, setSPassword] = useState("");
+  // const [SGender, setSGender] = useState("");
 
   const sendLogIn = () => {
     const asyncFun = async () => {
@@ -23,6 +24,7 @@ const LogIn = ({ pop, close, handleLogin }) => {
       console.log(data);
       setSNickname("");
       setSPassword("");
+      // setSGender("");
       window.alert(`Signed In! ${JSON.stringify(data.message)}`);
       handleLogin({SNickname});
       close();

@@ -59,6 +59,7 @@ model Member {
   id       Int     @id @default(autoincrement())
   nickname String? @unique(map: "nickname") @db.VarChar(20)
   password String? @db.VarChar(24)
+  gender   String  @db.VarChar(1)
   Post     Post[]
 }
 
