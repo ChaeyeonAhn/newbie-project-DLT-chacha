@@ -37,36 +37,46 @@ const PostPage = () => {
   
 
   useEffect(() => {
+    const getInfo = async () => {
+      const { data }= await axios.get(`http://localhost:8000/posts/:${username}/:${date}/info`);
+      console.log(data);
+    }
+    getInfo().catch((e) => window.alert(`Error while Running API Call: ${e}`));
+  
+
     const getSchedule = async () => {
-      const { data } = await axios.get(`http://localhost:8000/posts/:${username}/:${date}`);
+      const { data } = await axios.get(`http://localhost:8000/posts/:${username}/:${date}/get-schedule`);
       // console.log(data.length==0);
       if (data.length == 0) {
         window.alert('New Post! Record your Day.');
         return
       }
-      setSAMTime1(data[0].amTime1);
-      setSAMContent1(data[0].amContent1);
-      setSAMTime2(data[0].amTime2);
-      setSAMContent2(data[0].amContent2);
-      setSAMTime3(data[0].amTime3);
-      setSAMContent3(data[0].amContent3);
-      setSPMTime1(data[0].pmTime1);
-      setSPMContent1(data[0].pmContent1);
-      setSPMTime2(data[0].pmTime2);
-      setSPMContent2(data[0].pmContent2);
-      setSPMTime3(data[0].pmTime3);
-      setSPMContent3(data[0].pmContent3);
-      setSPMTime4(data[0].pmTime4);
-      setSPMContent4(data[0].pmContent4);
-      setSPMTime5(data[0].pmTime5);
-      setSPMContent5(data[0].pmContent5);
+      else {
+      /* null 값 처리 */
+      setSAMTime1(data[0].amTime1 ? data[0].amTime1 : "");
+      setSAMContent1(data[0].amContent1 ? data[0].amContent1 : "");
+      setSAMTime2(data[0].amTime2 ? data[0].amTime2 : "");
+      setSAMContent2(data[0].amContent2 ? data[0].amContent2 : "");
+      setSAMTime3(data[0].amTime3 ? data[0].amTime3 : "");
+      setSAMContent3(data[0].amContent3? data[0].amContent3 : "");
+      setSPMTime1(data[0].pmTime1 ? data[0].pmTime1 : "");
+      setSPMContent1(data[0].pmContent1 ? data[0].pmContent1 : "");
+      setSPMTime2(data[0].pmTime2 ? data[0].pmTime2 : "");
+      setSPMContent2(data[0].pmContent2 ? data[0].pmContent2 : "");
+      setSPMTime3(data[0].pmTime3 ? data[0].pmTime3 : "");
+      setSPMContent3(data[0].pmContent3 ? data[0].pmContent3 : "");
+      setSPMTime4(data[0].pmTime4 ? data[0].pmTime4 : "");
+      setSPMContent4(data[0].pmContent4 ? data[0].pmContent4 : "");
+      setSPMTime5(data[0].pmTime5 ? data[0].pmTime5 : "");
+      setSPMContent5(data[0].pmContent5 ? data[0].pmContent5 : "");
+      }
     }
     getSchedule().catch((e) => window.alert(`Error while Running API Call: ${e}`));
   }, [SChange, date, username]);
 
   const sendPost = () => {
     const asyncFun = async () => {
-      const { data } = await axios.post(`http://localhost:8000/posts/:${username}/:${date}`, {
+      const { data } = await axios.post(`http://localhost:8000/posts/:${username}/:${date}/update-schedule`, {
         username: username,
         date: date,
         amTime1: SAMTime1,
@@ -93,7 +103,7 @@ const PostPage = () => {
     asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
   };
 
-  const getTotalCal = () => {
+  const getInfo = () => {
     const asyncFun = async () => {
       const { data }= await axios.get(`http://localhost:8000/posts/:${username}/:${date}/info`);
       console.log(data);
@@ -172,7 +182,7 @@ const PostPage = () => {
       <div>
         키 <input type="number" value={SHeight} onChange={(e) => e.target.value}/>
         체중 <input type="number" value={SWeight} onChange={(e) => e.target.value}/>
-        권장 소비 칼로리 <div>{STotalCalorie}</div>
+        권장 소비 칼로리 
         
       </div>
       <footer>

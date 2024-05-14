@@ -136,7 +136,7 @@ router.post('/add', async (req, res) => {
 
 /* 포스트 상세 페이지에서 데이터 처리 */
 
-router.post('/:username/:date', async (req, res) => {
+router.post('/:username/:date/update-schedule', async (req, res) => {
   const { 
     username,
     date,
@@ -234,7 +234,7 @@ router.post('/:username/:date', async (req, res) => {
   
 });
 
-router.get('/:username/:date', async (req, res) => {
+router.get('/:username/:date/get-schedule', async (req, res) => {
   const { username, date } = req.params;
   const dateCode = username.concat(date);
   const dateCode_fixed = dateCode.replace(/:/g, ''); /* 자꾸 : 가 포함되는 오류 수정 */
