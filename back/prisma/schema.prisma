@@ -39,24 +39,25 @@ model Diary {
 }
 
 model Diet {
-  id       Int     @id @default(autoincrement())
-  date     String? @db.VarChar(20)
-  calorie1 Int?
-  content1 String? @db.VarChar(20)
-  calorie2 Int?
-  content2 String? @db.VarChar(20)
-  calorie3 Int?
-  content3 String? @db.VarChar(20)
-  calorie4 Int?
-  content4 String? @db.VarChar(20)
-  calorie5 Int?
-  content5 String? @db.VarChar(20)
-  calorie6 Int?
-  content6 String? @db.VarChar(20)
-  calorie7 Int?
-  content7 String? @db.VarChar(20)
-  dateCode String? @db.VarChar(40)
-  Post     Post?   @relation(fields: [dateCode], references: [dateCode], onDelete: Cascade, onUpdate: NoAction, map: "Diet_ibfk_2")
+  id           Int     @id @default(autoincrement())
+  date         String? @db.VarChar(20)
+  calorie1     Int?
+  content1     String? @db.VarChar(20)
+  calorie2     Int?
+  content2     String? @db.VarChar(20)
+  calorie3     Int?
+  content3     String? @db.VarChar(20)
+  calorie4     Int?
+  content4     String? @db.VarChar(20)
+  calorie5     Int?
+  content5     String? @db.VarChar(20)
+  calorie6     Int?
+  content6     String? @db.VarChar(20)
+  calorie7     Int?
+  content7     String? @db.VarChar(20)
+  dateCode     String? @db.VarChar(40)
+  totalCalorie Int?
+  Post         Post?   @relation(fields: [dateCode], references: [dateCode], onDelete: Cascade, onUpdate: NoAction, map: "Diet_ibfk_2")
 
   @@index([date], map: "Diet_ibfk_1")
   @@index([dateCode], map: "Diet_ibfk_2")
