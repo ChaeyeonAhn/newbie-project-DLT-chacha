@@ -46,14 +46,15 @@ router.post('/get', async (req, res) => {
 router.post('/add', async (req, res) => {
   const { date, goal, username } = req.body;
   if (username == "") return res.status(400).json({ message: "No Such Member" });
-  
+  const dateCode = username.concat(date);
   try{
     const addPost = await prisma.post.create({
     data: {
       nickname: username,
       date: date,
       goal: goal,
-      mood: null
+      mood: null,
+      dateCode: dateCode
     }
   });
   return res.status(200).json({ isOk: true });
@@ -86,11 +87,13 @@ router.post('/:username/:date', async (req, res) => {
     pmContent5
   } = req.body;
 
+  const dateCode = username.concat(date);
+
   console.log(req.body);
 
     const findExist = await prisma.schedule.findMany({
       where: {
-        date: date
+        dateCode: dateCode
       },
       select: {
         id: true
@@ -121,7 +124,8 @@ router.post('/:username/:date', async (req, res) => {
           pmTime4: pmTime4,
           pmContent4: pmContent4,
           pmTime5: pmTime5,
-          pmContent5: pmContent5
+          pmContent5: pmContent5,
+          nickname: username
         }
       });
     }
@@ -145,7 +149,9 @@ router.post('/:username/:date', async (req, res) => {
           pmTime4: pmTime4,
           pmContent4: pmContent4,
           pmTime5: pmTime5,
-          pmContent5: pmContent5
+          pmContent5: pmContent5,
+          nickname: username,
+          dateCode: dateCode
         }
       });
     }
