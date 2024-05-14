@@ -161,7 +161,7 @@ router.get('/:username/:date', async (req, res) => {
   const date0 = date.replace(/^:+|:+$/g, '');
   console.log(date0);
   // const dateObject = new Date(date);
-  try {
+  // try {
   const getPost = await prisma.schedule.findMany({
     where: {
       date: date0
@@ -185,11 +185,12 @@ router.get('/:username/:date', async (req, res) => {
       pmContent5: true
     }
   });
-  console.log(getPost);
+  if (!getPost) return;
+  // console.log(getPost);
   res.json(getPost);
-}catch(e){
-  res.status(400).json({message: `error: ${e}`});
-  }
+// }catch(e){
+//   res.status(400).json({message: `error: ${e}`});
+//   }
   
   
 });
