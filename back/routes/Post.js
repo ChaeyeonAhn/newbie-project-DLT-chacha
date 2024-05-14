@@ -57,6 +57,77 @@ router.post('/add', async (req, res) => {
       dateCode: dateCode
     }
   });
+
+    await prisma.schedule.create({
+      data: {
+        date: date,
+        amTime1: null, 
+        amContent1: null,
+        amTime2: null,
+        amContent2: null,
+        amTime3: null,
+        amContent3: null,
+        pmTime1: null,
+        pmContent1: null,
+        pmTime2: null,
+        pmContent2: null,
+        pmTime3: null,
+        pmContent3: null,
+        pmTime4: null,
+        pmContent4: null,
+        pmTime5: null,
+        pmContent5: null,
+        nickname: username,
+        dateCode: dateCode
+      }
+    });
+
+    await prisma.diet.create({
+      data: {
+        date: date,
+        calorie1: null,
+        content1: null,
+        calorie2: null,
+        content2: null,
+        calorie3: null,
+        content3: null,
+        calorie4: null,
+        content4: null,
+        calorie5: null,
+        content5: null,
+        calorie6: null,
+        content6: null,
+        calorie7: null,
+        content7: null,
+        dateCode: dateCode
+      }
+    });
+
+    await prisma.consume.create({
+      data: {
+        date: date,
+        budget: null,
+        spend1: null,
+        content1: null,
+        spend2: null,
+        content2: null,
+        spend3: null,
+        content3: null,
+        spend4: null,
+        content4: null,
+        spend5: null,
+        content5: null,
+        dateCode: dateCode
+      }
+    });
+
+    await prisma.diary.create({
+      data: {
+        date: date,
+        content: null,
+        dateCode: dateCode
+      }
+    });
   return res.status(200).json({ isOk: true });
  } catch(e){
   res.status(400).json({message: `Already posted ${e}`});
@@ -165,15 +236,19 @@ router.post('/:username/:date', async (req, res) => {
 
 router.get('/:username/:date', async (req, res) => {
   const { username, date } = req.params;
-  const date0 = date.replace(/^:+|:+$/g, '');
-  console.log(date0);
+  const dateCode = username.concat(date);
+  const dateCode_fixed = dateCode.replace(/:/g, ''); /* 자꾸 : 가 포함되는 오류 수정 */
+  // console.log(date0);
   // const dateObject = new Date(date);
+  console.log(dateCode_fixed);
   try {
     const getExist = await prisma.schedule.findMany({
       where: {
-        date: date0
+        dateCode: dateCode_fixed
       }
     });
+    console.log("get schedule?", getExist);
+
     if (!getExist) {
       res.status(200).json({message: "New Post!"});
       return
@@ -181,7 +256,7 @@ router.get('/:username/:date', async (req, res) => {
   
     const getPost = await prisma.schedule.findMany({
       where: {
-        date: date0
+        dateCode: dateCode_fixed
       },
       select: {
         amTime1: true, 
@@ -203,13 +278,34 @@ router.get('/:username/:date', async (req, res) => {
       }
     });
     if (!getPost) return;
-    console.log(getPost);
+    console.log("Get schedules", getPost);
     res.json(getPost);
 }catch(e){
   res.status(400).json({message: `error: ${e}`});
   }
   
   
+});
+
+router.get('/:username/:date/info', async (req, res) => {
+  const { username, date } = req.params;
+  const username_fixed = username.replace(/^:+|:+$/g, '');
+  try {
+    const getInfo = await prisma.member.findMany({
+      where: {
+        nickname: username_fixed
+      },
+      select: {
+        nickname: true,
+        gender: true,
+        birth: true
+      }
+    });
+    res.json(getInfo);
+
+  }catch(e){
+    res.status(400).json({message: `error: ${e}`});
+  }
 });
 
 module.exports = router;

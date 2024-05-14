@@ -67,6 +67,7 @@ model Member {
   nickname String? @unique(map: "nickname") @db.VarChar(20)
   password String? @db.VarChar(24)
   gender   String  @db.VarChar(1)
+  birth    String? @db.VarChar(20)
   Post     Post[]
 }
 

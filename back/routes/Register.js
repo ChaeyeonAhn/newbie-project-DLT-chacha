@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 
 router.post('/new', async (req, res) => {
-  const { nickname, password, gender } = req.body;
+  const { nickname, password, gender, birth } = req.body;
 
   const found_nn = await prisma.member.findUnique({
     where: {
@@ -24,7 +24,8 @@ router.post('/new', async (req, res) => {
       data: {
         nickname: nickname,
         password: password,
-        gender: gender
+        gender: gender,
+        birth: birth
       }
     });
     console.log(newMem);

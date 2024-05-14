@@ -30,6 +30,12 @@ const PostPage = () => {
   const [SPMTime5, setSPMTime5] = useState("");
   const [SPMContent5, setSPMContent5] = useState("");
 
+  const [SHeight, setSHeight] = useState(0);
+  const [SWeight, setSWeight] = useState(0);
+  const [STotalCalorie, setSTotalCalorie] = useState(0);
+  
+  
+
   useEffect(() => {
     const getSchedule = async () => {
       const { data } = await axios.get(`http://localhost:8000/posts/:${username}/:${date}`);
@@ -86,6 +92,17 @@ const PostPage = () => {
     }
     asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
   };
+
+  const getTotalCal = () => {
+    const asyncFun = async () => {
+      const { data }= await axios.get(`http://localhost:8000/posts/:${username}/:${date}/info`);
+      console.log(data);
+    }
+    asyncFun().catch((e) => window.alert(`Error while Running API Call: ${e}`));
+  };
+
+
+
 
   return (
     <div>
@@ -150,6 +167,13 @@ const PostPage = () => {
           </table>
           
         </div>
+      </div>
+
+      <div>
+        키 <input type="number" value={SHeight} onChange={(e) => e.target.value}/>
+        체중 <input type="number" value={SWeight} onChange={(e) => e.target.value}/>
+        권장 소비 칼로리 <div>{STotalCalorie}</div>
+        
       </div>
       <footer>
       </footer>
