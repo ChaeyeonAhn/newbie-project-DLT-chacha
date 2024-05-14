@@ -33,6 +33,11 @@ const PostPage = () => {
   useEffect(() => {
     const getSchedule = async () => {
       const { data } = await axios.get(`http://localhost:8000/posts/:${username}/:${date}`);
+      // console.log(data.length==0);
+      if (data.length == 0) {
+        window.alert('New Post! Record your Day.');
+        return
+      }
       setSAMTime1(data[0].amTime1);
       setSAMContent1(data[0].amContent1);
       setSAMTime2(data[0].amTime2);

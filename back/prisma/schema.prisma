@@ -21,7 +21,6 @@ model Consume {
   content4 String? @db.VarChar(20)
   spend5   Int?
   content5 String? @db.VarChar(20)
-  Post     Post?   @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Consume_ibfk_1")
 
   @@index([date], map: "Consume_ibfk_1")
 }
@@ -30,7 +29,6 @@ model Diary {
   id      Int     @id @default(autoincrement())
   date    String? @unique(map: "date") @db.VarChar(20)
   content String? @db.VarChar(200)
-  Post    Post?   @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Diary_ibfk_1")
 }
 
 model Diet {
@@ -50,7 +48,6 @@ model Diet {
   content6 String? @db.VarChar(20)
   calorie7 Int?
   content7 String? @db.VarChar(20)
-  Post     Post?   @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Diet_ibfk_1")
 
   @@index([date], map: "Diet_ibfk_1")
 }
@@ -64,16 +61,12 @@ model Member {
 }
 
 model Post {
-  id       Int        @id @default(autoincrement())
-  nickname String?    @db.VarChar(20)
-  date     String?    @unique(map: "date") @db.VarChar(20)
-  goal     String?    @db.VarChar(30)
-  mood     String?    @db.VarChar(10)
-  Consume  Consume[]
-  Diary    Diary?
-  Diet     Diet[]
-  Member   Member?    @relation(fields: [nickname], references: [nickname], onDelete: Cascade, onUpdate: NoAction, map: "Post_ibfk_1")
-  Schedule Schedule[]
+  id       Int     @id @default(autoincrement())
+  nickname String? @db.VarChar(20)
+  date     String? @db.VarChar(20)
+  goal     String? @db.VarChar(30)
+  mood     String? @db.VarChar(10)
+  Member   Member? @relation(fields: [nickname], references: [nickname], onDelete: Cascade, onUpdate: NoAction, map: "Post_ibfk_1")
 
   @@index([nickname], map: "Post_ibfk_1")
 }
@@ -97,7 +90,7 @@ model Schedule {
   pmContent4 String? @db.VarChar(20)
   pmTime5    String? @db.VarChar(20)
   pmContent5 String? @db.VarChar(20)
-  Post       Post?   @relation(fields: [date], references: [date], onDelete: Cascade, onUpdate: NoAction, map: "Schedule_ibfk_1")
+  nickname   String? @db.VarChar(20)
 
   @@index([date], map: "Schedule_ibfk_1")
 }

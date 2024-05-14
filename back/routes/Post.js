@@ -96,8 +96,9 @@ router.post('/:username/:date', async (req, res) => {
         id: true
       }
     });
+    console.log(findExist);
 
-    if (findExist) {
+    if (findExist.length != 0) {
       await prisma.schedule.update({
         where: {
           date: date,
@@ -161,36 +162,46 @@ router.get('/:username/:date', async (req, res) => {
   const date0 = date.replace(/^:+|:+$/g, '');
   console.log(date0);
   // const dateObject = new Date(date);
-  // try {
-  const getPost = await prisma.schedule.findMany({
-    where: {
-      date: date0
-    },
-    select: {
-      amTime1: true, 
-      amContent1: true,
-      amTime2: true,
-      amContent2: true,
-      amTime3: true,
-      amContent3: true,
-      pmTime1: true,
-      pmContent1: true,
-      pmTime2: true,
-      pmContent2: true,
-      pmTime3: true,
-      pmContent3: true,
-      pmTime4: true,
-      pmContent4: true,
-      pmTime5: true,
-      pmContent5: true
+  try {
+    const getExist = await prisma.schedule.findMany({
+      where: {
+        date: date0
+      }
+    });
+    if (!getExist) {
+      res.status(200).json({message: "New Post!"});
+      return
     }
-  });
-  if (!getPost) return;
-  // console.log(getPost);
-  res.json(getPost);
-// }catch(e){
-//   res.status(400).json({message: `error: ${e}`});
-//   }
+  
+    const getPost = await prisma.schedule.findMany({
+      where: {
+        date: date0
+      },
+      select: {
+        amTime1: true, 
+        amContent1: true,
+        amTime2: true,
+        amContent2: true,
+        amTime3: true,
+        amContent3: true,
+        pmTime1: true,
+        pmContent1: true,
+        pmTime2: true,
+        pmContent2: true,
+        pmTime3: true,
+        pmContent3: true,
+        pmTime4: true,
+        pmContent4: true,
+        pmTime5: true,
+        pmContent5: true
+      }
+    });
+    if (!getPost) return;
+    console.log(getPost);
+    res.json(getPost);
+}catch(e){
+  res.status(400).json({message: `error: ${e}`});
+  }
   
   
 });
