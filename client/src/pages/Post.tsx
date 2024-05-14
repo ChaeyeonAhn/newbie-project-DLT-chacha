@@ -33,13 +33,24 @@ const PostPage = () => {
   const [SHeight, setSHeight] = useState(0);
   const [SWeight, setSWeight] = useState(0);
   const [STotalCalorie, setSTotalCalorie] = useState(0);
+  const [SGender, setSGender] = useState("");
+  const [SBirth, setSBirth] = useState("");
+  const [SAge, setSAge] = useState(0); /* 나이 추가 계산 해야 함! */
   
   
 
   useEffect(() => {
     const getInfo = async () => {
       const { data }= await axios.get(`http://localhost:8000/posts/:${username}/:${date}/info`);
-      console.log(data);
+      console.log(data[0]);
+      setSGender(data[0].gender);
+      setSBirth(data[0].birth); /* 나이는 우리가 직접 계산해서 입력해주기. 그래야 사용자가 나이를 늘 업데이트 하지 않아도 됨 */
+      if (data[0].gender == 'f') {
+        setSTotalCalorie( 10 * SWeight + 6.25 * SHeight + 5 * SAge - 161 );
+      }
+      else {
+        setSTotalCalorie( 10 * SWeight + 6.25 * SHeight + 5 * SAge + 5 );
+      }
     }
     getInfo().catch((e) => window.alert(`Error while Running API Call: ${e}`));
   
@@ -102,15 +113,6 @@ const PostPage = () => {
     }
     asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
   };
-
-  const getInfo = () => {
-    const asyncFun = async () => {
-      const { data }= await axios.get(`http://localhost:8000/posts/:${username}/:${date}/info`);
-      console.log(data);
-    }
-    asyncFun().catch((e) => window.alert(`Error while Running API Call: ${e}`));
-  };
-
 
 
 
@@ -182,7 +184,7 @@ const PostPage = () => {
       <div>
         키 <input type="number" value={SHeight} onChange={(e) => e.target.value}/>
         체중 <input type="number" value={SWeight} onChange={(e) => e.target.value}/>
-        권장 소비 칼로리 
+        권장 소비 칼로리 <p>{STotalCalorie}</p>
         
       </div>
       <footer>
