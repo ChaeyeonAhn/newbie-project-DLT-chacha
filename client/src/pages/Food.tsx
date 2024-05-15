@@ -8,10 +8,8 @@ import './css/Post.css';
 import { faArrowLeft, faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Schedule from './Schedule.tsx';
-import Food from './Food.tsx';
 
-const PostPage = () => {
+const Food = () => {
   const { username, date } = useParams();
   const navigate = useNavigate();
   const [SChange, setSChange] = useState(true);
@@ -55,37 +53,9 @@ const PostPage = () => {
       }
     }
     getInfo().catch((e) => window.alert(`Error while Running API Call: ${e}`));
-  
+  });
 
-    const getSchedule = async () => {
-      const { data } = await axios.get(`http://localhost:8000/posts/:${username}/:${date}/get-schedule`);
-      // console.log(data.length==0);
-      if (data.length == 0) {
-        window.alert('New Post! Record your Day.');
-        return
-      }
-      else {
-      /* null 값 처리 */
-      setSAMTime1(data[0].amTime1 ? data[0].amTime1 : "");
-      setSAMContent1(data[0].amContent1 ? data[0].amContent1 : "");
-      setSAMTime2(data[0].amTime2 ? data[0].amTime2 : "");
-      setSAMContent2(data[0].amContent2 ? data[0].amContent2 : "");
-      setSAMTime3(data[0].amTime3 ? data[0].amTime3 : "");
-      setSAMContent3(data[0].amContent3? data[0].amContent3 : "");
-      setSPMTime1(data[0].pmTime1 ? data[0].pmTime1 : "");
-      setSPMContent1(data[0].pmContent1 ? data[0].pmContent1 : "");
-      setSPMTime2(data[0].pmTime2 ? data[0].pmTime2 : "");
-      setSPMContent2(data[0].pmContent2 ? data[0].pmContent2 : "");
-      setSPMTime3(data[0].pmTime3 ? data[0].pmTime3 : "");
-      setSPMContent3(data[0].pmContent3 ? data[0].pmContent3 : "");
-      setSPMTime4(data[0].pmTime4 ? data[0].pmTime4 : "");
-      setSPMContent4(data[0].pmContent4 ? data[0].pmContent4 : "");
-      setSPMTime5(data[0].pmTime5 ? data[0].pmTime5 : "");
-      setSPMContent5(data[0].pmContent5 ? data[0].pmContent5 : "");
-      }
-    }
-    getSchedule().catch((e) => window.alert(`Error while Running API Call: ${e}`));
-  }, [SChange, date, username]);
+    
 
   const sendPost = () => {
     const asyncFun = async () => {
@@ -120,25 +90,13 @@ const PostPage = () => {
 
   return (
     <div>
-      <header className="header">
-        <div className="title">
-          <button className="add-post-button" onClick={() => navigate(-1)}><FontAwesomeIcon icon={faArrowLeft} /></button>
-          <img className="logo" src={mainLogo} alt="logo"/>
-          <p className="DLT">{date}</p>
-        </div>
-        <div className="buttons">
-          <p className="username">{username}</p>
-        </div>
-      </header>
-
-      <Schedule />
-      <Food />
-
-      
-      <footer>
-      </footer>
+      <div>
+        키 <input type="number" value={SHeight} onChange={(e) => e.target.value}/>
+        체중 <input type="number" value={SWeight} onChange={(e) => e.target.value}/>
+        권장 소비 칼로리 <p>{STotalCalorie}</p>
+      </div>
     </div>
   )
 }
 
-export default PostPage;
+export default Food;
