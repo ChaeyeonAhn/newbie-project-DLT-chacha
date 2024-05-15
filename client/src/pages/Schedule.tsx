@@ -1,18 +1,18 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom'; 
-import mainLogo from "./img/logo.png";
+import { useParams } from 'react-router-dom'; 
 import './css/Post.css';
 
-import { faArrowLeft, faPen } from "@fortawesome/free-solid-svg-icons";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const Schedule = () => {
   const { username, date } = useParams();
-  const navigate = useNavigate();
+
   const [SChange, setSChange] = useState(true);
+
   const [SAMTime1, setSAMTime1] = useState("");
   const [SAMContent1, setSAMContent1] = useState("");
   const [SAMTime2, setSAMTime2] = useState("");
@@ -30,35 +30,16 @@ const Schedule = () => {
   const [SPMTime5, setSPMTime5] = useState("");
   const [SPMContent5, setSPMContent5] = useState("");
 
-  const [SHeight, setSHeight] = useState(0);
-  const [SWeight, setSWeight] = useState(0);
-  const [STotalCalorie, setSTotalCalorie] = useState(0);
-  const [SGender, setSGender] = useState("");
-  const [SBirth, setSBirth] = useState("");
-  const [SAge, setSAge] = useState(0); /* 나이 추가 계산 해야 함! */
   
   
 
   useEffect(() => {
-    const getInfo = async () => {
-      const { data }= await axios.get(`http://localhost:8000/posts/:${username}/:${date}/info`);
-      console.log(data[0]);
-      setSGender(data[0].gender);
-      setSBirth(data[0].birth); /* 나이는 우리가 직접 계산해서 입력해주기. 그래야 사용자가 나이를 늘 업데이트 하지 않아도 됨 */
-      if (data[0].gender == 'f') {
-        setSTotalCalorie( 10 * SWeight + 6.25 * SHeight + 5 * SAge - 161 );
-      }
-      else {
-        setSTotalCalorie( 10 * SWeight + 6.25 * SHeight + 5 * SAge + 5 );
-      }
-    }
-    getInfo().catch((e) => window.alert(`Error while Running API Call: ${e}`));
-  
 
     const getSchedule = async () => {
       const { data } = await axios.get(`http://localhost:8000/posts/:${username}/:${date}/get-schedule`);
       // console.log(data.length==0);
-      if (data.length == 0) {
+      /* 필요 없을 예정 */
+      if (data.length === 0) {
         window.alert('New Post! Record your Day.');
         return
       }
@@ -118,7 +99,6 @@ const Schedule = () => {
 
   return (
     <div>
-
       <div className="schedule">
         <div className="schedule-header">
           <div className="schedule-title">Schedule</div>
@@ -167,7 +147,6 @@ const Schedule = () => {
             </tr>
             </tbody>
           </table>
-          
         </div>
       </div>
     </div>

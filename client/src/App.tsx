@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 import HomePage from './/pages/Home.tsx';
 import PostPage from './/pages/Post.tsx';
+// import Schedule from './/pages/Schedule.tsx';
 
-import { createContext } from 'react';
+// import { createContext } from 'react';
 
 import './App.css';
 
@@ -18,6 +19,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/post/:username/:date" element={<PostPage />} /> 
+
       </Routes>
     </Router>
   );
