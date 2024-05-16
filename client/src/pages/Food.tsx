@@ -35,6 +35,9 @@ const Food = () => {
   const [SCalorie7, setSCalorie7] = useState(0);
   const [SContent7, setSContent7] = useState("");
 
+  const [SUsedCal, setSUsedCal] = useState(0);
+  const [SLeftCal, setSLeftCal] = useState(0);
+
 
   
   useEffect(() => {
@@ -59,8 +62,8 @@ const Food = () => {
       setSContent6(saved.data[0].content6 ? saved.data[0].content6 : "");
       setSCalorie7(saved.data[0].calorie7 ? saved.data[0].calorie7 : 0);
       setSContent7(saved.data[0].content7 ? saved.data[0].content7 : "");
-
-
+      setSUsedCal(saved.data[0].usedCalorie ? saved.data[0].usedCalorie : 0);
+      setSLeftCal(saved.data[0].leftCalorie ? saved.data[0].leftCalorie : 0);
     }
     getRecord().catch((e) => window.alert(`Error while Running API Call: ${e}`));
   }, [SChange]);
@@ -98,10 +101,16 @@ const Food = () => {
       if (SGender === 'f') {
         /* 미플린 세인트지올 공식 */
         const totCal = 10 * SWeight + 6.25 * SHeight + 5 * SAge - 161;
+        const left = totCal - (SCalorie1 + SCalorie2 + SCalorie3 + SCalorie4 + SCalorie5 + SCalorie6 + SCalorie7);
+        const used = (SCalorie1 + SCalorie2 + SCalorie3 + SCalorie4 + SCalorie5 + SCalorie6 + SCalorie7);
+        setSLeftCal(left);
+        setSUsedCal(used);
         await axios.post(`http://localhost:8000/food/:${username}/:${date}/save`, {
           height: SHeight,
           weight: SWeight,
-          totalCalorie: totCal
+          totalCalorie: totCal,
+          usedCalorie: used,
+          leftCalorie: left
         });
         window.alert(`Saved!`);
         setSChange(!SChange);
@@ -110,6 +119,10 @@ const Food = () => {
       else {
         /* 미플린 세인트지올 공식 */
         const totCal = 10 * SWeight + 6.25 * SHeight + 5 * SAge + 5;
+        const left = totCal - (SCalorie1 + SCalorie2 + SCalorie3 + SCalorie4 + SCalorie5 + SCalorie6 + SCalorie7);
+        const used = (SCalorie1 + SCalorie2 + SCalorie3 + SCalorie4 + SCalorie5 + SCalorie6 + SCalorie7);
+        setSLeftCal(left);
+        setSUsedCal(used);
         await axios.post(`http://localhost:8000/food/:${username}/:${date}/save`, {
           height: SHeight,
           weight: SWeight,
@@ -123,6 +136,7 @@ const Food = () => {
   };
 
   const sendFood = () => {
+
     const asyncFun = async () => {
       const { data } = await axios.post(`http://localhost:8000/food/:${username}/:${date}/update`, {
         calorie1: SCalorie1,
@@ -201,8 +215,8 @@ const Food = () => {
       </table>
 
       <div>
-          소비한 칼로리는 <p></p>
-          남은 칼로리는 <p></p>
+          소비한 칼로리는 <p>{SUsedCal}</p>
+          남은 칼로리는 <p>{SLeftCal}</p>
       </div>
     </div>
   )

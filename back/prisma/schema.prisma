@@ -59,6 +59,8 @@ model Diet {
   totalCalorie Int?
   height       Int?
   weight       Int?
+  leftCalorie  Int?
+  usedCalorie  Int?
   Post         Post?   @relation(fields: [dateCode], references: [dateCode], onDelete: Cascade, onUpdate: NoAction, map: "Diet_ibfk_2")
 
   @@index([date], map: "Diet_ibfk_1")
