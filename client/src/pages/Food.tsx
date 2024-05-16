@@ -42,8 +42,8 @@ const Food = () => {
   
   useEffect(() => {
     const getRecord = async () => {
-      const  saved  = await axios.get(`http://localhost:8000/food/:${username}/:${date}/record`);
-      // console.log(saved.data[0]);
+      const saved = await axios.get(`http://localhost:8000/food/:${username}/:${date}/record`);
+      console.log(saved.data[0]);
 
       setSHeight(saved.data[0].height ? saved.data[0].height : 0);
       setSWeight(saved.data[0].weight ? saved.data[0].weight : 0);
@@ -69,7 +69,7 @@ const Food = () => {
   }, [SChange]);
 
 
-  const SaveHW = () => {
+  const Save = () => {
     /* 멤버 정보를 가져온다 */
     const getInfo = async () => {
       const { data }= await axios.get(`http://localhost:8000/food/:${username}/member-info`);
@@ -83,34 +83,42 @@ const Food = () => {
     const today = new Date();
     const age = (today.getFullYear() - SBirth.slice(0,4));
     setSAge(age);
-    // console.log(age);
-
-    /* 권소칼 계산 */
-    if (SGender === 'f') {
-      setSTotalCalorie( 10 * SWeight + 6.25 * SHeight + 5 * age - 161 );
-    }
-    else {
-      setSTotalCalorie( 10 * SWeight + 6.25 * SHeight + 5 * age + 5 );
-    }
+    console.log(age);
+    console.log(typeof(age));
 
     const asyncFun = async () => {
       /* 나이는 굳이 db 에 저장 안 해도 될 듯 */
       /* 나머지 정보는 db 에 저장 */
-      console.log(SHeight, SWeight, STotalCalorie); /* STotalCalorie 바로 반영 안 됨 */
 
       if (SGender === 'f') {
         /* 미플린 세인트지올 공식 */
-        const totCal = 10 * SWeight + 6.25 * SHeight + 5 * SAge - 161;
-        const left = totCal - (SCalorie1 + SCalorie2 + SCalorie3 + SCalorie4 + SCalorie5 + SCalorie6 + SCalorie7);
-        const used = (SCalorie1 + SCalorie2 + SCalorie3 + SCalorie4 + SCalorie5 + SCalorie6 + SCalorie7);
+        const totCal = 10 * parseInt(SWeight) + 6.25 * parseInt(SHeight) + 5 * age - 161;
+        const left = totCal - (parseInt(SCalorie1) + parseInt(SCalorie2) + parseInt(SCalorie3) + parseInt(SCalorie4) + parseInt(SCalorie5) + parseInt(SCalorie6) + parseInt(SCalorie7));
+        const used = (parseInt(SCalorie1) + parseInt(SCalorie2) + parseInt(SCalorie3) + parseInt(SCalorie4) + parseInt(SCalorie5) + parseInt(SCalorie6) + parseInt(SCalorie7));
+        // console.log(typeof(used));
         setSLeftCal(left);
         setSUsedCal(used);
+        setSTotalCalorie(totCal);
         await axios.post(`http://localhost:8000/food/:${username}/:${date}/save`, {
           height: SHeight,
           weight: SWeight,
           totalCalorie: totCal,
           usedCalorie: used,
-          leftCalorie: left
+          leftCalorie: left, 
+          calorie1: SCalorie1,
+          content1: SContent1,
+          calorie2: SCalorie2,
+          content2: SContent2,
+          calorie3: SCalorie3,
+          content3: SContent3,
+          calorie4: SCalorie4,
+          content4: SContent4,
+          calorie5: SCalorie5,
+          content5: SContent5,
+          calorie6: SCalorie6,
+          content6: SContent6,
+          calorie7: SCalorie7,
+          content7: SContent7
         });
         window.alert(`Saved!`);
         setSChange(!SChange);
@@ -118,15 +126,33 @@ const Food = () => {
 
       else {
         /* 미플린 세인트지올 공식 */
-        const totCal = 10 * SWeight + 6.25 * SHeight + 5 * SAge + 5;
-        const left = totCal - (SCalorie1 + SCalorie2 + SCalorie3 + SCalorie4 + SCalorie5 + SCalorie6 + SCalorie7);
-        const used = (SCalorie1 + SCalorie2 + SCalorie3 + SCalorie4 + SCalorie5 + SCalorie6 + SCalorie7);
+        const totCal = 10 * parseInt(SWeight) + 6.25 * parseInt(SHeight) + 5 * age + 5;
+        const left = totCal - (parseInt(SCalorie1) + parseInt(SCalorie2) + parseInt(SCalorie3) + parseInt(SCalorie4) + parseInt(SCalorie5) + parseInt(SCalorie6) + parseInt(SCalorie7));
+        const used = (parseInt(SCalorie1) + parseInt(SCalorie2) + parseInt(SCalorie3) + parseInt(SCalorie4) + parseInt(SCalorie5) + parseInt(SCalorie6) + parseInt(SCalorie7));
         setSLeftCal(left);
         setSUsedCal(used);
+        setSTotalCalorie(totCal);
+
         await axios.post(`http://localhost:8000/food/:${username}/:${date}/save`, {
           height: SHeight,
           weight: SWeight,
-          totalCalorie: totCal
+          totalCalorie: totCal,
+          usedCalorie: used,
+          leftCalorie: left,
+          calorie1: SCalorie1,
+          content1: SContent1,
+          calorie2: SCalorie2,
+          content2: SContent2,
+          calorie3: SCalorie3,
+          content3: SContent3,
+          calorie4: SCalorie4,
+          content4: SContent4,
+          calorie5: SCalorie5,
+          content5: SContent5,
+          calorie6: SCalorie6,
+          content6: SContent6,
+          calorie7: SCalorie7,
+          content7: SContent7
         });
         window.alert(`Saved!`);
         setSChange(!SChange);
@@ -135,50 +161,22 @@ const Food = () => {
     asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
   };
 
-  const sendFood = () => {
-
-    const asyncFun = async () => {
-      const { data } = await axios.post(`http://localhost:8000/food/:${username}/:${date}/update`, {
-        calorie1: SCalorie1,
-        content1: SContent1,
-        calorie2: SCalorie2,
-        content2: SContent2,
-        calorie3: SCalorie3,
-        content3: SContent3,
-        calorie4: SCalorie4,
-        content4: SContent4,
-        calorie5: SCalorie5,
-        content5: SContent5,
-        calorie6: SCalorie6,
-        content6: SContent6,
-        calorie7: SCalorie7,
-        content7: SContent7
-      });
-      console.log(data);
-      window.alert(`Successfully Modified!`);
-      setSChange(!SChange);
-    }
-    asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
-  };
-
-
 
   return (
     <div className = "food">
       <div className="food-header">
         <div className="food-title">Health Info</div>
+        <button className = "HWbutton" onClick={() => Save()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
       </div>
       <div className = "HWC-table">
         <p>키를 입력하세요.</p>
         <input type="number" value={SHeight} onChange={(e) => setSHeight(e.target.value)}/> cm
         <p>체중을 입력하세요.</p>
         <input type="number" value={SWeight} onChange={(e) => setSWeight(e.target.value)}/> kg
-        <button className = "HWbutton" onClick={() => SaveHW()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
         <p>권장 소비 칼로리는 {STotalCalorie} kcal</p>
       </div>
       <div className="food-header">
         <div className="food-title">Food Diary</div>
-        <button className="modify-button" onClick={(e) => sendFood()}><FontAwesomeIcon icon={faPen} /></button>
       </div>
       
       <table className="schedule-table">
@@ -214,7 +212,7 @@ const Food = () => {
         </tbody>
       </table>
 
-      <div>
+      <div className = "schedule-table">
           소비한 칼로리는 <p>{SUsedCal}</p>
           남은 칼로리는 <p>{SLeftCal}</p>
       </div>
