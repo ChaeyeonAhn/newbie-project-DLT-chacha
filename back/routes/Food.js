@@ -31,6 +31,8 @@ router.get('/:username/member-info', async (req, res) => {
   }
 });
 
+/* 회원의 그 날의 키, 몸무게, 토탈 섭취 권장 칼로리 입력 */
+
 router.post('/:username/:date/save', async (req, res) => {
   const { username, date } = req.params;
   const { height, weight, totalCalorie } = req.body;
@@ -60,7 +62,26 @@ router.post('/:username/:date/save', async (req, res) => {
 
 });
 
-/* 회원의 그 날의 키, 몸무게, 토탈 섭취 권장 칼로리 입력 */
+/* 회원의 식단 기록 불러오기 */
+
+router.get('/:username/:date/record', async (req, res) => {
+  const { username, date } = req.params;
+  const username_fixed = username.replace(/^:+|:+$/g, ''); /* 자꾸 : 가 포함되는 오류 수정 */
+  const dateCode = username_fixed.concat(date);
+  const dateCode_fixed = dateCode.replace(/:/g, ''); /* 자꾸 : 가 포함되는 오류 수정 */
+
+  try {
+    const record = await prisma.diet.findMany({
+      where: {
+        dateCode: dateCode_fixed
+      }
+    });
+    res.json(record);
+  } catch (e) {
+    res.status(400).json({message: `error: ${e}`});
+  }
+});
+
 
 
 
