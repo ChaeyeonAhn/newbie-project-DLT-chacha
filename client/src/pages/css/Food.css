@@ -69,13 +69,10 @@
 }
 
 
-.schedule {
+.food {
   font-family: 'Laundry-Gothic';
   width: 700px;
-}
-
-.add-post-button:hover {
-  cursor: pointer;
+  margin-top: 110px;
 }
 
 .food-header {
@@ -84,6 +81,7 @@
   margin-left: 80px;
   display: flex;
   justify-content: center;
+  margin-bottom: 80px;
 }
 
 .modify-button {
@@ -119,7 +117,7 @@
   border-bottom: 3px solid #6DA9F5;
 }
 
-.schedule-table {
+.food-table {
   margin-top: 18px;
   margin-left: 70px;
 }
@@ -167,6 +165,28 @@ input {
   height: 45px;
   margin: 1%;
   padding: 7px;
+}
+
+.HWbutton {
+
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  font-size: x-large;
+  border: 3px solid #6DA9F5;
+  background-color: #eef6fc;
+  box-shadow: 1px 1px 1px 2px #ccc;
+}
+
+.HWbutton:hover {
+  cursor: pointer;
+  background-color: #cfeafc;
+}
+
+.HWbutton:active {
+  position: relative;
+  box-shadow: 0.5px 0.5px 0 #ccc;
+  top: 2px;
 }
 
 td {

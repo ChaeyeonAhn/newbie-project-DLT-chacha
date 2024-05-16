@@ -5,13 +5,14 @@ import { useParams } from 'react-router-dom';
 
 import './css/Food.css';
 
-import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const Food = () => {
   const { username, date } = useParams();
 
+  const [SChange, setSChange] = useState(true);
   const [SHeight, setSHeight] = useState(0);
   const [SWeight, setSWeight] = useState(0);
   const [STotalCalorie, setSTotalCalorie] = useState(0);
@@ -30,7 +31,7 @@ const Food = () => {
 
     }
     getRecord().catch((e) => window.alert(`Error while Running API Call: ${e}`));
-  }, [SHeight, SWeight]);
+  }, [SChange]);
 
 
   const SaveHW = () => {
@@ -51,10 +52,10 @@ const Food = () => {
 
     /* 권소칼 계산 */
     if (SGender === 'f') {
-      setSTotalCalorie( 10 * SWeight + 6.25 * SHeight + 5 * SAge - 161 );
+      setSTotalCalorie( 10 * SWeight + 6.25 * SHeight + 5 * age - 161 );
     }
     else {
-      setSTotalCalorie( 10 * SWeight + 6.25 * SHeight + 5 * SAge + 5 );
+      setSTotalCalorie( 10 * SWeight + 6.25 * SHeight + 5 * age + 5 );
     }
 
     const asyncFun = async () => {
@@ -70,6 +71,7 @@ const Food = () => {
           totalCalorie: totCal
         });
         window.alert(`Saved!`);
+        setSChange(!SChange);
       }
 
       else {
@@ -80,6 +82,7 @@ const Food = () => {
           totalCalorie: totCal
         });
         window.alert(`Saved!`);
+        setSChange(!SChange);
       }
     }
     asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
@@ -88,16 +91,18 @@ const Food = () => {
 
 
   return (
-    <div>
+    <div className = "food">
        <div className="food-header">
           <div className="food-title">Food Diary</div>
           <button className="modify-button" onClick={(e) => sendFood()}><FontAwesomeIcon icon={faPen} /></button>
         </div>
-      <div>
-        키 <input type="number" value={SHeight} onChange={(e) => setSHeight(e.target.value)}/>
-        체중 <input type="number" value={SWeight} onChange={(e) => setSWeight(e.target.value)}/>
-        <button onClick={() => SaveHW()}>Confirm</button>
-        권장 소비 칼로리 <p>{STotalCalorie}</p>
+      <div className = "food-table">
+        <p>키를 입력하세요.</p>
+        <input type="number" value={SHeight} onChange={(e) => setSHeight(e.target.value)}/>
+        <p>체중을 입력하세요.</p>
+        <input type="number" value={SWeight} onChange={(e) => setSWeight(e.target.value)}/>
+        <button className = "HWbutton" onClick={() => SaveHW()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
+        <p>권장 소비 칼로리는 {STotalCalorie} kcal</p>
       </div>
     </div>
   )
