@@ -12,6 +12,8 @@ const homeRouter = require('./routes/Home.js');
 const postRouter = require('./routes/Post.js');
 const logInRouter = require('./routes/LogIn.js');
 const regisRouter = require('./routes/Register.js');
+const foodRouter = require('./routes/Food.js');
+const scheduleRouter = require('./routes/Schedule.js');
 
 const whitelist = ['http://localhost:3000']; 
 
@@ -39,6 +41,8 @@ app.use('/', homeRouter);
 app.use('/posts', postRouter);
 app.use('/login', logInRouter);
 app.use('/register', regisRouter);
+app.use('/food', foodRouter);
+app.use('/schedule', scheduleRouter);
 
 
 

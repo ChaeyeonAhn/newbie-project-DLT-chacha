@@ -36,7 +36,7 @@ const Schedule = () => {
   useEffect(() => {
 
     const getSchedule = async () => {
-      const { data } = await axios.get(`http://localhost:8000/posts/:${username}/:${date}/get-schedule`);
+      const { data } = await axios.get(`http://localhost:8000/schedule/:${username}/:${date}/get`);
       // console.log(data.length==0);
       /* 필요 없을 예정 */
       if (data.length === 0) {
@@ -68,7 +68,7 @@ const Schedule = () => {
 
   const sendPost = () => {
     const asyncFun = async () => {
-      const { data } = await axios.post(`http://localhost:8000/posts/:${username}/:${date}/update-schedule`, {
+      const { data } = await axios.post(`http://localhost:8000/schedule/:${username}/:${date}/update`, {
         username: username,
         date: date,
         amTime1: SAMTime1,
