@@ -82,6 +82,58 @@ router.get('/:username/:date/record', async (req, res) => {
   }
 });
 
+/* 회원 식단 기록 업데이트 */
+
+router.post('/:username/:date/update', async (req, res) => {
+  const { username, date } = req.params;
+  const {
+    calorie1,
+    content1,
+    calorie2,
+    content2,
+    calorie3,
+    content3,
+    calorie4,
+    content4,
+    calorie5,
+    content5,
+    calorie6,
+    content6,
+    calorie7,
+    content7
+  } = req.body;
+  const username_fixed = username.replace(/^:+|:+$/g, ''); /* 자꾸 : 가 포함되는 오류 수정 */
+  const dateCode = username_fixed.concat(date);
+  const dateCode_fixed = dateCode.replace(/:/g, ''); /* 자꾸 : 가 포함되는 오류 수정 */
+
+  try {
+    await prisma.diet.update({
+      where: {
+        dateCode: dateCode_fixed
+      },
+      data: {
+        calorie1: calorie1,
+        content1: content1,
+        calorie2: calorie2,
+        content2: content2,
+        calorie3: calorie3,
+        content3: content3,
+        calorie4: calorie4,
+        content4: content4,
+        calorie5: calorie5,
+        content5: content5,
+        calorie6: calorie6,
+        content6: content6,
+        calorie7: calorie7,
+        content7: content7
+      }
+    });
+    res.status(200).json({isOK: true});
+  } catch (e) {
+    res.status(400).json({message: `error: ${e}`});
+  }
+});
+
 
 
 

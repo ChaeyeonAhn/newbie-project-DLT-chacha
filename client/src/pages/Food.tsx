@@ -19,15 +19,47 @@ const Food = () => {
   const [SGender, setSGender] = useState("");
   const [SBirth, setSBirth] = useState("");
   const [SAge, setSAge] = useState(0); /* 나이 추가 계산 해야 함! */
+
+  const [SCalorie1, setSCalorie1] = useState(0);
+  const [SContent1, setSContent1] = useState("");
+  const [SCalorie2, setSCalorie2] = useState(0);
+  const [SContent2, setSContent2] = useState("");
+  const [SCalorie3, setSCalorie3] = useState(0);
+  const [SContent3, setSContent3] = useState("");
+  const [SCalorie4, setSCalorie4] = useState(0);
+  const [SContent4, setSContent4] = useState("");
+  const [SCalorie5, setSCalorie5] = useState(0);
+  const [SContent5, setSContent5] = useState("");
+  const [SCalorie6, setSCalorie6] = useState(0);
+  const [SContent6, setSContent6] = useState("");
+  const [SCalorie7, setSCalorie7] = useState(0);
+  const [SContent7, setSContent7] = useState("");
+
+
   
   useEffect(() => {
     const getRecord = async () => {
       const  saved  = await axios.get(`http://localhost:8000/food/:${username}/:${date}/record`);
       // console.log(saved.data[0]);
 
-      setSHeight(saved.data[0].height);
-      setSWeight(saved.data[0].weight);
-      setSTotalCalorie(saved.data[0].totalCalorie);
+      setSHeight(saved.data[0].height ? saved.data[0].height : 0);
+      setSWeight(saved.data[0].weight ? saved.data[0].weight : 0);
+      setSTotalCalorie(saved.data[0].totalCalorie ? saved.data[0].totalCalorie : 0);
+      setSCalorie1(saved.data[0].calorie1 ? saved.data[0].calorie1 : 0);
+      setSContent1(saved.data[0].content1 ? saved.data[0].content1 : "");
+      setSCalorie2(saved.data[0].calorie2 ? saved.data[0].calorie2 : 0);
+      setSContent2(saved.data[0].content2 ? saved.data[0].content2 : "");
+      setSCalorie3(saved.data[0].calorie3 ? saved.data[0].calorie3 : 0);
+      setSContent3(saved.data[0].content3 ? saved.data[0].content3 : "");
+      setSCalorie4(saved.data[0].calorie4 ? saved.data[0].calorie4 : 0);
+      setSContent4(saved.data[0].content4 ? saved.data[0].content4 : "");
+      setSCalorie5(saved.data[0].calorie5 ? saved.data[0].calorie5 : 0);
+      setSContent5(saved.data[0].content5 ? saved.data[0].content5 : "");
+      setSCalorie6(saved.data[0].calorie6 ? saved.data[0].calorie6 : 0);
+      setSContent6(saved.data[0].content6 ? saved.data[0].content6 : "");
+      setSCalorie7(saved.data[0].calorie7 ? saved.data[0].calorie7 : 0);
+      setSContent7(saved.data[0].content7 ? saved.data[0].content7 : "");
+
 
     }
     getRecord().catch((e) => window.alert(`Error while Running API Call: ${e}`));
@@ -64,6 +96,7 @@ const Food = () => {
       console.log(SHeight, SWeight, STotalCalorie); /* STotalCalorie 바로 반영 안 됨 */
 
       if (SGender === 'f') {
+        /* 미플린 세인트지올 공식 */
         const totCal = 10 * SWeight + 6.25 * SHeight + 5 * SAge - 161;
         await axios.post(`http://localhost:8000/food/:${username}/:${date}/save`, {
           height: SHeight,
@@ -75,6 +108,7 @@ const Food = () => {
       }
 
       else {
+        /* 미플린 세인트지올 공식 */
         const totCal = 10 * SWeight + 6.25 * SHeight + 5 * SAge + 5;
         await axios.post(`http://localhost:8000/food/:${username}/:${date}/save`, {
           height: SHeight,
@@ -88,21 +122,87 @@ const Food = () => {
     asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
   };
 
+  const sendFood = () => {
+    const asyncFun = async () => {
+      const { data } = await axios.post(`http://localhost:8000/food/:${username}/:${date}/update`, {
+        calorie1: SCalorie1,
+        content1: SContent1,
+        calorie2: SCalorie2,
+        content2: SContent2,
+        calorie3: SCalorie3,
+        content3: SContent3,
+        calorie4: SCalorie4,
+        content4: SContent4,
+        calorie5: SCalorie5,
+        content5: SContent5,
+        calorie6: SCalorie6,
+        content6: SContent6,
+        calorie7: SCalorie7,
+        content7: SContent7
+      });
+      console.log(data);
+      window.alert(`Successfully Modified!`);
+      setSChange(!SChange);
+    }
+    asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
+  };
+
 
 
   return (
     <div className = "food">
-       <div className="food-header">
-          <div className="food-title">Food Diary</div>
-          <button className="modify-button" onClick={(e) => sendFood()}><FontAwesomeIcon icon={faPen} /></button>
-        </div>
-      <div className = "food-table">
+      <div className="food-header">
+        <div className="food-title">Health Info</div>
+      </div>
+      <div className = "HWC-table">
         <p>키를 입력하세요.</p>
-        <input type="number" value={SHeight} onChange={(e) => setSHeight(e.target.value)}/>
+        <input type="number" value={SHeight} onChange={(e) => setSHeight(e.target.value)}/> cm
         <p>체중을 입력하세요.</p>
-        <input type="number" value={SWeight} onChange={(e) => setSWeight(e.target.value)}/>
+        <input type="number" value={SWeight} onChange={(e) => setSWeight(e.target.value)}/> kg
         <button className = "HWbutton" onClick={() => SaveHW()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
         <p>권장 소비 칼로리는 {STotalCalorie} kcal</p>
+      </div>
+      <div className="food-header">
+        <div className="food-title">Food Diary</div>
+        <button className="modify-button" onClick={(e) => sendFood()}><FontAwesomeIcon icon={faPen} /></button>
+      </div>
+      
+      <table className="schedule-table">
+        <tbody>
+        <tr>
+          <td><input className="schedule-time" type="number" placeholder="kcal" value={SCalorie1} onChange={(e) => setSCalorie1(e.target.value)} /></td>
+          <td><input className="schedule-content" type="text" placeholder="뭐를 먹었는지 적어봐요" value={SContent1} onChange={(e) => setSContent1(e.target.value)} /></td>
+        </tr>
+        <tr>
+          <td><input className="schedule-time" type="number" placeholder="kcal" value={SCalorie2} onChange={(e) => setSCalorie2(e.target.value)} /></td>
+          <td><input className="schedule-content" type="text" placeholder="Content" value={SContent2} onChange={(e) => setSContent2(e.target.value)} /></td>
+        </tr>
+        <tr>
+          <td><input className="schedule-time" type="number" placeholder="kcal" value={SCalorie3} onChange={(e) => setSCalorie3(e.target.value)} /></td>
+          <td><input className="schedule-content" type="text" placeholder="Content" value={SContent3} onChange={(e) => setSContent3(e.target.value)} /></td>
+        </tr>
+        <tr>
+          <td><input className="schedule-time" type="number" placeholder="kcal" value={SCalorie4} onChange={(e) => setSCalorie4(e.target.value)} /></td>
+          <td><input className="schedule-content" type="text" placeholder="Content" value={SContent4} onChange={(e) => setSContent4(e.target.value)} /></td>
+        </tr>
+        <tr>
+          <td><input className="schedule-time" type="number" placeholder="kcal" value={SCalorie5} onChange={(e) => setSCalorie5(e.target.value)} /></td>
+          <td><input className="schedule-content" type="text" placeholder="Content" value={SContent5} onChange={(e) => setSContent5(e.target.value)} /></td>
+        </tr>
+        <tr>
+          <td><input className="schedule-time" type="number" placeholder="kcal" value={SCalorie6} onChange={(e) => setSCalorie6(e.target.value)} /></td>
+          <td><input className="schedule-content" type="text" placeholder="Content" value={SContent6} onChange={(e) => setSContent6(e.target.value)} /></td>
+        </tr>
+        <tr>
+          <td><input className="schedule-time" type="number" placeholder="kcal" value={SCalorie7} onChange={(e) => setSCalorie7(e.target.value)} /></td>
+          <td><input className="schedule-content" type="text" placeholder="Content" value={SContent7} onChange={(e) => setSContent7(e.target.value)} /></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div>
+          소비한 칼로리는 <p></p>
+          남은 칼로리는 <p></p>
       </div>
     </div>
   )
