@@ -21,7 +21,7 @@
 .header {
   display: flex;
   background-color: white;
-  border: 4px solid #6DA9F5;
+  border: 4px solid rgb(133, 215, 202);
   border-radius: 60px;
   padding: 0.2%;
   margin: 2%;
@@ -60,7 +60,7 @@
   align-items: center;
   margin-right: 10px;
   border-radius: 25px;
-  border: 3px solid #6DA9F5;
+  border: 3px solid rgb(133, 215, 202);
   background-color: #eef6fc;
   text-align: center;
   display: flex;
@@ -75,8 +75,8 @@
   margin-right: 10px;
   font-size: larger;
   border-radius: 25px;
-  border: 3px solid #6DA9F5;
-  background-color: #eef6fc;
+  border: 3px solid rgb(133, 215, 202);
+  background-color: rgb(226, 250, 246);
   box-shadow: 1px 1px 1px 2px #ccc;
 }
 
@@ -87,7 +87,7 @@
   margin-right: 10px;
   font-size: larger;
   border-radius: 25px;
-  border: 3px solid #6DA9F5;
+  border: 3px solid rgb(133, 215, 202);
   background-color: #eef6fc;
   box-shadow: 1px 1px 1px 2px #ccc;
 }
@@ -98,7 +98,7 @@
   float: right;
   font-size: larger;
   border-radius: 25px;
-  border: 3px solid #6DA9F5;
+  border: 3px solid rgb(133, 215, 202);
   background-color: #eef6fc;
   box-shadow: 1px 1px 1px 2px #ccc;
 }

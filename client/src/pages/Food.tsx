@@ -41,6 +41,16 @@ const Food = () => {
 
   
   useEffect(() => {
+    /* 멤버 정보를 가져온다 */
+    const getInfo = async () => {
+      const { data }= await axios.get(`http://localhost:8000/food/:${username}/member-info`);
+      console.log(data[0]);
+      setSGender(data[0].gender);
+      setSBirth(data[0].birth); /* 나이는 우리가 직접 계산해서 입력해주기. 그래야 사용자가 나이를 늘 업데이트 하지 않아도 됨 */
+    }
+    getInfo().catch((e) => window.alert(`Error while Running API Call: ${e}`));
+
+
     const getRecord = async () => {
       const saved = await axios.get(`http://localhost:8000/food/:${username}/:${date}/record`);
       console.log(saved.data[0]);
@@ -70,14 +80,6 @@ const Food = () => {
 
 
   const Save = () => {
-    /* 멤버 정보를 가져온다 */
-    const getInfo = async () => {
-      const { data }= await axios.get(`http://localhost:8000/food/:${username}/member-info`);
-      console.log(data[0]);
-      setSGender(data[0].gender);
-      setSBirth(data[0].birth); /* 나이는 우리가 직접 계산해서 입력해주기. 그래야 사용자가 나이를 늘 업데이트 하지 않아도 됨 */
-    }
-    getInfo().catch((e) => window.alert(`Error while Running API Call: ${e}`));
     
     /* 나이를 계산한다 */
     const today = new Date();
@@ -165,57 +167,63 @@ const Food = () => {
   return (
     <div className = "food">
       <div className="food-header">
-        <div className="food-title">Health Info</div>
+        <div className="food-title">Food Diary</div>
         <button className = "HWbutton" onClick={() => Save()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
       </div>
       <div className = "HWC-table">
-        <p>키를 입력하세요.</p>
-        <input type="number" value={SHeight} onChange={(e) => setSHeight(e.target.value)}/> cm
-        <p>체중을 입력하세요.</p>
-        <input type="number" value={SWeight} onChange={(e) => setSWeight(e.target.value)}/> kg
-        <p>권장 소비 칼로리는 {STotalCalorie} kcal</p>
+        <div className="xeight">
+          <p>키 (cm)</p>
+          <input type="number" value={SHeight} onChange={(e) => setSHeight(e.target.value)}/>
+        </div>
+        <div className="xeight">
+          <p>체중 (kg)</p>
+          <input type="number" value={SWeight} onChange={(e) => setSWeight(e.target.value)}/>
+        </div>
       </div>
-      <div className="food-header">
-        <div className="food-title">Food Diary</div>
+      <div className = "food-info">
+        <p> 권장 소비 칼로리 {STotalCalorie} kcal 중</p>
+        <p> {SUsedCal} kcal 먹었어요 </p>
+        <p> {SLeftCal} kcal 남았어요 </p>
+
+        <p> {SUsedCal} kcal / {STotalCalorie} kcal </p>
       </div>
       
-      <table className="schedule-table">
+      <table className="food-table">
         <tbody>
         <tr>
-          <td><input className="schedule-time" type="number" placeholder="kcal" value={SCalorie1} onChange={(e) => setSCalorie1(e.target.value)} /></td>
-          <td><input className="schedule-content" type="text" placeholder="뭐를 먹었는지 적어봐요" value={SContent1} onChange={(e) => setSContent1(e.target.value)} /></td>
+          <td><p className="column-content">뭘 먹었나요?</p></td>
+          <td><p className="column-cal">kcal</p></td>
+        </tr> 
+        <tr>
+          <td><input className="food-content" type="text" placeholder="뭐를 먹었는지 적어봐요" value={SContent1} onChange={(e) => setSContent1(e.target.value)} /></td>
+          <td><input className="food-cal" type="number" placeholder="kcal" value={SCalorie1} onChange={(e) => setSCalorie1(e.target.value)} /></td>
         </tr>
         <tr>
-          <td><input className="schedule-time" type="number" placeholder="kcal" value={SCalorie2} onChange={(e) => setSCalorie2(e.target.value)} /></td>
-          <td><input className="schedule-content" type="text" placeholder="Content" value={SContent2} onChange={(e) => setSContent2(e.target.value)} /></td>
+          <td><input className="food-content" type="text" placeholder="Content" value={SContent2} onChange={(e) => setSContent2(e.target.value)} /></td>
+          <td><input className="food-cal" type="number" placeholder="kcal" value={SCalorie2} onChange={(e) => setSCalorie2(e.target.value)} /></td>
         </tr>
         <tr>
-          <td><input className="schedule-time" type="number" placeholder="kcal" value={SCalorie3} onChange={(e) => setSCalorie3(e.target.value)} /></td>
-          <td><input className="schedule-content" type="text" placeholder="Content" value={SContent3} onChange={(e) => setSContent3(e.target.value)} /></td>
+          <td><input className="food-content" type="text" placeholder="Content" value={SContent3} onChange={(e) => setSContent3(e.target.value)} /></td>
+          <td><input className="food-cal" type="number" placeholder="kcal" value={SCalorie3} onChange={(e) => setSCalorie3(e.target.value)} /></td>
         </tr>
         <tr>
-          <td><input className="schedule-time" type="number" placeholder="kcal" value={SCalorie4} onChange={(e) => setSCalorie4(e.target.value)} /></td>
-          <td><input className="schedule-content" type="text" placeholder="Content" value={SContent4} onChange={(e) => setSContent4(e.target.value)} /></td>
+          <td><input className="food-content" type="text" placeholder="Content" value={SContent4} onChange={(e) => setSContent4(e.target.value)} /></td>
+          <td><input className="food-cal" type="number" placeholder="kcal" value={SCalorie4} onChange={(e) => setSCalorie4(e.target.value)} /></td>
         </tr>
         <tr>
-          <td><input className="schedule-time" type="number" placeholder="kcal" value={SCalorie5} onChange={(e) => setSCalorie5(e.target.value)} /></td>
-          <td><input className="schedule-content" type="text" placeholder="Content" value={SContent5} onChange={(e) => setSContent5(e.target.value)} /></td>
+          <td><input className="food-content" type="text" placeholder="Content" value={SContent5} onChange={(e) => setSContent5(e.target.value)} /></td>
+          <td><input className="food-cal" type="number" placeholder="kcal" value={SCalorie5} onChange={(e) => setSCalorie5(e.target.value)} /></td>
         </tr>
         <tr>
-          <td><input className="schedule-time" type="number" placeholder="kcal" value={SCalorie6} onChange={(e) => setSCalorie6(e.target.value)} /></td>
-          <td><input className="schedule-content" type="text" placeholder="Content" value={SContent6} onChange={(e) => setSContent6(e.target.value)} /></td>
+          <td><input className="food-content" type="text" placeholder="Content" value={SContent6} onChange={(e) => setSContent6(e.target.value)} /></td>
+          <td><input className="food-cal" type="number" placeholder="kcal" value={SCalorie6} onChange={(e) => setSCalorie6(e.target.value)} /></td>
         </tr>
         <tr>
-          <td><input className="schedule-time" type="number" placeholder="kcal" value={SCalorie7} onChange={(e) => setSCalorie7(e.target.value)} /></td>
-          <td><input className="schedule-content" type="text" placeholder="Content" value={SContent7} onChange={(e) => setSContent7(e.target.value)} /></td>
+          <td><input className="food-content" type="text" placeholder="Content" value={SContent7} onChange={(e) => setSContent7(e.target.value)} /></td>
+          <td><input className="food-cal" type="number" placeholder="kcal" value={SCalorie7} onChange={(e) => setSCalorie7(e.target.value)} /></td>
         </tr>
         </tbody>
       </table>
-
-      <div className = "schedule-table">
-          소비한 칼로리는 <p>{SUsedCal}</p>
-          남은 칼로리는 <p>{SLeftCal}</p>
-      </div>
     </div>
   )
 }
