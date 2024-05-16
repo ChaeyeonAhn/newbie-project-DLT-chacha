@@ -55,14 +55,13 @@ model Diet {
   content6     String? @db.VarChar(20)
   calorie7     Int?
   content7     String? @db.VarChar(20)
-  dateCode     String? @db.VarChar(40)
+  dateCode     String? @unique(map: "dateCode") @db.VarChar(40)
   totalCalorie Int?
   height       Int?
   weight       Int?
   Post         Post?   @relation(fields: [dateCode], references: [dateCode], onDelete: Cascade, onUpdate: NoAction, map: "Diet_ibfk_2")
 
   @@index([date], map: "Diet_ibfk_1")
-  @@index([dateCode], map: "Diet_ibfk_2")
 }
 
 model Member {
@@ -83,7 +82,7 @@ model Post {
   dateCode String?    @unique(map: "dateCode") @db.VarChar(40)
   Consume  Consume[]
   Diary    Diary[]
-  Diet     Diet[]
+  Diet     Diet?
   Member   Member?    @relation(fields: [nickname], references: [nickname], onDelete: Cascade, onUpdate: NoAction, map: "Post_ibfk_1")
   Schedule Schedule[]
 

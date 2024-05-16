@@ -58,7 +58,7 @@ const Food = () => {
           totalCalorie: totCal
         });
         window.alert(`Saved!`);
-        setSChange(!SChange);
+
       }
 
       else {

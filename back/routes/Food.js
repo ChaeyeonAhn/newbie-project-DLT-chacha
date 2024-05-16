@@ -34,19 +34,22 @@ router.get('/:username/member-info', async (req, res) => {
 router.post('/:username/:date/save', async (req, res) => {
   const { username, date } = req.params;
   const { height, weight, totalCalorie } = req.body;
-  const username_fixed = username.replace(/^:+|:+$/g, '');
+  const height_int = parseInt(height);
+  const weight_int = parseInt(weight);
+  const username_fixed = username.replace(/^:+|:+$/g, ''); /* 자꾸 : 가 포함되는 오류 수정 */
   const dateCode = username_fixed.concat(date);
-  console.log(username_fixed);
+  const dateCode_fixed = dateCode.replace(/:/g, ''); /* 자꾸 : 가 포함되는 오류 수정 */
+  console.log(dateCode_fixed);
   
   try {
     const saveInfo = await prisma.diet.update({
       data: {
-        height: height,
-        weight: weight,
+        height: height_int,
+        weight: weight_int,
         totalCalorie: totalCalorie
       },
       where: {
-        dateCode: dateCode
+        dateCode: dateCode_fixed
       }
     });
     res.status(200).json({message: 'Saved!'});
