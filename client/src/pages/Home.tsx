@@ -123,6 +123,10 @@ const HomePage = () => {
                   <p className="post-goal">{POST.goal}</p>
                   <p className="post-mood">{POST.mood ? <FontAwesomeIcon icon={faPlus} /> : <FontAwesomeIcon icon={faFaceMehBlank} />}</p>
                 </div>
+                <div>
+                  <button className = "post-delete" onClick={(e) => deletePost()}>Delete</button>
+                  <button className = "post-modify" onClick={(e) => modifyPost()}>Modify</button>
+                </div>
               </li>
             </Link>
           ))

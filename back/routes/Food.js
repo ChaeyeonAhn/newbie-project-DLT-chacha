@@ -33,7 +33,7 @@ router.get('/:username/member-info', async (req, res) => {
 
 /* 회원의 그 날의 건강 정보와 식단 업데이트 */
 
-router.post('/:username/:date/save', async (req, res) => {
+router.post('/:username/:date/update', async (req, res) => {
   const { username, date } = req.params;
 
   const {
@@ -113,7 +113,7 @@ router.post('/:username/:date/save', async (req, res) => {
 
 /* 회원의 식단 기록 불러오기 */
 
-router.get('/:username/:date/record', async (req, res) => {
+router.get('/:username/:date/get', async (req, res) => {
   const { username, date } = req.params;
   const username_fixed = username.replace(/^:+|:+$/g, ''); /* 자꾸 : 가 포함되는 오류 수정 */
   const dateCode = username_fixed.concat(date);

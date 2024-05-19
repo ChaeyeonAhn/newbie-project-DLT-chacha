@@ -52,7 +52,7 @@ const Food = () => {
 
 
     const getRecord = async () => {
-      const saved = await axios.get(`http://localhost:8000/food/:${username}/:${date}/record`);
+      const saved = await axios.get(`http://localhost:8000/food/:${username}/:${date}/get`);
       console.log(saved.data[0]);
 
       setSHeight(saved.data[0].height ? saved.data[0].height : 0);
@@ -101,7 +101,7 @@ const Food = () => {
         setSLeftCal(left);
         setSUsedCal(used);
         setSTotalCalorie(totCal);
-        await axios.post(`http://localhost:8000/food/:${username}/:${date}/save`, {
+        await axios.post(`http://localhost:8000/food/:${username}/:${date}/update`, {
           height: SHeight,
           weight: SWeight,
           totalCalorie: totCal,
