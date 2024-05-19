@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom'; 
 
-import './css/Food.css';
+import './css/Consume.css';
 
 import { faPen, faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -89,16 +89,16 @@ const Consume = () => {
 
 
   return (
-    <div className = "food">
-      <div className="food-header">
-        <div className="food-title">소비 기록장</div>
-        <button className = "HWbutton" onClick={() => Save()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
+    <div className = "consume">
+      <div className="consume-header">
+        <div className="consume-title">소비 기록장</div>
+        <button className = "save-button" onClick={() => Save()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
       </div>
-      <div className="xeight">
+      <div className="budget">
         <p>원 (₩)</p>
         <input type="number" value={SBudget} onChange={(e) => setSBudget(e.target.value)}/>
       </div>
-      <div className = "food-info">
+      <div className = "consume-info">
         <p> 예산 {SBudget} 원 중</p>
         <p> {SUsed} 원 썼어요 </p>
         <p> {SLeft} 원 남았어요 </p>
@@ -106,31 +106,31 @@ const Consume = () => {
         <p> {SUsed} 원 / {SBudget} 원 </p>
       </div>
       
-      <table className="food-table">
+      <table className="consume-table">
         <tbody>
         <tr>
           <td><p className="column-content">어디에 썼나요?</p></td>
-          <td><p className="column-cal">₩</p></td>
+          <td><p className="column-money">₩</p></td>
         </tr> 
         <tr>
-          <td><input className="food-content" type="text" placeholder="어디에 썼는지 적어봐요" value={SContent1} onChange={(e) => setSContent1(e.target.value)} /></td>
-          <td><input className="food-cal" type="number" placeholder="kcal" value={SSpend1} onChange={(e) => setSSpend1(e.target.value)} /></td>
+          <td><input className="cons-content" type="text" placeholder="어디에 썼는지 적어봐요" value={SContent1} onChange={(e) => setSContent1(e.target.value)} /></td>
+          <td><input className="money" type="number" placeholder="kcal" value={SSpend1} onChange={(e) => setSSpend1(e.target.value)} /></td>
         </tr>
         <tr>
-          <td><input className="food-content" type="text" placeholder="Content" value={SContent2} onChange={(e) => setSContent2(e.target.value)} /></td>
-          <td><input className="food-cal" type="number" placeholder="kcal" value={SSpend2} onChange={(e) => setSSpend2(e.target.value)} /></td>
+          <td><input className="cons-content" type="text" placeholder="Content" value={SContent2} onChange={(e) => setSContent2(e.target.value)} /></td>
+          <td><input className="money" type="number" placeholder="kcal" value={SSpend2} onChange={(e) => setSSpend2(e.target.value)} /></td>
         </tr>
         <tr>
-          <td><input className="food-content" type="text" placeholder="Content" value={SContent3} onChange={(e) => setSContent3(e.target.value)} /></td>
-          <td><input className="food-cal" type="number" placeholder="kcal" value={SSpend3} onChange={(e) => setSSpend3(e.target.value)} /></td>
+          <td><input className="cons-content" type="text" placeholder="Content" value={SContent3} onChange={(e) => setSContent3(e.target.value)} /></td>
+          <td><input className="money" type="number" placeholder="kcal" value={SSpend3} onChange={(e) => setSSpend3(e.target.value)} /></td>
         </tr>
         <tr>
-          <td><input className="food-content" type="text" placeholder="Content" value={SContent4} onChange={(e) => setSContent4(e.target.value)} /></td>
-          <td><input className="food-cal" type="number" placeholder="kcal" value={SSpend4} onChange={(e) => setSSpend4(e.target.value)} /></td>
+          <td><input className="cons-content" type="text" placeholder="Content" value={SContent4} onChange={(e) => setSContent4(e.target.value)} /></td>
+          <td><input className="money" type="number" placeholder="kcal" value={SSpend4} onChange={(e) => setSSpend4(e.target.value)} /></td>
         </tr>
         <tr>
-          <td><input className="food-content" type="text" placeholder="Content" value={SContent5} onChange={(e) => setSContent5(e.target.value)} /></td>
-          <td><input className="food-cal" type="number" placeholder="kcal" value={SSpend5} onChange={(e) => setSSpend5(e.target.value)} /></td>
+          <td><input className="cons-content" type="text" placeholder="Content" value={SContent5} onChange={(e) => setSContent5(e.target.value)} /></td>
+          <td><input className="money" type="number" placeholder="kcal" value={SSpend5} onChange={(e) => setSSpend5(e.target.value)} /></td>
         </tr>
         </tbody>
       </table>
