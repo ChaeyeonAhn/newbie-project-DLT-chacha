@@ -39,14 +39,14 @@
   float: right;
   font-size: larger;
   border-radius: 25px;
-  border: 3px solid #6DA9F5;
-  background-color: #eef6fc;
+  border: 3px solid rgb(133, 215, 202);
+  background-color: rgb(226, 250, 246);
   box-shadow: 1px 1px 1px 2px #ccc;
 }
 
 .modify-button:hover {
   cursor: pointer;
-  background-color: #cfeafc;
+  background-color: rgb(190, 245, 236);
 }
 
 .modify-button:active {
@@ -63,7 +63,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 3px solid #6DA9F5;
+  border-bottom: 3px solid rgb(133, 215, 202);
 }
 
 .HWC-table {
@@ -171,14 +171,14 @@ input {
   width: 50px;
   border-radius: 25px;
   font-size: x-large;
-  border: 3px solid #6DA9F5;
-  background-color: #eef6fc;
+  border: 3px solid rgb(133, 215, 202);
+  background-color: rgb(226, 250, 246);
   box-shadow: 1px 1px 1px 2px #ccc;
 }
 
 .HWbutton:hover {
   cursor: pointer;
-  background-color: #cfeafc;
+  background-color: rgb(190, 245, 236);
 }
 
 .HWbutton:active {

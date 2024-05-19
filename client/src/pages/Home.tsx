@@ -140,6 +140,7 @@ const HomePage = () => {
             </div>
           ))
         }
+        {SLogInStatus ? <p></p> : <p className = "login-plz">Sign In to record your day.</p>}
       </ul>
     </div>
   )

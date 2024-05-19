@@ -19,53 +19,6 @@
 }
 
 
-.header {
-  display: flex;
-  background-color: white;
-  border: 4px solid #6DA9F5;
-  border-radius: 60px;
-  padding: 0.2%;
-  margin: 2%;
-  box-shadow: 3px 3px 3px 3px #ccc;
-}
-
-.title {
-  margin-left: 70px;
-  margin-right: auto;
-  float: left;
-  display: flex;
-  align-items: center;
-}
-
-.DLT {
-  font-family: 'Samlip-outline';
-  font-size: 38px;
-  margin-right: 10px;
-}
-
-.buttons {
-  font-family: 'Laundry-Gothic';
-  margin-left: auto;
-  margin-right: 30px;
-  display: flex;
-  align-items: center;
-}
-
-.username {
-  height: 40px;
-  width: 70px;
-  align-items: center;
-  margin-right: 10px;
-  border-radius: 25px;
-  border: 3px solid #6DA9F5;
-  background-color: #eef6fc;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  font-size: small;
-}
-
-
 .schedule {
   font-family: 'Laundry-Gothic';
   width: 700px;
@@ -89,14 +42,14 @@
   float: right;
   font-size: larger;
   border-radius: 25px;
-  border: 3px solid #6DA9F5;
-  background-color: #eef6fc;
+  border: 3px solid rgb(133, 215, 202);
+  background-color: rgb(226, 250, 246);
   box-shadow: 1px 1px 1px 2px #ccc;
 }
 
 .modify-button:hover {
   cursor: pointer;
-  background-color: #cfeafc;
+  background-color: rgb(226, 250, 246);
 }
 
 .modify-button:active {
@@ -114,7 +67,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 3px solid #6DA9F5;
+  border-bottom: 3px solid rgb(133, 215, 202);
 }
 
 .schedule-table {
