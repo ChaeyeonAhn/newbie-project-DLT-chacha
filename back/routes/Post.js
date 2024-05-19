@@ -13,7 +13,7 @@ const prisma = new PrismaClient();
 router.post('/get', async (req, res) => {
   const { username }= req.body;
   const user = JSON.stringify(username);
-  console.log();
+  console.log(user);
 
   if (!username) {
     return res.status(400).json({ message: 'Please Log In.' });
@@ -45,6 +45,7 @@ router.post('/get', async (req, res) => {
 
 router.post('/add', async (req, res) => {
   const { date, goal, username } = req.body;
+
   if (username == "") return res.status(400).json({ message: "No Such Member" });
   const dateCode = username.concat(date);
   try{

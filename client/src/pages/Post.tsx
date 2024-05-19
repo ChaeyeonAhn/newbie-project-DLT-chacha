@@ -7,6 +7,7 @@ import './css/Post.css';
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import Goal from './Goal.tsx';
 import Schedule from './Schedule.tsx';
 import Food from './Food.tsx';
 
@@ -20,13 +21,15 @@ const PostPage = () => {
         <div className="title">
           <button className="add-post-button" onClick={() => navigate(-1)}><FontAwesomeIcon icon={faArrowLeft} /></button>
           <img className="logo" src={mainLogo} alt="logo"/>
-          <p className="DLT">{date}</p>
+          <p className="DLT">{date.replace(/^:+|:+$/g, '')}</p>
+          
         </div>
         <div className="buttons">
           <p className="username">{username}</p>
         </div>
       </header>
 
+      <Goal />
       <Schedule />
       <Food />
 
