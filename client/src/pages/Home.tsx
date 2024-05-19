@@ -93,6 +93,16 @@ const HomePage = () => {
 
   }
 
+  const deletePost = (id) => {
+    const asyncFun = async () => {
+      await axios.post(`http://localhost:8000/posts/:${id}/delete`, {
+        id: id
+      });
+    }; asyncFun().catch((e) => window.alert(`Error while Running API Call: ${e}`));
+    setNPostCount(NPostCount - 1);
+    window.alert('Delete Success!');
+  }
+
   
 
   return (
@@ -116,6 +126,7 @@ const HomePage = () => {
       <ul className="post-list">
         {
           SPostlist.map(POST => (
+            <div>
             <Link className="post-link" to={`/post/${SUsername}/${POST.date}`} key = {POST.id}>
               <li className="post-element" key = {POST.id}>
                 <p className="post-date">{POST.date}</p>
@@ -123,12 +134,10 @@ const HomePage = () => {
                   <p className="post-goal">{POST.goal}</p>
                   <p className="post-mood">{POST.mood ? <FontAwesomeIcon icon={faPlus} /> : <FontAwesomeIcon icon={faFaceMehBlank} />}</p>
                 </div>
-                <div>
-                  <button className = "post-delete" onClick={(e) => deletePost()}>Delete</button>
-                  <button className = "post-modify" onClick={(e) => modifyPost()}>Modify</button>
-                </div>
               </li>
             </Link>
+            <button onClick={(e) => deletePost(POST.id)}>delete</button>
+            </div>
           ))
         }
       </ul>

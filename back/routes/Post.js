@@ -134,4 +134,23 @@ router.post('/add', async (req, res) => {
   }
 });
 
+router.post('/:id/delete', async (req, res) => {
+  const { id } =  req.params;
+  console.log(id);
+
+  const id_fixed = parseInt(id.replace(/^:+|:+$/g, ''));
+  console.log(id_fixed);
+
+  try {
+    await prisma.post.delete({
+      where: {
+        id: id_fixed
+      }
+    });
+    return res.status(200).json({ isOk: true });
+  }  catch (e) {
+    res.status(400).json({message: `error: ${e}`});
+  }
+});
+
 module.exports = router;
