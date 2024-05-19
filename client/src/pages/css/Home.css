@@ -120,13 +120,22 @@
   cursor: pointer;
 }
 
+.post-one {
+  
+  display: flex;
+  align-items: center;
+}
+
 .post-link {
+  width: 420px;
   text-decoration: none;
   color: inherit;
+  /* display: flex;
+  align-items: center; */
 }
 
 .post-list {
-  width: 35%;
+
   list-style: none;
   font-family: 'Laundry-Gothic';
 }
@@ -189,3 +198,27 @@
   margin-left: 5px;
 }
 
+.del-button {
+  height: 50px;
+  width: 50px;
+  align-items: center;
+  margin-right: 10px;
+  font-size: larger;
+  border-radius: 25px;
+  border: 3px solid rgb(133, 215, 202);
+  background-color: rgb(226, 250, 246);
+  box-shadow: 1px 1px 1px 2px #ccc;
+
+}
+
+.del-button:hover {
+  cursor: pointer;
+  background-color: #cfeafc;
+}
+
+.del-button:active {
+  position: relative;
+  box-shadow: 0.5px 0.5px 0 #ccc;
+  top: 2px;
+
+}

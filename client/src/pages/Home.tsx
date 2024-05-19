@@ -7,7 +7,7 @@ import AddPost from './AddPost.tsx';
 import "./css/Home.css";
 import mainLogo from "./img/logo.png";
 
-import { faRightToBracket, faRightFromBracket, faUserPlus, faPlus, faFaceMehBlank} from "@fortawesome/free-solid-svg-icons";
+import { faRightToBracket, faRightFromBracket, faUserPlus, faPlus, faFaceMehBlank, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -126,7 +126,7 @@ const HomePage = () => {
       <ul className="post-list">
         {
           SPostlist.map(POST => (
-            <div>
+            <div className = "post-one">
             <Link className="post-link" to={`/post/${SUsername}/${POST.date}`} key = {POST.id}>
               <li className="post-element" key = {POST.id}>
                 <p className="post-date">{POST.date}</p>
@@ -136,7 +136,7 @@ const HomePage = () => {
                 </div>
               </li>
             </Link>
-            <button onClick={(e) => deletePost(POST.id)}>delete</button>
+            <button className = "del-button" onClick={(e) => deletePost(POST.id)}><FontAwesomeIcon icon={faTrash} /></button>
             </div>
           ))
         }
