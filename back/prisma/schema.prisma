@@ -22,6 +22,8 @@ model Consume {
   spend5   Int?
   content5 String? @db.VarChar(20)
   dateCode String? @db.VarChar(40)
+  used     Int?
+  left     Int?
   Post     Post?   @relation(fields: [dateCode], references: [dateCode], onDelete: Cascade, onUpdate: NoAction, map: "Consume_ibfk_2")
 
   @@index([date], map: "Consume_ibfk_1")
