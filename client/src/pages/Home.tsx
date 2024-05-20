@@ -106,7 +106,7 @@ const HomePage = () => {
   
 
   return (
-    <div>
+    <div id="whole page">
       <header className="header">
         <div className="title">
           <img className="logo" src={mainLogo}/>

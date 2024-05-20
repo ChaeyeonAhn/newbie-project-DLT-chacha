@@ -167,7 +167,7 @@ const Food = () => {
   return (
     <div className = "food">
       <div className="food-header">
-        <div className="food-title">Food Diary</div>
+        <div className="food-title">식단 기록장</div>
         <button className = "HWbutton" onClick={() => Save()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
       </div>
       <div className = "HWC-table">

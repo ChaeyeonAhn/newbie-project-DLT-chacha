@@ -47,6 +47,7 @@
   align-items: center;
   justify-content: center;
   border-bottom: 3px solid rgb(133, 215, 202);
+  padding-bottom: 10px;
 }
 
 #goal-content {

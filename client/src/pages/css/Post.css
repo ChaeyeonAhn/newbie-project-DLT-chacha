@@ -1,21 +1,6 @@
 @font-face {
-  font-family: 'Roboto-Slab';
-  src: url('./fonts/RobotoSlab-VariableFont_wght.ttf');
-}
-
-@font-face {
-  font-family: 'KoPub-dotum';
-  src: url('./fonts/KoPubWorld\ Dotum\ Medium.ttf');
-}
-
-@font-face {
-  font-family: 'Laundry-Gothic';
-  src: url("./fonts/런드리고딕OTF\ Regular.otf");
-}
-
-@font-face {
-  font-family: 'Samlip-outline';
-  src: url("./fonts/SDSamliphopangcheOutline.otf")
+  font-family: 'Nanum-barun-gothic';
+  src: url("./fonts/NanumBarunGothic.ttf");
 }
 
 .header {
@@ -23,9 +8,8 @@
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 60px;
-  padding: 0.2%;
   margin: 2%;
-  box-shadow: 3px 3px 1px 1px rgb(133, 215, 202);
+  box-shadow: 2px 2px 3px 0.5px rgb(108, 108, 108);
 }
 
 .title {
@@ -37,13 +21,13 @@
 }
 
 .DLT {
-  font-family: 'Laundry-Gothic';
-  font-size: 30px;
+  font-family: 'Nanum-barun-gothic';
+  font-size: 25px;
   margin-right: 10px;
 }
 
 .buttons {
-  font-family: 'Laundry-Gothic';
+  font-family: 'Nanum-barun-gothic';
   margin-left: auto;
   margin-right: 30px;
   display: flex;
@@ -56,166 +40,10 @@
   align-items: center;
   margin-right: 10px;
   border-radius: 25px;
-  border: 3px solid rgb(133, 215, 202);
-  background-color: rgb(226, 250, 246);
+  border: 1.5px solid rgb(108, 108, 108);
+  background-color: rgb(239, 239, 239);
   text-align: center;
   display: flex;
   justify-content: center;
   font-size: small;
-}
-
-.add-post-button {
-  height: 50px;
-  width: 50px;
-  align-items: center;
-  margin-right: 10px;
-  font-size: larger;
-  border-radius: 25px;
-  border: 3px solid rgb(133, 215, 202);
-  background-color: rgb(226, 250, 246);
-  box-shadow: 1px 1px 1px 2px #ccc;
-}
-
-.login {
-  height: 50px;
-  width: 50px;
-  align-items: center;
-  margin-right: 10px;
-  font-size: larger;
-  border-radius: 25px;
-  border: 3px solid rgb(133, 215, 202);
-  background-color: rgb(226, 250, 246);
-  box-shadow: 1px 1px 1px 2px #ccc;
-}
-
-.register {
-  height: 50px;
-  width: 50px;
-  float: right;
-  font-size: larger;
-  border-radius: 25px;
-  border: 3px solid rgb(133, 215, 202);
-  background-color: rgb(226, 250, 246);
-  box-shadow: 1px 1px 1px 2px #ccc;
-}
-
-.add-post-button:hover, .login:hover, .register:hover {
-  cursor: pointer;
-  background-color: rgb(190, 245, 236);
-}
-
-.add-post-button:active, .login:active, .register:active {
-  position: relative;
-  box-shadow: 0.5px 0.5px 0 #ccc;
-  top: 2px;
-}
-
-.schedule {
-  font-family: 'Laundry-Gothic';
-  width: 700px;
-}
-
-.add-post-button:hover {
-  cursor: pointer;
-}
-
-.schedule-header {
-  /* border: 1px solid black; */
-  height: 50px;
-  margin-left: 80px;
-  display: flex;
-  justify-content: center;
-}
-
-.modify-button {
-  height: 50px;
-  width: 50px;
-  float: right;
-  font-size: larger;
-  border-radius: 25px;
-  border: 3px solid rgb(133, 215, 202);
-  background-color: rgb(226, 250, 246);
-  box-shadow: 1px 1px 1px 2px #ccc;
-}
-
-.modify-button:hover {
-  cursor: pointer;
-  background-color: rgb(226, 250, 246);
-}
-
-.modify-button:active {
-  position: relative;
-  box-shadow: 0.5px 0.5px 0 #ccc;
-  top: 2px;
-}
-
-.schedule-title {
-  font-size: x-large;
-
-  margin-right: auto;
-  
-  float: left;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 3px solid rgb(133, 215, 202);
-}
-
-.schedule-table {
-  margin-top: 18px;
-  margin-left: 70px;
-}
-
-
-.schedule-time {
-  width: 200px;
-  font-family: 'Laundry-Gothic';
-  font-size: large;
-  
-  display: flex;
-  align-items: center;
-
-  border: 2px solid #ccc;
-  border-radius: 22.5px;
-  height: 45px;
-  margin: 1%;
-  padding: 7px;
-}
-
-.schedule-content {
-  width: 400px;
-  font-family: 'Laundry-Gothic';
-  font-size: large;
-
-  display: flex;
-  align-items: center;
-
-  border: 2px solid #ccc;
-  border-radius: 22.5px;
-  height: 45px;
-  margin: 1%;
-  padding: 7px;
-}
-
-input {
-  font-family: 'Laundry-Gothic';
-  font-size: large;
-  
-  display: flex;
-  align-items: center;
-
-  border: 2px solid #ccc;
-  border-radius: 22.5px;
-  height: 45px;
-  margin: 1%;
-  padding: 7px;
-}
-
-td {
-  /* border: 2px solid #ccc; */
-  border-radius: 20px;
-  border-collapse: collapse;
-
-  /* display: flex; */
-  /* align-items: center; */
 }
