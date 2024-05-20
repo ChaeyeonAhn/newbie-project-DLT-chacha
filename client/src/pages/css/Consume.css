@@ -1,173 +1,48 @@
 @font-face {
-  font-family: 'Roboto-Slab';
-  src: url('./fonts/RobotoSlab-VariableFont_wght.ttf');
-}
-
-@font-face {
-  font-family: 'KoPub-dotum';
-  src: url('./fonts/KoPubWorld\ Dotum\ Medium.ttf');
-}
-
-@font-face {
-  font-family: 'Laundry-Gothic';
-  src: url("./fonts/런드리고딕OTF\ Regular.otf");
-}
-
-@font-face {
-  font-family: 'Samlip-outline';
-  src: url("./fonts/SDSamliphopangcheOutline.otf")
+  font-family: 'Nanum-barun-gothic';
+  src: url("./fonts/NanumBarunGothic.ttf");
 }
 
 .consume {
-  font-family: 'Laundry-Gothic';
-  width: 700px;
-  margin-top: 110px;
+  font-family: 'Nanum-barun-gothic';
+  margin-bottom: 70px;
+  margin-top: 40px;
+  margin-left: 80px;
+  width: 600px;
+  border: 2px solid rgb(222, 222, 222);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 0.5px #ccc;
 }
 
 .consume-header {
-  /* border: 1px solid black; */
   height: 50px;
-  margin-left: 80px;
   display: flex;
   justify-content: center;
-  margin-bottom: 80px;
-}
-
-.save-button {
-  height: 50px;
-  width: 50px;
-  float: right;
-  font-size: larger;
-  border-radius: 25px;
-  border: 3px solid rgb(133, 215, 202);
-  background-color: rgb(226, 250, 246);
-  box-shadow: 1px 1px 1px 2px #ccc;
-}
-
-.save-button:hover {
-  cursor: pointer;
-  background-color: rgb(190, 245, 236);
-}
-
-.save-button:active {
-  position: relative;
-  box-shadow: 0.5px 0.5px 0 #ccc;
-  top: 2px;
+  align-items: center;
 }
 
 .consume-title {
-  font-family: 'Laundry-Gothic';
-  font-size: x-large;
+  font-size: large;
   margin-right: auto;
   float: left;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 3px solid rgb(133, 215, 202);
-}
-
-.consume-table {
-  margin-top: 18px;
-  margin-left: 70px;
-  display: flex;
-}
-
-.consume-info {
-  margin-top: 18px;
-  margin-left: 70px;
-}
-
-.budget {
-  width: 200px;
-  margin: auto;
-}
-
-
-.money {
-  width: 200px;
-  font-family: 'Laundry-Gothic';
-  font-size: large;
-  
-  display: flex;
-  align-items: center;
-
-  border: 2px solid #ccc;
-  border-radius: 22.5px;
-  height: 45px;
-  margin: 1%;
-  padding: 7px;
-}
-
-.column-money {
-  width: 200px;
-  font-family: 'Laundry-Gothic';
-  font-size: large;
-  
-  display: flex;
-  align-items: center;
-
-  border: 2px solid #ccc;
-  border-radius: 22.5px;
-  height: 45px;
-  margin: 1%;
-  padding: 7px;
-  background-color: #e3e3e3;
-}
-
-.cons-content {
-  width: 400px;
-  font-family: 'Laundry-Gothic';
-  font-size: large;
-
-  display: flex;
-  align-items: center;
-
-  border: 2px solid #ccc;
-  border-radius: 22.5px;
-  height: 45px;
-  margin: 1%;
-  padding: 7px;
-}
-
-.column-content {
-  width: 400px;
-  font-family: 'Laundry-Gothic';
-  font-size: large;
-
-  display: flex;
-  align-items: center;
-
-  border: 2px solid #ccc;
-  border-radius: 22.5px;
-  height: 45px;
-  margin: 1%;
-  padding: 7px;
-  background-color: #e3e3e3;
-}
-
-input {
-  font-family: 'Laundry-Gothic';
-  font-size: large;
-  
-  display: flex;
-  align-items: center;
-
-  border: 2px solid #ccc;
-  border-radius: 22.5px;
-  height: 45px;
-  margin: 1%;
-  padding: 7px;
+  border-bottom: 1.8px solid rgb(108, 108, 108);
+  padding-bottom: 6px;
 }
 
 .save-button {
-  
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
+  float: right;
+  font-size: medium;
   border-radius: 25px;
-  font-size: x-large;
-  border: 3px solid rgb(133, 215, 202);
+  border: 1px solid rgb(133, 215, 202);
   background-color: rgb(226, 250, 246);
-  box-shadow: 1px 1px 1px 2px #ccc;
+  box-shadow: 2px 2px 3px 0.5px #ccc;
+  margin-left: 10px;
 }
 
 .save-button:hover {
@@ -181,11 +56,89 @@ input {
   top: 2px;
 }
 
-td {
-  /* border: 2px solid #ccc; */
-  border-radius: 20px;
-  border-collapse: collapse;
+.consume-table {
+  margin: auto;
+}
 
-  /* display: flex; */
-  /* align-items: center; */
+.consume-info {
+  margin-top: 18px;
+  font-size: small;
+  text-align: center;
+}
+
+.budget {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#budget {
+  width: 150px;
+  font-family: 'Nanum-barun-gothic';
+  font-size: medium;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #ccc;
+  border-radius: 15px;
+  height: 35px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.money {
+  width: 120px;
+  font-family: 'Nanum-barun-gothic';
+  font-size: small;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #ccc;
+  border-radius: 15px;
+  height: 29px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.column-money {
+  width: 120px;
+  font-family: 'Nanum-barun-gothic';
+  font-size: small;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #ccc;
+  border-radius: 15px;
+  height: 29px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.cons-content {
+  width: 350px;
+  font-family: 'Nanum-barun-gothic';
+  font-size: small;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #ccc;
+  border-radius: 15px;
+  height: 29px;
+  margin: 2px;
+  padding: 5px;
+}
+
+.column-content {
+  width: 350px;
+  font-family: 'Nanum-barun-gothic';
+  font-size: small;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #ccc;
+  border-radius: 15px;
+  height: 29px;
+  margin: 2px;
+  padding: 5px;
+  background-color: white;
+}
+
+td {
+  border-collapse: collapse;
 }

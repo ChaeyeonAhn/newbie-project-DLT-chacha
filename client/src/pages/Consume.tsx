@@ -95,15 +95,11 @@ const Consume = () => {
         <button className = "save-button" onClick={() => Save()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
       </div>
       <div className="budget">
+        <input id="budget" type="number" value={SBudget} onChange={(e) => setSBudget(e.target.value)}/>
         <p>원 (₩)</p>
-        <input type="number" value={SBudget} onChange={(e) => setSBudget(e.target.value)}/>
       </div>
       <div className = "consume-info">
-        <p> 예산 {SBudget} 원 중</p>
-        <p> {SUsed} 원 썼어요 </p>
-        <p> {SLeft} 원 남았어요 </p>
-
-        <p> {SUsed} 원 / {SBudget} 원 </p>
+        <p> 예산 {SBudget} 원 중 {SUsed} 원 썼고, {SLeft} 원 남았어요</p>
       </div>
       
       <table className="consume-table">
@@ -113,24 +109,24 @@ const Consume = () => {
           <td><p className="column-money">₩</p></td>
         </tr> 
         <tr>
-          <td><input className="cons-content" type="text" placeholder="어디에 썼는지 적어봐요" value={SContent1} onChange={(e) => setSContent1(e.target.value)} /></td>
-          <td><input className="money" type="number" placeholder="kcal" value={SSpend1} onChange={(e) => setSSpend1(e.target.value)} /></td>
+          <td><input className="cons-content" type="text" placeholder="Content" value={SContent1} onChange={(e) => setSContent1(e.target.value)} /></td>
+          <td><input className="money" type="number" placeholder="원" value={SSpend1} onChange={(e) => setSSpend1(e.target.value)} /></td>
         </tr>
         <tr>
           <td><input className="cons-content" type="text" placeholder="Content" value={SContent2} onChange={(e) => setSContent2(e.target.value)} /></td>
-          <td><input className="money" type="number" placeholder="kcal" value={SSpend2} onChange={(e) => setSSpend2(e.target.value)} /></td>
+          <td><input className="money" type="number" placeholder="원" value={SSpend2} onChange={(e) => setSSpend2(e.target.value)} /></td>
         </tr>
         <tr>
           <td><input className="cons-content" type="text" placeholder="Content" value={SContent3} onChange={(e) => setSContent3(e.target.value)} /></td>
-          <td><input className="money" type="number" placeholder="kcal" value={SSpend3} onChange={(e) => setSSpend3(e.target.value)} /></td>
+          <td><input className="money" type="number" placeholder="원" value={SSpend3} onChange={(e) => setSSpend3(e.target.value)} /></td>
         </tr>
         <tr>
           <td><input className="cons-content" type="text" placeholder="Content" value={SContent4} onChange={(e) => setSContent4(e.target.value)} /></td>
-          <td><input className="money" type="number" placeholder="kcal" value={SSpend4} onChange={(e) => setSSpend4(e.target.value)} /></td>
+          <td><input className="money" type="number" placeholder="원" value={SSpend4} onChange={(e) => setSSpend4(e.target.value)} /></td>
         </tr>
         <tr>
           <td><input className="cons-content" type="text" placeholder="Content" value={SContent5} onChange={(e) => setSContent5(e.target.value)} /></td>
-          <td><input className="money" type="number" placeholder="kcal" value={SSpend5} onChange={(e) => setSSpend5(e.target.value)} /></td>
+          <td><input className="money" type="number" placeholder="원" value={SSpend5} onChange={(e) => setSSpend5(e.target.value)} /></td>
         </tr>
         </tbody>
       </table>
