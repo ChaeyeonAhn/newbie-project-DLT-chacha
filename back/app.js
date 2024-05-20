@@ -16,6 +16,7 @@ const goalRouter = require('./routes/Goal.js');
 const foodRouter = require('./routes/Food.js');
 const scheduleRouter = require('./routes/Schedule.js');
 const consumeRouter = require('./routes/Consume.js');
+const diaryRouter = require('./routes/Diary.js');
 
 const whitelist = ['http://localhost:3000']; 
 
@@ -47,6 +48,7 @@ app.use('/goal', goalRouter);
 app.use('/food', foodRouter);
 app.use('/schedule', scheduleRouter);
 app.use('/consume', consumeRouter);
+app.use('/diary', diaryRouter);
 
 
 

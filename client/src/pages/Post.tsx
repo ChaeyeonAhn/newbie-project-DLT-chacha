@@ -11,6 +11,7 @@ import Goal from './Goal.tsx';
 import Schedule from './Schedule.tsx';
 import Food from './Food.tsx';
 import Consume from './Consume.tsx';
+import Diary from './Diary.tsx';
 
 const PostPage = () => {
   const { username, date } = useParams();
@@ -34,6 +35,7 @@ const PostPage = () => {
       <Schedule />
       <Food />
       <Consume />
+      <Diary />
 
       <footer>
       </footer>

@@ -1,0 +1,97 @@
+@font-face {
+  font-family: 'Roboto-Slab';
+  src: url('./fonts/RobotoSlab-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: 'KoPub-dotum';
+  src: url('./fonts/KoPubWorld\ Dotum\ Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Laundry-Gothic';
+  src: url("./fonts/런드리고딕OTF\ Regular.otf");
+}
+
+@font-face {
+  font-family: 'Samlip-outline';
+  src: url("./fonts/SDSamliphopangcheOutline.otf")
+}
+
+#diary {
+  font-family: 'Laundry-Gothic';
+  margin-bottom: 100px;
+  margin-top: 50px;
+  width: 700px;
+}
+
+.diary-header {
+  height: 50px;
+  margin-left: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.diary-title {
+  font-size: x-large;
+  margin-right: 30px;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  border-bottom: 3px solid rgb(133, 215, 202);
+}
+
+.diary-small-title {
+  font-size: medium;
+  margin-right: auto;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  color: rgb(85, 85, 85);
+}
+
+.modify-button {
+  height: 50px;
+  width: 50px;
+  float: right;
+  font-size: larger;
+  border-radius: 25px;
+  border: 3px solid rgb(133, 215, 202);
+  background-color: rgb(226, 250, 246);
+  box-shadow: 1px 1px 1px 2px #ccc;
+  margin-left: auto;
+}
+
+.modify-button:hover {
+  cursor: pointer;
+  background-color: rgb(190, 245, 236);
+}
+
+.modify-button:active {
+  position: relative;
+  box-shadow: 0.5px 0.5px 0 #ccc;
+  top: 2px;
+}
+
+#diary-body {
+  height: 50px;
+  margin-left: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.diary-content {
+  font-size: larger;
+  border: 3px solid rgb(254, 232, 212);
+  border-radius: 45px;
+  height: 300px;
+  width: 500px;
+ 
+  padding: 40px;
+  margin-left: 80px;
+  margin-top: 20px;
+  display: flex;
+  
+}

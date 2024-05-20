@@ -113,7 +113,7 @@ const HomePage = () => {
           <p className="DLT">Daily Life Tracker</p>
         </div>
         <div className="buttons">
-          {SLogInStatus ? <p className="username">{SUsername}</p> : <p className="username">   </p>}
+          {SLogInStatus ? <p className="username">{SUsername}</p> : <p>   </p>}
           {SLogInStatus ? <button className="add-post-button" onClick={(e) => showAddPost()}><FontAwesomeIcon icon={faPlus} /></button> : <p></p>}
           <AddPost pop={SShowAddPost} close={closeAddPost} username={SUsername} increase={setNPostCount} postcount={NPostCount}/>
           {SLogInStatus ? <button className="login" onClick={(e) => LogOut()}><FontAwesomeIcon icon={faRightFromBracket} /></button> : <button className="login" onClick={(e) => showLogIn()}><FontAwesomeIcon icon={faRightToBracket} /></button>}
@@ -126,7 +126,7 @@ const HomePage = () => {
       <ul className="post-list">
         {
           SPostlist.map(POST => (
-            <div className = "post-one">
+            <div className = "post-one" key={POST.id}>
             <Link className="post-link" to={`/post/${SUsername}/${POST.date}`} key = {POST.id}>
               <li className="post-element" key = {POST.id}>
                 <p className="post-date">{POST.date}</p>

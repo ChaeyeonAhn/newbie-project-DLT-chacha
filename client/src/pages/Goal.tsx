@@ -17,7 +17,7 @@ const Goal = () => {
 
   useEffect(() => {
 
-    const getSchedule = async () => {
+    const getGoal = async () => {
       const { data } = await axios.get(`http://localhost:8000/goal/:${username}/:${date}/get`);
 
       if (data.length === 0) {
@@ -28,10 +28,10 @@ const Goal = () => {
         setSGoal( data[0].goal ? data[0].goal : "");
       }
     }
-    getSchedule().catch((e) => window.alert(`Error while Running API Call: ${e}`));
+    getGoal().catch((e) => window.alert(`Error while Running API Call: ${e}`));
   }, [SChange]);
 
-  const sendPost = () => {
+  const sendGoal = () => {
     const asyncFun = async () => {
       const { data } = await axios.post(`http://localhost:8000/goal/:${username}/:${date}/update`, {
         goal: SGoal
@@ -52,7 +52,7 @@ const Goal = () => {
         <div className="goal-header">
           <div className="goal-title">Goal</div>
           {SModify ? <input type = "text" value = {SGoal} onChange={(e) => setSGoal(e.target.value)} /> : <p id = "goal-content">{SGoal}</p>}
-          {SModify ? <button className="modify-button" onClick={(e) => sendPost()}><FontAwesomeIcon icon={faCheck} /></button> :  <button className="modify-button" onClick={() => setSModify(true)}><FontAwesomeIcon icon={faPen} /></button>}
+          {SModify ? <button className="modify-button" onClick={(e) => sendGoal()}><FontAwesomeIcon icon={faCheck} /></button> :  <button className="modify-button" onClick={() => setSModify(true)}><FontAwesomeIcon icon={faPen} /></button>}
         </div>
       </div>
     </div>
