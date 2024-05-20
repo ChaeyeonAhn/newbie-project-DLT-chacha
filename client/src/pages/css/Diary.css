@@ -56,15 +56,15 @@
 }
 
 .modify-button {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   float: right;
-  font-size: larger;
+  font-size: medium;
   border-radius: 25px;
-  border: 3px solid rgb(133, 215, 202);
+  border: 1px solid rgb(133, 215, 202);
   background-color: rgb(226, 250, 246);
-  box-shadow: 1px 1px 1px 2px #ccc;
-  margin-left: auto;
+  box-shadow: 2px 2px 3px 0.5px #ccc;
+  margin-left: 10px;
 }
 
 .modify-button:hover {
