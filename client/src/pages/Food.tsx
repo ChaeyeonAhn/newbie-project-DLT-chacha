@@ -135,7 +135,7 @@ const Food = () => {
         setSUsedCal(used);
         setSTotalCalorie(totCal);
 
-        await axios.post(`http://localhost:8000/food/:${username}/:${date}/save`, {
+        await axios.post(`http://localhost:8000/food/:${username}/:${date}/update`, {
           height: SHeight,
           weight: SWeight,
           totalCalorie: totCal,
