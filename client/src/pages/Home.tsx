@@ -51,7 +51,7 @@ const HomePage = () => {
     setSPostlist([]);
     // setSToken("");
     window.localStorage.removeItem('token');
-    window.alert(`Signed Out. Bye, ${SUsername}`);
+    window.alert(`로그아웃 완료.`);
     setSUsername("");
     setNPostCount(0);
   }
@@ -123,7 +123,7 @@ const HomePage = () => {
         <div className="buttons">
           {SLogInStatus ? <p className="username">{SUsername}</p> : <p>   </p>}
           {SLogInStatus ? <button className="add-post-button" onClick={(e) => showAddPost()}><FontAwesomeIcon icon={faPlus} /></button> : <p></p>}
-          <AddPost pop={SShowAddPost} close={closeAddPost} username={SUsername} increase={setNPostCount} postcount={NPostCount}/>
+          <AddPost pop={SShowAddPost} close={closeAddPost} username={SUsername} increase={setNPostCount} postcount={NPostCount} />
           {SLogInStatus ? <button className="login" onClick={(e) => LogOut()}><FontAwesomeIcon icon={faRightFromBracket} /></button> : <button className="login" onClick={(e) => showLogIn()}><FontAwesomeIcon icon={faRightToBracket} /></button>}
           <LogIn pop={SShowLogIn} close={closeLogIn} handleLogin={handleLogin}/>
           {SLogInStatus? <p></p> : <button className="register" onClick={(e) => showRegister()}><FontAwesomeIcon icon={faUserPlus} /></button>}

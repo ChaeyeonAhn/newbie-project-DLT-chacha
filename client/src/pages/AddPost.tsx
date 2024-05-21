@@ -10,7 +10,7 @@ import axios from 'axios';
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const AddPost = ({ pop, close, username, increase, postcount }) => {
+const AddPost = ({ pop, close, username, increase, postcount, show }) => {
   const [SGoal, setSGoal] = useState("");
 
   const sendNewPost = () => {
@@ -24,6 +24,9 @@ const AddPost = ({ pop, close, username, increase, postcount }) => {
       setSGoal("");
     }
     asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
+    window.alert('포스트 추가 완료');
+    close();
+
   };
 
 
@@ -35,10 +38,10 @@ const AddPost = ({ pop, close, username, increase, postcount }) => {
     return (
       <div className="AddPostPopUp">
         <div id="post-titlebox">
-          <p id="post-title">New Track</p>
+          <p id="post-title">새로운 포스트를 추가하세요.</p>
         </div>
         <div id="post-input">
-          <input className="goal" type="text" value={SGoal} onChange={e => setSGoal(e.target.value)} placeholder="Today's Goal"/>
+          <input className="goal" type="text" value={SGoal} onChange={e => setSGoal(e.target.value)} placeholder="오늘의 목표를 설정하세요."/>
 
         </div>
         <div id="post-button">

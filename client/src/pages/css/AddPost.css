@@ -26,12 +26,12 @@
 #post-title {
   font-family: 'Nanum-barun-gothic';
   margin: auto;
-  font-size: x-large;
+  font-size: large;
 }
 
 #post-input {
   margin: auto;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .goal {
@@ -40,6 +40,8 @@
   border: 2.5px solid #ccc;
   border-radius: 20px;
   margin: auto;
+  margin-bottom: 50px;
+  font-size: medium;
 }
 
 #post-button {

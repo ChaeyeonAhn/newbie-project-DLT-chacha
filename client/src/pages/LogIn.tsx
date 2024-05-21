@@ -25,7 +25,7 @@ const LogIn = ({ pop, close, handleLogin }) => {
       setSNickname("");
       setSPassword("");
       // setSGender("");
-      window.alert(`Signed In! ${JSON.stringify(data.message)}`);
+      window.alert(`로그인 성공! 환영합니다, ${JSON.stringify(data.message).replace(/^"+|"+$/g, '')}`);
       handleLogin({SNickname});
       close();
 

@@ -32,7 +32,8 @@ const Register = ({ pop, close }) => {
         setSPassword("");
 
         setSBirthDate("");
-        window.alert(`Signed Up! ${JSON.stringify(data.message)}`);
+        window.alert(`회원가입 완료. 이용하려면 로그인 하세요.`);
+        close();
       }
       asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
     }
@@ -50,7 +51,8 @@ const Register = ({ pop, close }) => {
         setSPassword("");
 
         setSBirthDate("");
-        window.alert(`Signed Up! ${JSON.stringify(data.message)}`);
+        window.alert(`회원가입 완료. 이용하려면 로그인 하세요.`);
+        close();
       }
       asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
     }
