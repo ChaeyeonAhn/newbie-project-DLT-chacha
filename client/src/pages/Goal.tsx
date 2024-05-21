@@ -51,7 +51,7 @@ const Goal = () => {
       <div id="goal">
         <div className="goal-header">
           <div className="goal-title">오늘의 목표</div>
-          {SModify ? <input type = "text" value = {SGoal} onChange={(e) => setSGoal(e.target.value)} /> : <p id = "goal-content">{SGoal}</p>}
+          {SModify ? <input id="goal-content" autofocus type = "text" value = {SGoal} onChange={(e) => setSGoal(e.target.value)} /> : <p>{SGoal}</p>}
           {SModify ? <button className="modify-button" onClick={(e) => sendGoal()}><FontAwesomeIcon icon={faCheck} /></button> :  <button className="modify-button" onClick={() => setSModify(true)}><FontAwesomeIcon icon={faPen} /></button>}
         </div>
       </div>
