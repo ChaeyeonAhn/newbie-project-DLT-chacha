@@ -94,13 +94,21 @@ const HomePage = () => {
   }
 
   const deletePost = (id) => {
-    const asyncFun = async () => {
-      await axios.post(`http://localhost:8000/posts/:${id}/delete`, {
-        id: id
-      });
-    }; asyncFun().catch((e) => window.alert(`Error while Running API Call: ${e}`));
-    setNPostCount(NPostCount - 1);
-    window.alert('Delete Success!');
+    const delete_confirm = window.confirm('한 번 삭제되면 복구할 수 없습니다. 그래도 삭제하시겠습니까?');
+
+    if (delete_confirm) {
+      const asyncFun = async () => {
+        await axios.post(`http://localhost:8000/posts/:${id}/delete`, {
+          id: id
+        });
+      }; asyncFun().catch((e) => window.alert(`Error while Running API Call: ${e}`));
+      setNPostCount(NPostCount - 1);
+      window.alert('삭제가 완료되었습니다.');
+    }
+
+    else {
+      window.alert('삭제를 취소합니다.');
+    }
   }
 
   
