@@ -30,7 +30,10 @@ const LogIn = ({ pop, close, handleLogin }) => {
       close();
 
     }
-    asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
+    asyncFun().catch((e) => 
+    window.alert(`${JSON.stringify(e.response.data.message).replace(/^"+|"+$/g, '')}`)
+    // console.log(e)
+    );
   }
 
 

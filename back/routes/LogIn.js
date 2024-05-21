@@ -20,16 +20,15 @@ router.post('/check', async (req, res) => {
 
   console.log(found_pw);
 
-  if (!found_pw) return res.status(400).json({ message: "No Such Member" });
+  if (!found_pw) return res.status(400).json({ message: "없는 아이디입니다." });
   else {
     const found_password = found_pw.password;
     if (password === found_password) {
-      return res.status(200).json({ message: `${nickname}!` });
+      return res.json({ message: `${nickname}!` });
     }
     
     else {
-      res.status(400).json({ message: "Incorrect Password" });
-      return { message: "Incorrect Password" };
+      res.status(400).json({ message: "로그인 실패" });
     }
     
   }
