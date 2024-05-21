@@ -72,7 +72,10 @@ const Register = ({ pop, close }) => {
         <div id="input">
           <input className="nickname" type="text" label="ID" value={SNickname} onChange={e => setSNickname(e.target.value)} placeholder="Enter SPARCS nickname"/>
           <input className="password" type="text" label="PW" value={SPassword} onChange={e => setSPassword(e.target.value)} placeholder="Enter Password"/>
-          여자 <input type="checkbox" checked={SFemale} onChange={e => setSFemale(e.target.value)}/> 남자 <input type="checkbox" checked={SMale} onChange={e => setSMale(e.target.value)}/>
+          <div className="pick-gender">
+            <div id="female" >♀ <input id="checkbox" type="checkbox" checked={SFemale} onChange={e => setSFemale(e.target.value)}/></div> 
+            <div id="male" >♂ <input id="checkbox" type="checkbox" checked={SMale} onChange={e => setSMale(e.target.value)}/></div>
+          </div>
           <input className="password" type="date" value={SBirthDate} onChange={e => setSBirthDate(e.target.value)} placeholder="Enter Birth Date"/>
         </div>
         <div id="regisButton">
