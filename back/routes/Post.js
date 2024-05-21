@@ -30,6 +30,7 @@ router.post('/get', async (req, res) => {
       mood: true
     }
   });
+  
   const final_post = posts.map((e) => ({
     id: e.id,
     date: e.date,
@@ -48,6 +49,7 @@ router.post('/add', async (req, res) => {
 
   if (username == "") return res.status(400).json({ message: "No Such Member" });
   const dateCode = username.concat(date);
+  console.log(dateCode);
   try{
     const addPost = await prisma.post.create({
     data: {

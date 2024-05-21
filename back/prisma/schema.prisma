@@ -32,10 +32,10 @@ model Consume {
 
 model Diary {
   id       Int     @id @default(autoincrement())
-  date     String? @unique(map: "date") @db.VarChar(20)
   content  String? @db.VarChar(200)
   dateCode String? @db.VarChar(40)
   textsize Int?
+  date     String? @db.VarChar(20)
   Post     Post?   @relation(fields: [dateCode], references: [dateCode], onDelete: Cascade, onUpdate: NoAction, map: "Diary_ibfk_2")
 
   @@index([dateCode], map: "Diary_ibfk_2")
