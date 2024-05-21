@@ -85,6 +85,7 @@ model Post {
   goal     String?    @db.VarChar(30)
   mood     String?    @db.VarChar(10)
   dateCode String?    @unique(map: "dateCode") @db.VarChar(40)
+  textsize Int?
   Consume  Consume[]
   Diary    Diary[]
   Diet     Diet?

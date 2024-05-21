@@ -79,7 +79,7 @@
   margin: auto;
   margin-top: 20px;
   display: flex;
-
+  resize: none;
   white-space: pre-wrap;
   line-height: 30px;
 }

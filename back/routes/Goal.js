@@ -20,7 +20,8 @@ router.get('/:username/:date/get', async (req, res) => {
       dateCode: dateCode
     },
     select: {
-      goal: true
+      goal: true,
+      textsize: true
     }
   });
   res.json(goal);
@@ -28,10 +29,11 @@ router.get('/:username/:date/get', async (req, res) => {
 
 router.post('/:username/:date/update', async (req, res) => {
   const { username, date }= req.params;
-  const { goal } = req.body;
+  const { goal, textsize } = req.body;
   const username_fixed = username.replace(/^:+|:+$/g, '');
   const date_fixed = date.replace(/^:+|:+$/g, '');
   const dateCode = username_fixed.concat(date_fixed);
+  const textsize_int = parseInt(textsize);
 
   try {
     await prisma.post.update({
@@ -39,7 +41,8 @@ router.post('/:username/:date/update', async (req, res) => {
         dateCode: dateCode
       },
       data: {
-        goal: goal
+        goal: goal,
+        textsize: textsize
       }
     });
     res.status(200).json({message: 'Saved!'});
