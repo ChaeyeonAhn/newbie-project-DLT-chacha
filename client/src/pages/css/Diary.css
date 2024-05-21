@@ -1,57 +1,41 @@
 @font-face {
-  font-family: 'Roboto-Slab';
-  src: url('./fonts/RobotoSlab-VariableFont_wght.ttf');
+  font-family: 'Nanum-barun-gothic';
+  src: url("./fonts/NanumBarunGothic.ttf");
 }
-
-@font-face {
-  font-family: 'KoPub-dotum';
-  src: url('./fonts/KoPubWorld\ Dotum\ Medium.ttf');
-}
-
-@font-face {
-  font-family: 'Laundry-Gothic';
-  src: url("./fonts/런드리고딕OTF\ Regular.otf");
-}
-
-@font-face {
-  font-family: 'Samlip-outline';
-  src: url("./fonts/SDSamliphopangcheOutline.otf")
-}
-
-
-
 
 #diary {
-  font-family: 'Laundry-Gothic';
-  margin-bottom: 100px;
-  margin-top: 50px;
-  width: 700px;
+  font-family: 'Nanum-barun-gothic';
+  margin-bottom: 70px;
+  margin-top: 40px;
+  margin-left: 80px;
+  width: 600px;
+  border: 2px solid rgb(222, 222, 222);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 0.5px #ccc;
 }
 
 .diary-header {
   height: 50px;
-  margin-left: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .diary-title {
-  font-size: x-large;
-  margin-right: 30px;
-  /* display: flex;
+  font-size: large;
+  margin-right: auto;
+  float: left;
+  display: flex;
   align-items: center;
-  justify-content: center; */
-  border-bottom: 3px solid rgb(133, 215, 202);
-  padding-bottom: 10px;
+  justify-content: center;
+  border-bottom: 1.8px solid rgb(108, 108, 108);
+  padding-bottom: 6px;
 }
 
 .diary-small-title {
   font-size: medium;
-  margin-right: auto;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
+  margin-right: 50px;
   color: rgb(85, 85, 85);
 }
 
@@ -64,7 +48,7 @@
   border: 1px solid rgb(133, 215, 202);
   background-color: rgb(226, 250, 246);
   box-shadow: 2px 2px 3px 0.5px #ccc;
-  margin-left: 10px;
+  margin-left: 30px;
 }
 
 .modify-button:hover {
@@ -80,25 +64,22 @@
 
 #diary-body {
   height: 50px;
-  margin-left: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .diary-content {
-  font-size: larger;
-  border: 3px solid rgb(254, 232, 212);
-  border-radius: 45px;
-  height: 300px;
-  width: 500px;
- 
-  padding: 40px;
-  margin-left: 80px;
+  font-size: small;
+  /* border: 1px solid rgb(192, 192, 192); */
+  /* border-radius: 45px; */
+  height: 200px;
+  width: 550px;
+  padding: 10px;
+  margin: auto;
   margin-top: 20px;
   display: flex;
 
   white-space: pre-wrap;
-  line-height: 40px;
-  
+  line-height: 27px;
 }

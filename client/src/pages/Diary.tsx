@@ -54,7 +54,6 @@ const Diary = () => {
         </div>
         <div className="diary-body">
           {SModify ? <textarea className = "diary-content" value = {SContent} onChange={(e) => {setSContent(e.target.value); setNTextCount(e.target.value.length)}} /> : <p className = "diary-content">{SContent}</p>}
-          
         </div>
       </div>
     </div>
