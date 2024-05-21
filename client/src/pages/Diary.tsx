@@ -47,7 +47,7 @@ const Diary = () => {
     <div>
       <div id="diary">
         <div className="diary-header">
-          <div className="diary-title">오늘 하루 기록장</div>
+          <div className="diary-title">하루 기록장</div>
           <span>{NTextCount}</span>
           <span>/200 자</span>
           {SModify ? <button className="modify-button" onClick={(e) => sendDiary()}><FontAwesomeIcon icon={faCheck} /></button> :  <button className="modify-button" onClick={() => setSModify(true)}><FontAwesomeIcon icon={faPen} /></button>}

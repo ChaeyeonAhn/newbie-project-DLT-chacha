@@ -101,7 +101,7 @@ const Schedule = () => {
     <div>
       <div className="schedule">
         <div className="schedule-header">
-          <div className="schedule-title">오늘의 일과</div>
+          <div className="schedule-title">일과 기록장</div>
           <button className="modify-button" onClick={(e) => sendPost()}><FontAwesomeIcon icon={faPen} /></button>
         </div>
         <br />
