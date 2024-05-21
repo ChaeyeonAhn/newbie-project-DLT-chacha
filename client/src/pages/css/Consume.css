@@ -25,6 +25,7 @@
 .consume-title {
   font-size: large;
   margin-right: auto;
+
   float: left;
   display: flex;
   align-items: center;
@@ -61,31 +62,39 @@
 }
 
 .consume-info {
-  margin-top: 18px;
-  font-size: small;
+  margin-top: 30px;
+  font-size: medium;
   text-align: center;
 }
 
-.budget {
+#alert{
+  color: gray;
+  font-size: medium;
+  margin-top: 30px;
+}
+
+.budget-box {
+  width: 180px;
   margin: auto;
+  margin-top: 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
 }
 
 #budget {
-  width: 150px;
+  width: 110px;
+  height: 30px;
   font-family: 'Nanum-barun-gothic';
   font-size: medium;
   display: flex;
   align-items: center;
   border: 1.5px solid #ccc;
   border-radius: 15px;
-  height: 35px;
-  margin: 5px;
-  margin-left: 30px;
   padding: 5px;
+  padding-left: 8px;
+  margin-right: 6px;
 }
 
 .money {
@@ -112,6 +121,7 @@
   height: 29px;
   margin: 5px;
   padding: 5px;
+  background-color: rgb(235, 255, 252);
 }
 
 .cons-content {
@@ -138,7 +148,7 @@
   height: 29px;
   margin: 2px;
   padding: 5px;
-  background-color: white;
+  background-color: rgb(235, 255, 252);
 }
 
 td {

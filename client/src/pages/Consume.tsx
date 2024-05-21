@@ -95,9 +95,8 @@ const Consume = () => {
         <button className = "save-button" onClick={() => Save()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
       </div>
       <div className="budget">
-        <p>예산</p>
-        <input id="budget" type="number" value={SBudget} onChange={(e) => setSBudget(e.target.value)}/>
-        <p>₩</p>
+        <p id="alert">예산을 작성하고 저장하세요.</p>
+        <div className="budget-box"><input id="budget" type="number" value={SBudget} onChange={(e) => setSBudget(e.target.value)}/>₩</div>
       </div>
       <div className = "consume-info">
         <p> 예산 {SBudget} 원 중 {SUsed} 원 썼고, {SLeft} 원 남았어요</p>

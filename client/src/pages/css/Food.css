@@ -25,7 +25,6 @@
 .food-title {
   font-size: large;
   margin-right: auto;
-  
   float: left;
   display: flex;
   align-items: center;
@@ -139,7 +138,7 @@
   padding: 5px;
 }
 
-.column-cal {
+.food-cal-top {
   width: 120px;
   font-family: 'Nanum-barun-gothic';
   font-size: small;
@@ -150,6 +149,8 @@
   height: 29px;
   margin: 5px;
   padding: 5px;
+
+  background-color: rgb(235, 255, 252);
 }
 
 .food-content {
@@ -165,7 +166,7 @@
   padding: 5px;
 }
 
-.column-content {
+.food-content-top {
   width: 350px;
   font-family: 'Nanum-barun-gothic';
   font-size: small;
@@ -176,7 +177,10 @@
   height: 29px;
   margin: 2px;
   padding: 5px;
+
+  background-color: rgb(235, 255, 252);
 }
+
 
 input {
   font-family: 'Laundry-Gothic';

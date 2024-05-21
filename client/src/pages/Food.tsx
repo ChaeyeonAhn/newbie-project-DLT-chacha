@@ -182,8 +182,8 @@ const Food = () => {
       <table className="food-table">
         <tbody>
         <tr>
-          <td><p className="food-content">식단</p></td>
-          <td><p className="food-cal">kcal</p></td>
+          <td><p className="food-content-top">식단</p></td>
+          <td><p className="food-cal-top">kcal</p></td>
         </tr> 
         <tr>
           <td><input className="food-content" type="text" placeholder="Content" value={SContent1} onChange={(e) => setSContent1(e.target.value)} /></td>
