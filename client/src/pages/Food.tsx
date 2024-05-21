@@ -76,7 +76,7 @@ const Food = () => {
       setSLeftCal(saved.data[0].leftCalorie ? saved.data[0].leftCalorie : 0);
     }
     getRecord().catch((e) => window.alert(`Error while Running API Call: ${e}`));
-  }, [SChange]);
+  }, [SChange, date, username]);
 
 
   const Save = () => {
@@ -171,16 +171,9 @@ const Food = () => {
         <button className = "modify-button" onClick={() => Save()}><FontAwesomeIcon icon={faPen} /></button>
       </div>
       <div className = "HWC-table">
-        <div className="xeight">
-          <p>키  </p>
-          <input className="height-input" type="number" value={SHeight} onChange={(e) => setSHeight(e.target.value)}/>
-          <p>  cm</p>
-        </div>
-        <div className="xeight">
-          <p>체중  </p>
-          <input className="weight-input" type="number" value={SWeight} onChange={(e) => setSWeight(e.target.value)}/>
-          <p>  kg</p>
-        </div>
+        <p id="alert">건강 정보를 작성하고 저장하세요.</p>
+        <div className="height"><input label="키" className="height-input" type="number" value={SHeight} onChange={(e) => setSHeight(e.target.value)}/> cm</div>
+        <div className="weight"><input className="weight-input" type="number" value={SWeight} onChange={(e) => setSWeight(e.target.value)}/> kg</div>
       </div>
       <div className = "food-info">
         <p> 권장 소비 칼로리 {STotalCalorie} kcal 중 {SUsedCal} kcal 먹었고, {SLeftCal} kcal 남았어요</p>

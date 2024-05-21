@@ -71,6 +71,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 #budget {
@@ -83,6 +84,7 @@
   border-radius: 15px;
   height: 35px;
   margin: 5px;
+  margin-left: 30px;
   padding: 5px;
 }
 

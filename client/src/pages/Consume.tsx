@@ -54,7 +54,7 @@ const Consume = () => {
       setSLeft(saved.data[0].left ? saved.data[0].left : 0);
     }
     getRecord().catch((e) => window.alert(`Error while Running API Call: ${e}`));
-  }, [SChange]);
+  }, [SChange, date, username]);
 
 
   const Save = () => {
@@ -95,8 +95,9 @@ const Consume = () => {
         <button className = "save-button" onClick={() => Save()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
       </div>
       <div className="budget">
+        <p>예산</p>
         <input id="budget" type="number" value={SBudget} onChange={(e) => setSBudget(e.target.value)}/>
-        <p>원 (₩)</p>
+        <p>₩</p>
       </div>
       <div className = "consume-info">
         <p> 예산 {SBudget} 원 중 {SUsed} 원 썼고, {SLeft} 원 남았어요</p>

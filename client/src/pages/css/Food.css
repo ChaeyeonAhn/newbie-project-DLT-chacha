@@ -25,6 +25,7 @@
 .food-title {
   font-size: large;
   margin-right: auto;
+  
   float: left;
   display: flex;
   align-items: center;
@@ -58,13 +59,28 @@
 
 .HWC-table {
   margin: auto;
-  display: flex;
+  margin-top: 30px;
 }
 
-.xeight {
+#alert{
+  color: gray;
+  font-size: medium;
+  margin: auto;
+}
+
+.height {
   width: 180px;
   margin: auto;
-  border: 1px solid black;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weight {
+  width: 180px;
+  margin: auto;
+  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,31 +88,29 @@
 
 .height-input {
   width: 110px;
+  height: 30px;
   font-family: 'Nanum-barun-gothic';
   font-size: medium;
   display: flex;
   align-items: center;
   border: 1.5px solid #ccc;
   border-radius: 15px;
-  height: 35px;
   padding: 5px;
   padding-left: 8px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 6px;
 }
 
 .weight-input {
   width: 110px;
+  height: 30px;
   font-family: 'Nanum-barun-gothic';
   font-size: medium;
   display: flex;
   align-items: center;
   border: 1.5px solid #ccc;
   border-radius: 15px;
-  height: 35px;
   padding: 5px;
   padding-left: 8px;
-  margin-left: 10px;
   margin-right: 10px;
 }
 
@@ -106,6 +120,7 @@
 
 .food-info {
   margin: auto;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
 }
