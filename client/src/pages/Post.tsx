@@ -31,11 +31,11 @@ const PostPage = () => {
         </div>
       </header>
 
-      <Goal />
-      <Schedule />
-      <Food />
-      <Consume />
-      <Diary />
+      <div className = "block"><Goal /><Diary /></div>
+      {/* <div className = "block"><Diary /></div> */}
+      <div className = "block"><Schedule /></div>
+      <div className = "block"><Food /></div>
+      <div className = "block"><Consume /></div>
 
       <footer>
       </footer>

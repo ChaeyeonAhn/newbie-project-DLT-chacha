@@ -48,3 +48,11 @@
   justify-content: center;
   font-size: smaller;
 }
+
+.block {
+  float: left;
+}
+
+.block-schedule {
+  float: none;
+}
