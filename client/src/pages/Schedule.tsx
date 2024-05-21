@@ -89,7 +89,7 @@ const Schedule = () => {
         pmContent5: SPMContent5
       });
       console.log(data);
-      window.alert(`Successfully Modified!`);
+      window.alert(`수정 완료!`);
       setSChange(!SChange);
     }
     asyncFun().catch((e) => window.alert(`ERROR: ${e}`));

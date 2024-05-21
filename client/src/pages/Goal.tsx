@@ -37,7 +37,7 @@ const Goal = () => {
         goal: SGoal
       });
       console.log(data);
-      window.alert(`Successfully Modified!`);
+      window.alert(`수정 완료!`);
       setSChange(!SChange);
     }
     asyncFun().catch((e) => window.alert(`ERROR: ${e}`));

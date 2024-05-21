@@ -56,7 +56,8 @@ const HomePage = () => {
     setNPostCount(0);
   }
   const showLogIn = () => {
-    setSShowLogIn(true);
+    if (SShowRegister) return;
+    else setSShowLogIn(true);
   };
 
   const closeLogIn = () => {
@@ -64,6 +65,7 @@ const HomePage = () => {
   };
 
   const showRegister = () => {
+    if (SShowLogIn) return;
     setSShowRegister(true);
   };
 

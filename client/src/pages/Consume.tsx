@@ -81,7 +81,7 @@ const Consume = () => {
         spend5: SSpend5,
         content5: SContent5
       });
-      window.alert(`Saved!`);
+      window.alert(`수정 완료!`);
       setSChange(!SChange);
     }
     asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
@@ -92,7 +92,7 @@ const Consume = () => {
     <div className = "consume">
       <div className="consume-header">
         <div className="consume-title">소비 기록장</div>
-        <button className = "save-button" onClick={() => Save()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
+        <button className = "save-button" onClick={() => Save()}><FontAwesomeIcon icon={faPen} /></button>
       </div>
       <div className="budget">
         <p id="alert">예산을 작성하고 저장하세요.</p>

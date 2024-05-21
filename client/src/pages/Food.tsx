@@ -122,7 +122,7 @@ const Food = () => {
           calorie7: SCalorie7,
           content7: SContent7
         });
-        window.alert(`Saved!`);
+        window.alert(`수정 완료!`);
         setSChange(!SChange);
       }
 
@@ -156,7 +156,7 @@ const Food = () => {
           calorie7: SCalorie7,
           content7: SContent7
         });
-        window.alert(`Saved!`);
+        window.alert(`수정 완료!`);
         setSChange(!SChange);
       }
     }
