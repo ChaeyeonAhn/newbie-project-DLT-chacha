@@ -105,7 +105,7 @@ const Consume = () => {
       <table className="consume-table">
         <tbody>
         <tr>
-          <td><p className="column-content">어디에 썼나요?</p></td>
+          <td><p className="column-content">소비 내역</p></td>
           <td><p className="column-money">₩</p></td>
         </tr> 
         <tr>

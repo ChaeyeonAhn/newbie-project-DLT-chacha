@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 import './css/Food.css';
 
-import { faPen, faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -168,34 +168,32 @@ const Food = () => {
     <div className = "food">
       <div className="food-header">
         <div className="food-title">식단 기록장</div>
-        <button className = "HWbutton" onClick={() => Save()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
+        <button className = "modify-button" onClick={() => Save()}><FontAwesomeIcon icon={faPen} /></button>
       </div>
       <div className = "HWC-table">
         <div className="xeight">
-          <p>키 (cm)</p>
-          <input type="number" value={SHeight} onChange={(e) => setSHeight(e.target.value)}/>
+          <p>키  </p>
+          <input className="height-input" type="number" value={SHeight} onChange={(e) => setSHeight(e.target.value)}/>
+          <p>  cm</p>
         </div>
         <div className="xeight">
-          <p>체중 (kg)</p>
-          <input type="number" value={SWeight} onChange={(e) => setSWeight(e.target.value)}/>
+          <p>체중  </p>
+          <input className="weight-input" type="number" value={SWeight} onChange={(e) => setSWeight(e.target.value)}/>
+          <p>  kg</p>
         </div>
       </div>
       <div className = "food-info">
-        <p> 권장 소비 칼로리 {STotalCalorie} kcal 중</p>
-        <p> {SUsedCal} kcal 먹었어요 </p>
-        <p> {SLeftCal} kcal 남았어요 </p>
-
-        <p> {SUsedCal} kcal / {STotalCalorie} kcal </p>
+        <p> 권장 소비 칼로리 {STotalCalorie} kcal 중 {SUsedCal} kcal 먹었고, {SLeftCal} kcal 남았어요</p>
       </div>
       
       <table className="food-table">
         <tbody>
         <tr>
-          <td><p className="column-content">뭘 먹었나요?</p></td>
-          <td><p className="column-cal">kcal</p></td>
+          <td><p className="food-content">식단</p></td>
+          <td><p className="food-cal">kcal</p></td>
         </tr> 
         <tr>
-          <td><input className="food-content" type="text" placeholder="뭐를 먹었는지 적어봐요" value={SContent1} onChange={(e) => setSContent1(e.target.value)} /></td>
+          <td><input className="food-content" type="text" placeholder="Content" value={SContent1} onChange={(e) => setSContent1(e.target.value)} /></td>
           <td><input className="food-cal" type="number" placeholder="kcal" value={SCalorie1} onChange={(e) => setSCalorie1(e.target.value)} /></td>
         </tr>
         <tr>

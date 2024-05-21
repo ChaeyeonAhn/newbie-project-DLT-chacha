@@ -1,47 +1,48 @@
 @font-face {
-  font-family: 'Roboto-Slab';
-  src: url('./fonts/RobotoSlab-VariableFont_wght.ttf');
-}
-
-@font-face {
-  font-family: 'KoPub-dotum';
-  src: url('./fonts/KoPubWorld\ Dotum\ Medium.ttf');
-}
-
-@font-face {
-  font-family: 'Laundry-Gothic';
-  src: url("./fonts/런드리고딕OTF\ Regular.otf");
-}
-
-@font-face {
-  font-family: 'Samlip-outline';
-  src: url("./fonts/SDSamliphopangcheOutline.otf")
+  font-family: 'Nanum-barun-gothic';
+  src: url("./fonts/NanumBarunGothic.ttf");
 }
 
 .food {
-  font-family: 'Laundry-Gothic';
-  width: 700px;
-  margin-top: 110px;
+  font-family: 'Nanum-barun-gothic';
+  margin-bottom: 70px;
+  margin-top: 40px;
+  margin-left: 80px;
+  width: 600px;
+  border: 2px solid rgb(222, 222, 222);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 0.5px #ccc;
 }
 
 .food-header {
-  /* border: 1px solid black; */
   height: 50px;
-  margin-left: 80px;
   display: flex;
   justify-content: center;
-  margin-bottom: 80px;
+  align-items: center;
+}
+
+.food-title {
+  font-size: large;
+  margin-right: auto;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1.8px solid rgb(108, 108, 108);
+  padding-bottom: 6px;
 }
 
 .modify-button {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   float: right;
-  font-size: larger;
+  font-size: medium;
   border-radius: 25px;
-  border: 3px solid rgb(133, 215, 202);
+  border: 1px solid rgb(133, 215, 202);
   background-color: rgb(226, 250, 246);
-  box-shadow: 1px 1px 1px 2px #ccc;
+  box-shadow: 2px 2px 3px 0.5px #ccc;
+  margin-left: 10px;
 }
 
 .modify-button:hover {
@@ -55,100 +56,111 @@
   top: 2px;
 }
 
-.food-title {
-  font-family: 'Laundry-Gothic';
-  font-size: x-large;
-  margin-right: auto;
-  float: left;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 3px solid rgb(133, 215, 202);
-}
-
 .HWC-table {
-  margin-top: 18px;
-  margin-left: 70px;
+  margin: auto;
   display: flex;
-}
-
-.food-table {
-  margin-top: 18px;
-  margin-left: 70px;
-  display: flex;
-}
-
-.food-info {
-  margin-top: 18px;
-  margin-left: 70px;
 }
 
 .xeight {
-  width: 200px;
+  width: 180px;
   margin: auto;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.height-input {
+  width: 110px;
+  font-family: 'Nanum-barun-gothic';
+  font-size: medium;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #ccc;
+  border-radius: 15px;
+  height: 35px;
+  padding: 5px;
+  padding-left: 8px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.weight-input {
+  width: 110px;
+  font-family: 'Nanum-barun-gothic';
+  font-size: medium;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #ccc;
+  border-radius: 15px;
+  height: 35px;
+  padding: 5px;
+  padding-left: 8px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.food-table {
+  margin: auto;
+}
+
+.food-info {
+  margin: auto;
+  display: flex;
+  justify-content: center;
 }
 
 
 .food-cal {
-  width: 200px;
-  font-family: 'Laundry-Gothic';
-  font-size: large;
-  
+  width: 120px;
+  font-family: 'Nanum-barun-gothic';
+  font-size: small;
   display: flex;
   align-items: center;
-
-  border: 2px solid #ccc;
-  border-radius: 22.5px;
-  height: 45px;
-  margin: 1%;
-  padding: 7px;
+  border: 1.5px solid #ccc;
+  border-radius: 15px;
+  height: 29px;
+  margin: 5px;
+  padding: 5px;
 }
 
 .column-cal {
-  width: 200px;
-  font-family: 'Laundry-Gothic';
-  font-size: large;
-  
+  width: 120px;
+  font-family: 'Nanum-barun-gothic';
+  font-size: small;
   display: flex;
   align-items: center;
-
-  border: 2px solid #ccc;
-  border-radius: 22.5px;
-  height: 45px;
-  margin: 1%;
-  padding: 7px;
-  background-color: #e3e3e3;
+  border: 1.5px solid #ccc;
+  border-radius: 15px;
+  height: 29px;
+  margin: 5px;
+  padding: 5px;
 }
 
 .food-content {
-  width: 400px;
-  font-family: 'Laundry-Gothic';
-  font-size: large;
-
+  width: 350px;
+  font-family: 'Nanum-barun-gothic';
+  font-size: small;
   display: flex;
   align-items: center;
-
-  border: 2px solid #ccc;
-  border-radius: 22.5px;
-  height: 45px;
-  margin: 1%;
-  padding: 7px;
+  border: 1.5px solid #ccc;
+  border-radius: 15px;
+  height: 29px;
+  margin: 2px;
+  padding: 5px;
 }
 
 .column-content {
-  width: 400px;
-  font-family: 'Laundry-Gothic';
-  font-size: large;
-
+  width: 350px;
+  font-family: 'Nanum-barun-gothic';
+  font-size: small;
   display: flex;
   align-items: center;
-
-  border: 2px solid #ccc;
-  border-radius: 22.5px;
-  height: 45px;
-  margin: 1%;
-  padding: 7px;
-  background-color: #e3e3e3;
+  border: 1.5px solid #ccc;
+  border-radius: 15px;
+  height: 29px;
+  margin: 2px;
+  padding: 5px;
 }
 
 input {

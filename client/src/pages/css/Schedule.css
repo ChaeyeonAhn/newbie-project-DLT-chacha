@@ -7,12 +7,16 @@
   font-family: 'Nanum-barun-gothic';
   margin-bottom: 70px;
   margin-top: 40px;
+  margin-left: 80px;
   width: 600px;
+  border: 2px solid rgb(222, 222, 222);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 0.5px #ccc;
 }
 
 .schedule-header {
   height: 50px;
-  margin-left: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,7 +57,7 @@
 }
 
 .schedule-table {
-  margin-left: 70px;
+  margin: auto;
 }
 
 .schedule-time {
