@@ -107,7 +107,7 @@ const Schedule = () => {
         <br />
         <br />
         <div className="total-table">
-          <table className="schedule-table">
+          <table className="schedule-table-top">
             <tbody>
             <tr>
               <td><input className="schedule-time" type="text" placeholder="00:00" value={SAMTime1} onChange={(e) => setSAMTime1(e.target.value)} /></td>
@@ -123,7 +123,7 @@ const Schedule = () => {
             </tr>
             </tbody>
           </table>
-          <table className="schedule-table">
+          <table className="schedule-table-bottom">
             <tbody>
             <tr>
               <td><input className="schedule-time" type="text" placeholder="00:00" value={SPMTime1} onChange={(e) => setSPMTime1(e.target.value)} /></td>

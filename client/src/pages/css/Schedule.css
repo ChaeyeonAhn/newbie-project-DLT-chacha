@@ -56,8 +56,17 @@
   top: 2px;
 }
 
-.schedule-table {
+.schedule-table-top {
   margin: auto;
+  border-bottom: 2px solid gray;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.schedule-table-bottom {
+  margin: auto;
+  margin-top: 10px;
+
 }
 
 .schedule-time {

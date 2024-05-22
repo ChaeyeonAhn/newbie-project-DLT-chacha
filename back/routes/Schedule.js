@@ -46,60 +46,32 @@ router.post('/:username/:date/update', async (req, res) => {
     });
     console.log(findExist);
 
-    if (findExist.length != 0) {
-      await prisma.schedule.update({
-        where: {
-          date: date,
-          id: findExist[0].id
-        },
-        data: {
-          date: date,
-          amTime1: amTime1, 
-          amContent1: amContent1,
-          amTime2: amTime2,
-          amContent2: amContent2,
-          amTime3: amTime3,
-          amContent3: amContent3,
-          pmTime1: pmTime1,
-          pmContent1: pmContent1,
-          pmTime2: pmTime2,
-          pmContent2: pmContent2,
-          pmTime3: pmTime3,
-          pmContent3: pmContent3,
-          pmTime4: pmTime4,
-          pmContent4: pmContent4,
-          pmTime5: pmTime5,
-          pmContent5: pmContent5,
-          nickname: username
-        }
-      });
-    }
-
-    else {
-      await prisma.schedule.create({
-        data: {
-          date: date,
-          amTime1: amTime1, 
-          amContent1: amContent1,
-          amTime2: amTime2,
-          amContent2: amContent2,
-          amTime3: amTime3,
-          amContent3: amContent3,
-          pmTime1: pmTime1,
-          pmContent1: pmContent1,
-          pmTime2: pmTime2,
-          pmContent2: pmContent2,
-          pmTime3: pmTime3,
-          pmContent3: pmContent3,
-          pmTime4: pmTime4,
-          pmContent4: pmContent4,
-          pmTime5: pmTime5,
-          pmContent5: pmContent5,
-          nickname: username,
-          dateCode: dateCode
-        }
-      });
-    }
+    await prisma.schedule.update({
+      where: {
+        date: date,
+        id: findExist[0].id
+      },
+      data: {
+        date: date,
+        amTime1: amTime1, 
+        amContent1: amContent1,
+        amTime2: amTime2,
+        amContent2: amContent2,
+        amTime3: amTime3,
+        amContent3: amContent3,
+        pmTime1: pmTime1,
+        pmContent1: pmContent1,
+        pmTime2: pmTime2,
+        pmContent2: pmContent2,
+        pmTime3: pmTime3,
+        pmContent3: pmContent3,
+        pmTime4: pmTime4,
+        pmContent4: pmContent4,
+        pmTime5: pmTime5,
+        pmContent5: pmContent5,
+        nickname: username
+      }
+    });
 
   return res.status(200).json({ isOk: true });
   
