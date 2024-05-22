@@ -179,7 +179,7 @@
   justify-content: center;
 }
 
-#smile:hover, #meh:hover, #sad:hover, #rolling:hover, #surprise:hover {
+#smile:hover, #smile-set:hover, #meh:hover, #meh-set:hover, #sad:hover, #sad-set:hover, #rolling:hover, #rolling-set:hover, #surprise:hover, #surprise-set:hover {
   cursor: pointer;
   background-color: rgb(221, 255, 249);
   border: 1.5px solid rgb(133, 215, 202);
@@ -187,7 +187,7 @@
   top: -5px;
 }
   
-#smile:active, #meh:active, #sad:active, #rolling:active, #surprise:active{
+#smile:active, #smile-set:active, #meh:active, #meh-set:active, #sad:active, #sad-set:active, #rolling:active, #rolling-set:active, #surprise:active, #surprise-set:active {
   position: relative;
   box-shadow: 0.5px 0.5px 0 #ccc;
   top: 2px;

@@ -25,6 +25,7 @@ const PostPage = () => {
   const [SSurprise, setSSurprise] = useState(false);
   const [SSad, setSSad] = useState(false);
   const [SRolling, setSRolling] = useState(false);
+  const [SChange, setSChange] = useState(false);
 
   useEffect(() => {
     const getMood = async () => {
@@ -34,40 +35,61 @@ const PostPage = () => {
       switch (mood) {
         case "smile": {
           setSSmile(true);
+          setSSad(false);
+          setSSurprise(false);
+          setSRolling(false);
+          setSMeh(false);
           break;
         }
         case "sad": {
+          setSSmile(false);
           setSSad(true);
+          setSSurprise(false);
+          setSRolling(false);
+          setSMeh(false);
           break;
         }
         case "surprise": {
+          setSSmile(false);
+          setSSad(false);
           setSSurprise(true);
+          setSRolling(false);
+          setSMeh(false);
           break;
         }
         case "rolling": {
+          setSSmile(false);
+          setSSad(false);
+          setSSurprise(false);
           setSRolling(true);
+          setSMeh(false);
           break;
         }
         case "meh": {
+          setSSmile(false);
+          setSSad(false);
+          setSSurprise(false);
+          setSRolling(false);
           setSMeh(true);
           break;
         }
       }
     } 
     getMood().catch((e) => window.alert(`Error while Running API Call: ${e}`));
-  }, [SSmile, SMeh, SSurprise, SSad, SRolling, date, username]);
+  }, [SChange, date, username]);
 
   const handleSmile = () => {
     const asyncFun = async () => {
       if (SSmile) {
         setSSmile(false);
+        
         await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
           mood: ""
         });
-        window.alert('Mood saved');
+        setSChange(!SChange);
         return;
-      };
-      if (SMeh || SSurprise || SSad || SRolling) {
+      }
+      if (SMeh || SSurprise || SSad || SRolling || (!SSmile)) {
         setSMeh(false);
         setSSurprise(false);
         setSSad(false);
@@ -76,104 +98,116 @@ const PostPage = () => {
         await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
           mood: "smile"
         });
-        window.alert('Mood saved');
+        setSChange(!SChange);
         return;
-      };
-    };
+      }
+    }
     asyncFun().catch((e) => window.alert(`Error while Running API Call: ${e}`));
     
-  };
+  }
 
-  const handleMeh = async () => {
-    if (SMeh) {
-      setSMeh(false);
-      await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
-        mood: ""
-      });
-      window.alert('Mood saved');
-      return;
-    };
-    if (SSmile || SSurprise || SSad || SRolling) {
-      setSSmile(false);
-      setSSurprise(false);
-      setSSad(false);
-      setSRolling(false);
-      setSMeh(true);
-      await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
-        mood: "meh"
-      });
-      window.alert('Mood saved');
-      return;
-    };
-  };
+  const handleMeh = () => {
+    const asyncFun = async () => {
+      if (SMeh) {
+        setSMeh(false);
+        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
+          mood: ""
+        });
+        setSChange(!SChange);
+        return;
+      }
+      if (SSmile || SSurprise || SSad || SRolling || (!SMeh)) {
+        setSSmile(false);
+        setSSurprise(false);
+        setSSad(false);
+        setSRolling(false);
+        setSMeh(true);
+        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
+          mood: "meh"
+        });
+        setSChange(!SChange);
+        return;
+      }
+    }
+    asyncFun().catch((e) => window.alert(`Error while Running API Call: ${e}`));
+  }
 
   const handleSurprise = async () => {
-    if (SSurprise) {
-      setSMeh(false);
-      await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
-        mood: ""
-      });
-      window.alert('Mood saved');
-      return;
-    };
-    if (SSmile || SMeh || SSad || SRolling) {
-      setSSmile(false);
-      setSMeh(false);
-      setSSad(false);
-      setSRolling(false);
-      setSSurprise(true);
-      await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
-        mood: "surprise"
-      });
-      window.alert('Mood saved');
-      return;
-    };
-  };
+    const asyncFun = async () => {
+      if (SSurprise) {
+        setSMeh(false);
+        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
+          mood: ""
+        });
+        setSChange(!SChange);
+        return;
+      }
+      if (SSmile || SMeh || SSad || SRolling || (!SSurprise)) {
+        setSSmile(false);
+        setSMeh(false);
+        setSSad(false);
+        setSRolling(false);
+        setSSurprise(true);
+        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
+          mood: "surprise"
+        });
+        setSChange(!SChange);
+        return;
+      }
+    }
+    asyncFun().catch((e) => window.alert(`Error while Running API Call: ${e}`));
+  }
 
   const handleSad = async () => {
-    if (SSad) {
-      setSSad(false);
-      await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
-        mood: ""
-      });
-      window.alert('Mood saved');
-      return;
-    };
-    if (SSmile || SMeh || SSurprise || SRolling) {
-      setSSmile(false);
-      setSMeh(false);
-      setSSurprise(false);
-      setSRolling(false);
-      setSSad(true);
-      await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
-        mood: "sad"
-      });
-      window.alert('Mood saved');
-      return;
-    };
+    const asyncFun = async () => {
+      if (SSad) {
+        setSSad(false);
+        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
+          mood: ""
+        });
+        setSChange(!SChange);
+        return;
+      }
+      if (SSmile || SMeh || SSurprise || SRolling || (!SSad)) {
+        setSSmile(false);
+        setSMeh(false);
+        setSSurprise(false);
+        setSRolling(false);
+        setSSad(true);
+        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
+          mood: "sad"
+        });
+        setSChange(!SChange);
+        return;
+      }
+    }
+    asyncFun().catch((e) => window.alert(`Error while Running API Call: ${e}`));
   };
 
   const handleRolling = async () => {
-    if (SRolling) {
-      setSRolling(false);
-      await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
-        mood: ""
-      });
-      window.alert('Mood saved');
-      return;
-    };
-    if (SSmile || SMeh || SSurprise || SSad) {
-      setSSmile(false);
-      setSMeh(false);
-      setSSurprise(false);
-      setSSad(false);
-      setSRolling(true);
-      await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
-        mood: "rolling"
-      });
-      window.alert('Mood saved');
-      return;
-    };
+    const asyncFun = async () => {
+      if (SRolling) {
+        setSRolling(false);
+        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
+          mood: ""
+        });
+        setSChange(!SChange);
+        return;
+      }
+      if (SSmile || SMeh || SSurprise || SSad || (!SRolling)) {
+        setSSmile(false);
+        setSMeh(false);
+        setSSurprise(false);
+        setSSad(false);
+        setSRolling(true);
+        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
+          mood: "rolling"
+        });
+        setSChange(!SChange);
+        return;
+      }
+    }
+    asyncFun().catch((e) => window.alert(`Error while Running API Call: ${e}`));
   };
 
 
@@ -188,11 +222,11 @@ const PostPage = () => {
           
         </div>
         <div className="buttons">
-          { SSmile ? <button id="smile-set" onClick={() => handleSmile()}><FontAwesomeIcon icon={faFaceSmileBeam} /></button> : <button id="smile" onClick={() => handleSmile()}><FontAwesomeIcon icon={faFaceSmileBeam} /></button> }
-          { SMeh ? <button id="meh-set" onClick={() => handleMeh()}><FontAwesomeIcon icon={faFaceMeh} /></button> : <button id="meh" onClick={() => handleMeh()}><FontAwesomeIcon icon={faFaceMeh} /></button> }
-          { SSurprise ? <button id="surprise-set" onClick={() => handleSurprise()}><FontAwesomeIcon icon={faFaceSurprise} /></button> : <button id="surprise" onClick={() => handleSurprise()}><FontAwesomeIcon icon={faFaceSurprise} /></button> }
-          { SSad ? <button id="sad-set" onClick={() => handleSad()}><FontAwesomeIcon icon={faFaceSadTear} /></button> : <button id="sad" onClick={() => handleSad()}><FontAwesomeIcon icon={faFaceSadTear} /></button> }
-          { SRolling ? <button id="rolling-set" onClick={() => handleRolling()}><FontAwesomeIcon icon={faFaceRollingEyes} /></button> : <button id="rolling" onClick={() => handleRolling()}><FontAwesomeIcon icon={faFaceRollingEyes} /></button> }
+          { SSmile ? <button id="smile-set" onClick={(e) => handleSmile()}><FontAwesomeIcon icon={faFaceSmileBeam} /></button> : <button id="smile" onClick={() => handleSmile()}><FontAwesomeIcon icon={faFaceSmileBeam} /></button> }
+          { SMeh ? <button id="meh-set" onClick={(e) => handleMeh()}><FontAwesomeIcon icon={faFaceMeh} /></button> : <button id="meh" onClick={() => handleMeh()}><FontAwesomeIcon icon={faFaceMeh} /></button> }
+          { SSurprise ? <button id="surprise-set" onClick={(e) => handleSurprise()}><FontAwesomeIcon icon={faFaceSurprise} /></button> : <button id="surprise" onClick={() => handleSurprise()}><FontAwesomeIcon icon={faFaceSurprise} /></button> }
+          { SSad ? <button id="sad-set" onClick={(e) => handleSad()}><FontAwesomeIcon icon={faFaceSadTear} /></button> : <button id="sad" onClick={() => handleSad()}><FontAwesomeIcon icon={faFaceSadTear} /></button> }
+          { SRolling ? <button id="rolling-set" onClick={(e) => handleRolling()}><FontAwesomeIcon icon={faFaceRollingEyes} /></button> : <button id="rolling" onClick={() => handleRolling()}><FontAwesomeIcon icon={faFaceRollingEyes} /></button> }
           <p className="username">{username}</p>
         </div>
       </header>
