@@ -13,6 +13,30 @@
   height: 80px;
 }
 
+.go-back {
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  margin-right: 10px;
+  font-size: medium;
+  border-radius: 25px;
+  border: 1.5px solid rgb(108, 108, 108);
+  background-color: rgb(239, 239, 239);
+  box-shadow: 1px 1px 1px 2px #ccc;
+}
+
+.go-back:hover {
+  cursor: pointer;
+  background-color: rgb(221, 255, 249);
+  border: 1.5px solid rgb(133, 215, 202);
+}
+
+.go-back:active {
+  position: relative;
+  box-shadow: 0.5px 0.5px 0 #ccc;
+  top: 2px;
+}
+
 .title {
   margin-left: 70px;
   margin-right: auto;
@@ -34,6 +58,141 @@
   display: flex;
   align-items: center;
 }
+
+#smile {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border: 1.5px solid rgb(108, 108, 108);
+  margin-right: 10px;
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#smile-set {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border: 2.5px solid rgb(128, 218, 203);
+  margin-right: 10px;
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#meh {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border: 1.5px solid rgb(108, 108, 108);
+  margin-right: 10px;
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#meh-set {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border: 2.5px solid rgb(128, 218, 203);
+  margin-right: 10px;
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#surprise {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border: 1.5px solid rgb(108, 108, 108);
+  margin-right: 10px;
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#surprise-set {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border: 2.5px solid rgb(128, 218, 203);
+  margin-right: 10px;
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#sad {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border: 1.5px solid rgb(108, 108, 108);
+  margin-right: 10px;
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+
+#sad-set {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border: 2.5px solid rgb(128, 218, 203);
+  margin-right: 10px;
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#rolling {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border: 1.5px solid rgb(108, 108, 108);
+  margin-right: 10px;
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#rolling-set {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border: 2.5px solid rgb(128, 218, 203);
+  margin-right: 10px;
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#smile:hover, #meh:hover, #sad:hover, #rolling:hover, #surprise:hover {
+  cursor: pointer;
+  background-color: rgb(221, 255, 249);
+  border: 1.5px solid rgb(133, 215, 202);
+  position: relative;
+  top: -5px;
+}
+  
+#smile:active, #meh:active, #sad:active, #rolling:active, #surprise:active{
+  position: relative;
+  box-shadow: 0.5px 0.5px 0 #ccc;
+  top: 2px;
+}
+
 
 .username {
   height: 35px;

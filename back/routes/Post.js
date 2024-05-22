@@ -56,7 +56,7 @@ router.post('/add', async (req, res) => {
       nickname: username,
       date: date,
       goal: goal,
-      mood: null,
+      mood: "",
       dateCode: dateCode
     }
   });
@@ -152,6 +152,50 @@ router.post('/:id/delete', async (req, res) => {
     });
     return res.status(200).json({ isOk: true });
   }  catch (e) {
+    res.status(400).json({message: `error: ${e}`});
+  }
+});
+
+/* post 에 해당하는 기분 표시 */
+
+router.get('/:username/:date/getMood', async (req, res) => {
+  const { username, date } = req.params;
+
+  const username_fixed = username.replace(/^:+|:+$/g, '');
+  const date_fixed = date.replace(/^:+|:+$/g, '');
+  const dateCode = username_fixed.concat(date_fixed);
+
+  const mood = await prisma.post.findMany({
+    where: {
+      dateCode: dateCode
+    },
+    select: {
+      mood: true
+    }
+  });
+  console.log(mood);
+  res.json(mood);
+});
+
+router.post('/:username/:date/updateMood', async (req, res) => {
+  const { username, date } = req.params;
+  const { mood } = req.body;
+  const username_fixed = username.replace(/^:+|:+$/g, '');
+  const date_fixed = date.replace(/^:+|:+$/g, '');
+  const dateCode = username_fixed.concat(date_fixed);
+
+  try {
+    const update_mood = await prisma.post.updateMany({
+    where: {
+      dateCode: dateCode
+    },
+    data: {
+      mood: mood
+    }
+  });
+  console.log(mood);
+  res.status(200).json({message: 'success'});
+  } catch (e) {
     res.status(400).json({message: `error: ${e}`});
   }
 });
