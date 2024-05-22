@@ -45,7 +45,7 @@ router.post('/get', async (req, res) => {
 /* 홈에서 로그인 후 포스트 추가 */
 
 router.post('/add', async (req, res) => {
-  const { date, goal, username } = req.body;
+  const { date, goal, username, textsize } = req.body;
 
   if (username == "") return res.status(400).json({ message: "No Such Member" });
   const dateCode = username.concat(date);
@@ -57,7 +57,8 @@ router.post('/add', async (req, res) => {
       date: date,
       goal: goal,
       mood: "",
-      dateCode: dateCode
+      dateCode: dateCode,
+      textsize: textsize
     }
   });
 

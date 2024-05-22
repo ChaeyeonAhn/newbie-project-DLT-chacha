@@ -12,13 +12,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const AddPost = ({ pop, close, username, increase, postcount, show }) => {
   const [SGoal, setSGoal] = useState("");
+  const [NTextCount, setNTextCount] = useState(0);
 
   const sendNewPost = () => {
     const asyncFun = async () => {
       await axios.post('http://localhost:8000/posts/add', {
         date: new Date().toLocaleDateString('ko-KR'),
         goal: SGoal,
-        username: username
+        username: username,
+        textsize: NTextCount
       }); 
       increase(postcount + 1);
       setSGoal("");
@@ -41,7 +43,8 @@ const AddPost = ({ pop, close, username, increase, postcount, show }) => {
           <p id="post-title">새로운 포스트를 추가하세요.</p>
         </div>
         <div id="post-input">
-          <input className="goal" type="text" value={SGoal} onChange={e => setSGoal(e.target.value)} placeholder="오늘의 목표를 설정하세요."/>
+          <input className="goal" type="text" value={SGoal} onChange={e => {setSGoal(e.target.value); setNTextCount(e.target.value.length)}} placeholder="오늘의 목표를 설정하세요."/>
+          <div id="goal-size">{NTextCount}/30 자</div>
 
         </div>
         <div id="post-button">

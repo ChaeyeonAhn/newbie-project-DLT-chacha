@@ -40,8 +40,16 @@
   border: 2.5px solid #ccc;
   border-radius: 20px;
   margin: auto;
-  margin-bottom: 50px;
+  margin-bottom: 15px;
   font-size: medium;
+}
+
+#goal-size {
+  margin: auto;
+  margin-top: 10px;
+  margin-right: 40px;
+  display: flex;
+  justify-content: right;
 }
 
 #post-button {
