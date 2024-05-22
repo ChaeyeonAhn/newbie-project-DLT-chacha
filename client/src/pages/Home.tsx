@@ -32,26 +32,7 @@ const HomePage = () => {
         setSLogInStatus(true);
         setSShowLogIn(false);
         const POSTS = await axios.post('http://localhost:8000/posts/get', {username: token});
-        console.log(POSTS.data[0].mood);
-        // if (POSTS.data[0].mood == "smile") {
-        //   POSTS.data.mood = 'faFaceSmileBeam';
-        //   console.log(POSTS.data.mood);
-        // }
-        // else if (POSTS.data[0].mood == "meh") {
-        //   POSTS.data.mood = 'faFaceMeh';
-        // }
-        // else if (POSTS.data[0].mood == "surprise") {
-        //   POSTS.data.mood = 'faFaceSurprise';
-        // }
-        // else if (POSTS.data[0].mood == "sad") {
-        //   POSTS.data.mood = 'faFaceSadTear';
-        // }
-        // else if (POSTS.data[0].mood == "rolling") {
-        //   POSTS.data.mood = 'faFaceRollingEyes';
-        // }
-        // else {
-        //   POSTS.data.mood = 'faFaceMehBlank';
-        // }
+        if (POSTS.length == 0) return;
 
         setSPostlist(POSTS.data); /* json.data */
       }
