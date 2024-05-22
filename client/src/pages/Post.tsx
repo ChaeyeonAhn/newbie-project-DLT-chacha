@@ -80,15 +80,6 @@ const PostPage = () => {
 
   const handleSmile = () => {
     const asyncFun = async () => {
-      if (SSmile) {
-        setSSmile(false);
-        
-        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
-          mood: ""
-        });
-        setSChange(!SChange);
-        return;
-      }
       if (SMeh || SSurprise || SSad || SRolling || (!SSmile)) {
         setSMeh(false);
         setSSurprise(false);
@@ -108,14 +99,6 @@ const PostPage = () => {
 
   const handleMeh = () => {
     const asyncFun = async () => {
-      if (SMeh) {
-        setSMeh(false);
-        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
-          mood: ""
-        });
-        setSChange(!SChange);
-        return;
-      }
       if (SSmile || SSurprise || SSad || SRolling || (!SMeh)) {
         setSSmile(false);
         setSSurprise(false);
@@ -134,14 +117,6 @@ const PostPage = () => {
 
   const handleSurprise = async () => {
     const asyncFun = async () => {
-      if (SSurprise) {
-        setSMeh(false);
-        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
-          mood: ""
-        });
-        setSChange(!SChange);
-        return;
-      }
       if (SSmile || SMeh || SSad || SRolling || (!SSurprise)) {
         setSSmile(false);
         setSMeh(false);
@@ -160,14 +135,6 @@ const PostPage = () => {
 
   const handleSad = async () => {
     const asyncFun = async () => {
-      if (SSad) {
-        setSSad(false);
-        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
-          mood: ""
-        });
-        setSChange(!SChange);
-        return;
-      }
       if (SSmile || SMeh || SSurprise || SRolling || (!SSad)) {
         setSSmile(false);
         setSMeh(false);
@@ -186,14 +153,6 @@ const PostPage = () => {
 
   const handleRolling = async () => {
     const asyncFun = async () => {
-      if (SRolling) {
-        setSRolling(false);
-        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
-          mood: ""
-        });
-        setSChange(!SChange);
-        return;
-      }
       if (SSmile || SMeh || SSurprise || SSad || (!SRolling)) {
         setSSmile(false);
         setSMeh(false);
