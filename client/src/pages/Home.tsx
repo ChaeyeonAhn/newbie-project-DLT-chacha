@@ -8,6 +8,7 @@ import "./css/Home.css";
 import mainLogo from "./img/logo.png";
 
 import { faRightToBracket, faRightFromBracket, faUserPlus, faPlus, faFaceMehBlank, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faFaceSmileBeam, faFaceMeh, faFaceSurprise, faFaceSadTear, faFaceRollingEyes } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -22,7 +23,6 @@ const HomePage = () => {
   const [SShowAddPost, setSShowAddPost] = useState(false);
   const [SLogInStatus, setSLogInStatus] = useState(false);
   const [SUsername, setSUsername] = useState("");
-  // const [SToken, setSToken] = useState("");
 
   useEffect(() => {
     const getPost = async () => {
@@ -32,7 +32,27 @@ const HomePage = () => {
         setSLogInStatus(true);
         setSShowLogIn(false);
         const POSTS = await axios.post('http://localhost:8000/posts/get', {username: token});
-        console.log(POSTS);
+        console.log(POSTS.data[0].mood);
+        // if (POSTS.data[0].mood == "smile") {
+        //   POSTS.data.mood = 'faFaceSmileBeam';
+        //   console.log(POSTS.data.mood);
+        // }
+        // else if (POSTS.data[0].mood == "meh") {
+        //   POSTS.data.mood = 'faFaceMeh';
+        // }
+        // else if (POSTS.data[0].mood == "surprise") {
+        //   POSTS.data.mood = 'faFaceSurprise';
+        // }
+        // else if (POSTS.data[0].mood == "sad") {
+        //   POSTS.data.mood = 'faFaceSadTear';
+        // }
+        // else if (POSTS.data[0].mood == "rolling") {
+        //   POSTS.data.mood = 'faFaceRollingEyes';
+        // }
+        // else {
+        //   POSTS.data.mood = 'faFaceMehBlank';
+        // }
+
         setSPostlist(POSTS.data); /* json.data */
       }
       else if (SUsername) {
@@ -142,7 +162,12 @@ const HomePage = () => {
                 <p className="post-date">{POST.date}</p>
                 <div className="post-goal-mood">
                   <p className="post-goal">{POST.goal}</p>
-                  <p className="post-mood">{POST.mood ? <FontAwesomeIcon icon={faPlus} /> : <FontAwesomeIcon icon={faFaceMehBlank} />}</p>
+                  { POST.mood == "smile" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceSmileBeam} /></p> :
+                    POST.mood == "sad" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceSadTear} /></p> :
+                    POST.mood == "surprise" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceSurprise} /></p> :
+                    POST.mood == "rolling" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceRollingEyes} /></p> :
+                    POST.mood == "meh" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceMeh} /></p> :
+                    <p className="post-mood"><FontAwesomeIcon icon={faFaceMehBlank} /></p> }
                 </div>
               </li>
             </Link>
