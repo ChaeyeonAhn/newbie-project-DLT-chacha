@@ -1,3 +1,5 @@
+/* 유저 접속 첫 화면 */
+
 import React from 'react'; 
 import { useEffect, useState } from 'react'; /* 외부 API 와 교류 */
 import { Link } from 'react-router-dom';

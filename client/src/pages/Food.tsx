@@ -1,3 +1,5 @@
+/* 포스트 상세 페이지 - 식단 일기 */
+
 import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
