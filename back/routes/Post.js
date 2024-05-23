@@ -17,7 +17,6 @@ router.post('/get', async (req, res) => {
 
   if (!username) {
     return res.status(400).json({ message: 'Please Log In.' });
-    // return res.status(400).json({ message: "Please Sign In." });
   }
   const posts = await prisma.post.findMany({
     where: {
@@ -48,7 +47,7 @@ router.post('/add', async (req, res) => {
   const { date, goal, username, textsize } = req.body;
 
   if (username == "") return res.status(400).json({ message: "No Such Member" });
-  const dateCode = username.concat(date);
+  const dateCode = username.concat(date); /* unique key 생성 */
   console.log(dateCode);
   try{
     const addPost = await prisma.post.create({
@@ -138,6 +137,8 @@ router.post('/add', async (req, res) => {
   }
 });
 
+/* post 삭제 */
+
 router.post('/:id/delete', async (req, res) => {
   const { id } =  req.params;
   console.log(id);
@@ -177,6 +178,8 @@ router.get('/:username/:date/getMood', async (req, res) => {
   console.log(mood);
   res.json(mood);
 });
+
+/* post 에 해당하는 기분 업데이트 */
 
 router.post('/:username/:date/updateMood', async (req, res) => {
   const { username, date } = req.params;

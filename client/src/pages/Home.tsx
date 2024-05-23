@@ -156,7 +156,7 @@ const HomePage = () => {
             </div>
           ))
         }
-        {SLogInStatus ? <p></p> : <p className = "login-plz">Sign In to record your day.</p>}
+        {SLogInStatus ? <p></p> : <p className = "login-plz">오늘 하루를 기록하려면 로그인 하세요.</p>}
       </ul>
     </div>
   )

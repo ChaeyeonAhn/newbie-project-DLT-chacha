@@ -1,5 +1,5 @@
 /* 
-    Post Goal
+    Post Goal and update
 */
 const express = require('express');
 const router = express.Router();
@@ -26,6 +26,8 @@ router.get('/:username/:date/get', async (req, res) => {
   });
   res.json(goal);
 });
+
+/* goal update */
 
 router.post('/:username/:date/update', async (req, res) => {
   const { username, date }= req.params;

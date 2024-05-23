@@ -71,7 +71,7 @@ router.post('/:username/:date/update', async (req, res) => {
 
 });
 
-/* 회원의 식단 기록 불러오기 */
+/* 회원의 소비 기록 불러오기 */
 
 router.get('/:username/:date/get', async (req, res) => {
   const { username, date } = req.params;
@@ -90,8 +90,5 @@ router.get('/:username/:date/get', async (req, res) => {
     res.status(400).json({message: `error: ${e}`});
   }
 });
-
-
-
 
 module.exports = router;

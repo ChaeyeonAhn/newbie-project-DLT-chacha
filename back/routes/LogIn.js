@@ -1,3 +1,7 @@
+/* 
+    사용자 로그인 작업 처리 (아이디, 패스워드 일치 여부 체크)
+*/
+
 const express = require('express');
 const router = express.Router();
 

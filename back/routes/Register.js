@@ -1,9 +1,14 @@
+/* 
+    회원 가입 작업 처리 
+*/
+
 const express = require('express');
 const router = express.Router();
 
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
+/* 새로운 멤버 회원 가입 */
 
 router.post('/new', async (req, res) => {
   const { nickname, password, gender, birth } = req.body;

@@ -7,7 +7,7 @@ const router = express.Router();
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-/* 회원의 나이, 성별 값 디비에서 가져오기 */
+/* 회원의 나이, 성별 값 디비에서 가져오기 -> 그래야 권장 소비 칼로리 계산 가능 */
 
 router.get('/:username/member-info', async (req, res) => {
   const { username, date } = req.params;
@@ -130,8 +130,5 @@ router.get('/:username/:date/get', async (req, res) => {
     res.status(400).json({message: `error: ${e}`});
   }
 });
-
-
-
 
 module.exports = router;

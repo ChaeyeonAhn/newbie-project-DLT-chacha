@@ -1,5 +1,5 @@
 /* 
-    Post Diary
+    Update Diary and Get
 */
 const express = require('express');
 const router = express.Router();

@@ -178,7 +178,6 @@ const PostPage = () => {
           <button className="go-back" onClick={() => navigate(-1)}><FontAwesomeIcon icon={faArrowLeft} /></button>
           <img className="logo" src={mainLogo} alt="logo"/>
           <p className="DLT">{date.replace(/^:+|:+$/g, '')}</p>
-          
         </div>
         <div className="buttons">
           { SSmile ? <button id="smile-set" onClick={(e) => handleSmile()}><FontAwesomeIcon icon={faFaceSmileBeam} /></button> : <button id="smile" onClick={() => handleSmile()}><FontAwesomeIcon icon={faFaceSmileBeam} /></button> }
