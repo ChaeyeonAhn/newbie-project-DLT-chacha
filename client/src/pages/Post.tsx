@@ -32,7 +32,7 @@ const PostPage = () => {
   useEffect(() => {
     const getMood = async () => {
       const { data } = await axios.get(`http://localhost:8000/posts/:${username}/:${date}/getMood`);
-      console.log(data);
+      // console.log(data);
       const mood = data[0].mood;
       switch (mood) {
         case "smile": {

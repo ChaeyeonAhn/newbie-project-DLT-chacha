@@ -34,14 +34,14 @@ const HomePage = () => {
         setSLogInStatus(true);
         setSShowLogIn(false);
         const POSTS = await axios.post('http://localhost:8000/posts/get', {username: token});
-        if (POSTS.length == 0) return;
+        if (POSTS.length === 0) return;
 
         setSPostlist(POSTS.data); /* json.data */
       }
       else if (SUsername) {
         setSUsername(SUsername);
         const POSTS = await axios.post('http://localhost:8000/posts/get', {username: SUsername});
-        console.log(POSTS);
+        // console.log(POSTS);
         setSPostlist(POSTS.data); /* json.data */
       }
       else return;
@@ -122,7 +122,7 @@ const HomePage = () => {
     <div id="whole page">
       <header className="header">
         <div className="title">
-          <img className="logo" src={mainLogo}/>
+          <img alt="DLT" className="logo" src={mainLogo}/>
           <p className="DLT">Daily Life Tracker</p>
         </div>
         <div className="buttons">
@@ -145,11 +145,11 @@ const HomePage = () => {
                 <p className="post-date">{POST.date}</p>
                 <div className="post-goal-mood">
                   <p className="post-goal">{POST.goal}</p>
-                  { POST.mood == "smile" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceSmileBeam} /></p> :
-                    POST.mood == "sad" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceSadTear} /></p> :
-                    POST.mood == "surprise" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceSurprise} /></p> :
-                    POST.mood == "rolling" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceRollingEyes} /></p> :
-                    POST.mood == "meh" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceMeh} /></p> :
+                  { POST.mood === "smile" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceSmileBeam} /></p> :
+                    POST.mood === "sad" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceSadTear} /></p> :
+                    POST.mood === "surprise" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceSurprise} /></p> :
+                    POST.mood === "rolling" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceRollingEyes} /></p> :
+                    POST.mood === "meh" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceMeh} /></p> :
                     <p className="post-mood"><FontAwesomeIcon icon={faFaceMehBlank} /></p> }
                 </div>
               </li>

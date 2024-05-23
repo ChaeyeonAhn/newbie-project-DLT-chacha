@@ -20,7 +20,6 @@ const Food = () => {
   const [STotalCalorie, setSTotalCalorie] = useState(0);
   const [SGender, setSGender] = useState("");
   const [SBirth, setSBirth] = useState("");
-  const [SAge, setSAge] = useState(0); /* 나이 추가 계산 해야 함! */
 
   const [SCalorie1, setSCalorie1] = useState(0);
   const [SContent1, setSContent1] = useState("");
@@ -46,7 +45,7 @@ const Food = () => {
     /* 멤버 정보를 가져온다 */
     const getInfo = async () => {
       const { data }= await axios.get(`http://localhost:8000/food/:${username}/member-info`);
-      console.log(data[0]);
+      // console.log(data[0]);
       setSGender(data[0].gender);
       setSBirth(data[0].birth); /* 나이는 우리가 직접 계산해서 입력해주기. 그래야 사용자가 나이를 늘 업데이트 하지 않아도 됨 */
     }
@@ -55,7 +54,7 @@ const Food = () => {
 
     const getRecord = async () => {
       const saved = await axios.get(`http://localhost:8000/food/:${username}/:${date}/get`);
-      console.log(saved.data[0]);
+      // console.log(saved.data[0]);
 
       setSHeight(saved.data[0].height ? saved.data[0].height : 0);
       setSWeight(saved.data[0].weight ? saved.data[0].weight : 0);
@@ -86,9 +85,8 @@ const Food = () => {
     /* 나이를 계산한다 */
     const today = new Date();
     const age = (today.getFullYear() - SBirth.slice(0,4));
-    setSAge(age);
-    console.log(age);
-    console.log(typeof(age));
+    // console.log(age);
+    // console.log(typeof(age));
 
     const asyncFun = async () => {
       /* 나이는 굳이 db 에 저장 안 해도 될 듯 */

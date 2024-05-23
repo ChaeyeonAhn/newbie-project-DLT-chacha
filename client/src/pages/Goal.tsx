@@ -33,15 +33,15 @@ const Goal = () => {
       }
     }
     getGoal().catch((e) => window.alert(`Error while Running API Call: ${e}`));
-  }, [SChange]);
+  }, [SChange, date, username]);
 
   const sendGoal = () => {
     const asyncFun = async () => {
-      const { data } = await axios.post(`http://localhost:8000/goal/:${username}/:${date}/update`, {
+      await axios.post(`http://localhost:8000/goal/:${username}/:${date}/update`, {
         goal: SGoal,
         textsize: NTextCount
       });
-      console.log(data);
+      // console.log(data);
       window.alert(`수정 완료!`);
       setSChange(!SChange);
     }

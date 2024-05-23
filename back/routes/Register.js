@@ -22,7 +22,7 @@ router.post('/new', async (req, res) => {
     }
   });
 
-  console.log(found_nn);
+  // console.log(found_nn);
 
   if (!found_nn) {
     const newMem = await prisma.member.create({
@@ -33,7 +33,7 @@ router.post('/new', async (req, res) => {
         birth: birth
       }
     });
-    console.log(newMem);
+    // console.log(newMem);
     res.status(200).json({ message: `Welcome, ${nickname}!` });
   }
   else {

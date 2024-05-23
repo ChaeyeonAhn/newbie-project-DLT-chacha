@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 
 import './css/Consume.css';
 
-import { faPen, faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -37,7 +37,7 @@ const Consume = () => {
   useEffect(() => {
     const getRecord = async () => {
       const saved = await axios.get(`http://localhost:8000/consume/:${username}/:${date}/get`);
-      console.log(saved.data[0]);
+      // console.log(saved.data[0]);
 
       setSBudget(saved.data[0].budget ? saved.data[0].budget : 0);
       setSSpend1(saved.data[0].spend1 ? saved.data[0].spend1 : 0);

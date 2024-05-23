@@ -22,7 +22,7 @@ router.post('/check', async (req, res) => {
     }
   });
 
-  console.log(found_pw);
+  // console.log(found_pw);
 
   if (!found_pw) return res.status(400).json({ message: "없는 아이디입니다." });
   else {

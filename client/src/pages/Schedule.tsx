@@ -39,13 +39,7 @@ const Schedule = () => {
 
     const getSchedule = async () => {
       const { data } = await axios.get(`http://localhost:8000/schedule/:${username}/:${date}/get`);
-      // console.log(data.length==0);
-      /* 필요 없을 예정 */
-      if (data.length === 0) {
-        window.alert('New Post! Record your Day.');
-        return
-      }
-      else {
+      
       /* null 값 처리 */
       setSAMTime1(data[0].amTime1 ? data[0].amTime1 : "");
       setSAMContent1(data[0].amContent1 ? data[0].amContent1 : "");
@@ -63,14 +57,14 @@ const Schedule = () => {
       setSPMContent4(data[0].pmContent4 ? data[0].pmContent4 : "");
       setSPMTime5(data[0].pmTime5 ? data[0].pmTime5 : "");
       setSPMContent5(data[0].pmContent5 ? data[0].pmContent5 : "");
-      }
+      
     }
     getSchedule().catch((e) => window.alert(`Error while Running API Call: ${e}`));
   }, [SChange, date, username]);
 
   const sendPost = () => {
     const asyncFun = async () => {
-      const { data } = await axios.post(`http://localhost:8000/schedule/:${username}/:${date}/update`, {
+      await axios.post(`http://localhost:8000/schedule/:${username}/:${date}/update`, {
         username: username,
         date: date,
         amTime1: SAMTime1,
@@ -90,7 +84,7 @@ const Schedule = () => {
         pmTime5: SPMTime5,
         pmContent5: SPMContent5
       });
-      console.log(data);
+      // console.log(data);
       window.alert(`수정 완료!`);
       setSChange(!SChange);
     }

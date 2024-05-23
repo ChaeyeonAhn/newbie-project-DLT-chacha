@@ -60,130 +60,130 @@
 }
 
 #smile {
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   border-radius: 20px;
   background-color: white;
   border: 1.5px solid rgb(108, 108, 108);
   margin-right: 10px;
-  font-size: xx-large;
+  font-size: x-large;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #smile-set {
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   border-radius: 20px;
   background-color: white;
   border: 2.5px solid rgb(128, 218, 203);
   margin-right: 10px;
-  font-size: xx-large;
+  font-size: x-large;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #meh {
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   border-radius: 20px;
   background-color: white;
   border: 1.5px solid rgb(108, 108, 108);
   margin-right: 10px;
-  font-size: xx-large;
+  font-size: x-large;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #meh-set {
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   border-radius: 20px;
   background-color: white;
   border: 2.5px solid rgb(128, 218, 203);
   margin-right: 10px;
-  font-size: xx-large;
+  font-size: x-large;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #surprise {
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   border-radius: 20px;
   background-color: white;
   border: 1.5px solid rgb(108, 108, 108);
   margin-right: 10px;
-  font-size: xx-large;
+  font-size: x-large;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #surprise-set {
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   border-radius: 20px;
   background-color: white;
   border: 2.5px solid rgb(128, 218, 203);
   margin-right: 10px;
-  font-size: xx-large;
+  font-size: x-large;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #sad {
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   border-radius: 20px;
   background-color: white;
   border: 1.5px solid rgb(108, 108, 108);
   margin-right: 10px;
-  font-size: xx-large;
+  font-size: x-large;
   display: flex;
   align-items: center;
   justify-content: center;
 } 
 
 #sad-set {
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   border-radius: 20px;
   background-color: white;
   border: 2.5px solid rgb(128, 218, 203);
   margin-right: 10px;
-  font-size: xx-large;
+  font-size: x-large;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #rolling {
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   border-radius: 20px;
   background-color: white;
   border: 1.5px solid rgb(108, 108, 108);
   margin-right: 30px;
-  font-size: xx-large;
+  font-size: x-large;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #rolling-set {
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   border-radius: 20px;
   background-color: white;
   border: 2.5px solid rgb(128, 218, 203);
   margin-right: 30px;
-  font-size: xx-large;
+  font-size: x-large;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -200,7 +200,7 @@
 #smile:active, #smile-set:active, #meh:active, #meh-set:active, #sad:active, #sad-set:active, #rolling:active, #rolling-set:active, #surprise:active, #surprise-set:active {
   position: relative;
   box-shadow: 0.5px 0.5px 0 #ccc;
-  top: 2px;
+  top: 0.5px;
 }
 
 

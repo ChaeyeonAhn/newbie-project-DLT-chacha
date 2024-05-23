@@ -34,7 +34,7 @@ router.post('/:username/:date/update', async (req, res) => {
 
   const dateCode = username.concat(date);
 
-  console.log(req.body);
+  // console.log(req.body);
 
     const findExist = await prisma.schedule.findMany({
       where: {
@@ -44,7 +44,7 @@ router.post('/:username/:date/update', async (req, res) => {
         id: true
       }
     });
-    console.log(findExist);
+    // console.log(findExist);
 
     await prisma.schedule.update({
       where: {
@@ -84,14 +84,14 @@ router.get('/:username/:date/get', async (req, res) => {
   const dateCode = username.concat(date);
   const dateCode_fixed = dateCode.replace(/:/g, ''); /* 자꾸 : 가 포함되는 오류 수정 */
 
-  console.log(dateCode_fixed);
+  // console.log(dateCode_fixed);
   try {
     const getExist = await prisma.schedule.findMany({
       where: {
         dateCode: dateCode_fixed
       }
     });
-    console.log("get schedule?", getExist);
+    // console.log("get schedule?", getExist);
 
     if (!getExist) {
       res.status(200).json({message: "New Post!"});
@@ -122,7 +122,7 @@ router.get('/:username/:date/get', async (req, res) => {
       }
     });
     if (!getPost) return;
-    console.log("Get schedules", getPost);
+    // console.log("Get schedules", getPost);
     res.json(getPost);
   } catch(e){
     res.status(400).json({message: `error: ${e}`});

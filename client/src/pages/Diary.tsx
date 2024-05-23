@@ -27,15 +27,15 @@ const Diary = () => {
       
     }
     getDiary().catch((e) => window.alert(`Error while Running API Call: ${e}`));
-  }, [SChange]);
+  }, [SChange, date, username]);
 
   const sendDiary = () => {
     const asyncFun = async () => {
-      const { data } = await axios.post(`http://localhost:8000/diary/:${username}/:${date}/update`, {
+      await axios.post(`http://localhost:8000/diary/:${username}/:${date}/update`, {
         content: SContent,
         textsize: NTextCount
       });
-      console.log(data);
+      // console.log(data);
       window.alert(`수정 완료!`);
       setSChange(!SChange);
     }

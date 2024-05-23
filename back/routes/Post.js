@@ -13,7 +13,7 @@ const prisma = new PrismaClient();
 router.post('/get', async (req, res) => {
   const { username }= req.body;
   const user = JSON.stringify(username);
-  console.log(user);
+  // console.log(user);
 
   if (!username) {
     return res.status(400).json({ message: 'Please Log In.' });
@@ -36,7 +36,7 @@ router.post('/get', async (req, res) => {
     goal: e.goal,
     mood: e.mood
   }));
-  console.log(final_post);
+  // console.log(final_post);
   res.json(final_post);
 
 });
@@ -48,7 +48,7 @@ router.post('/add', async (req, res) => {
 
   if (username == "") return res.status(400).json({ message: "No Such Member" });
   const dateCode = username.concat(date); /* unique key 생성 */
-  console.log(dateCode);
+  // console.log(dateCode);
   try{
     const addPost = await prisma.post.create({
     data: {
@@ -141,10 +141,10 @@ router.post('/add', async (req, res) => {
 
 router.post('/:id/delete', async (req, res) => {
   const { id } =  req.params;
-  console.log(id);
+  // console.log(id);
 
   const id_fixed = parseInt(id.replace(/^:+|:+$/g, ''));
-  console.log(id_fixed);
+  // console.log(id_fixed);
 
   try {
     await prisma.post.delete({
@@ -175,7 +175,7 @@ router.get('/:username/:date/getMood', async (req, res) => {
       mood: true
     }
   });
-  console.log(mood);
+  // console.log(mood);
   res.json(mood);
 });
 
@@ -197,7 +197,7 @@ router.post('/:username/:date/updateMood', async (req, res) => {
       mood: mood
     }
   });
-  console.log(mood);
+  // console.log(mood);
   res.status(200).json({message: 'success'});
   } catch (e) {
     res.status(400).json({message: `error: ${e}`});
