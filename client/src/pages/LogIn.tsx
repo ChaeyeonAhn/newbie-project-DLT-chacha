@@ -48,7 +48,9 @@ const LogIn = ({ pop, close, handleLogin }) => {
           <p id="login-title">Sign In</p>
         </div>
         <div id="login-input">
+          <div className="labels">ID</div>
           <input className="nickname" type="text" value={SNickname} onChange={e => setSNickname(e.target.value)} placeholder="Enter SPARCS nickname"/>
+          <div className="labels">PW</div>
           <input className="password" type="text" value={SPassword} onChange={e => setSPassword(e.target.value)} placeholder="Enter Password"/>
         </div>
         <div id="login-button">

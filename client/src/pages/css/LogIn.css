@@ -5,7 +5,7 @@
 
 .loginPopUp {
   font-family: 'Nanum-barun-gothic';
-  height: 300px;
+  height: 350px;
   width: 300px;
   position: fixed;
   top: 400px;
@@ -31,6 +31,12 @@
 
 #login-input {
   margin-top: 10%;
+}
+
+.labels{
+  margin-top: 20px;
+  margin-left: 40px;
+  font-size: small;
 }
 
 .nickname {
