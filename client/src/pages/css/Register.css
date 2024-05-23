@@ -5,7 +5,7 @@
 
 .regisPopUp {
   font-family: 'Nanum-barun-gothic';
-  height: 500px;
+  height: 520px;
   width: 300px;
   position: fixed;
   top: 400px;
@@ -29,6 +29,12 @@
   font-size: x-large;
 }
 
+.labels{
+  margin-top: 20px;
+  margin-left: 40px;
+  font-size: small;
+}
+
 .nickname {
   font-family: 'Nanum-barun-gothic';
   padding: 10px;
@@ -38,7 +44,7 @@
   height: 30px;
   font-size: small;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 5px;
 }
 
 .password {
@@ -51,7 +57,7 @@
   height: 30px;
   font-size: small;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 #regisButton {
@@ -61,7 +67,16 @@
 }
 
 .pick-gender {
+  font-family: 'Nanum-barun-gothic';
+  padding: 10px;
+  width: 70%;
   margin-top: 20px;
+  border: 1.5px solid #ccc;
+  border-radius: 20px;
+  height: 30px;
+  font-size: small;
+  margin: auto;
+  margin-top: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
