@@ -25,9 +25,34 @@
   height: 80px;
 }
 
+.big-logo {
+  height: 650px;
+  margin-top: 20px;
+  float: left;
+}
+
+.home-title {
+  float: left;
+}
+
 .DLT {
   font-family: 'Nanum-barun-gothic';
   font-size: 22px;
+}
+
+.not-login-buttons {
+  font-family: 'Nanum-barun-gothic';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  float: right;
+  margin-top: 50px;
+  margin-right: 60px;
+}
+
+.welcome {
+  margin-right: 20px;
 }
 
 .buttons {

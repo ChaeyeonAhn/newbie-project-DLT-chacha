@@ -8,6 +8,7 @@ import Register from './Register.tsx';
 import AddPost from './AddPost.tsx';
 import "./css/Home.css";
 import mainLogo from "./img/logo.png";
+import homeLogo from "./img/homelogo.png";
 
 import { faRightToBracket, faRightFromBracket, faUserPlus, faPlus, faFaceMehBlank, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faFaceSmileBeam, faFaceMeh, faFaceSurprise, faFaceSadTear, faFaceRollingEyes } from "@fortawesome/free-regular-svg-icons";
@@ -120,46 +121,62 @@ const HomePage = () => {
 
   return (
     <div id="whole page">
-      <header className="header">
-        <div className="title">
-          <img alt="DLT" className="logo" src={mainLogo}/>
-          <p className="DLT">Daily Life Tracker</p>
-        </div>
-        <div className="buttons">
-          {SLogInStatus ? <p className="username">{SUsername}</p> : <p>   </p>}
-          {SLogInStatus ? <button className="add-post-button" onClick={(e) => showAddPost()}><FontAwesomeIcon icon={faPlus} /></button> : <p></p>}
-          <AddPost pop={SShowAddPost} close={closeAddPost} username={SUsername} increase={setNPostCount} postcount={NPostCount} />
-          {SLogInStatus ? <button className="login" onClick={(e) => LogOut()}><FontAwesomeIcon icon={faRightFromBracket} /></button> : <button className="login" onClick={(e) => showLogIn()}><FontAwesomeIcon icon={faRightToBracket} /></button>}
-          <LogIn pop={SShowLogIn} close={closeLogIn} handleLogin={handleLogin}/>
-          {SLogInStatus? <p></p> : <button className="register" onClick={(e) => showRegister()}><FontAwesomeIcon icon={faUserPlus} /></button>}
-          <Register pop={SShowRegister} close={closeRegister}/>
-        </div>
-      </header>
-      
-      <ul className="post-list">
         {
-          SPostlist.map(POST => (
-            <div className = "post-one" key={POST.id}>
-            <Link className="post-link" to={`/post/${SUsername}/${POST.date}`} key = {POST.id}>
-              <li className="post-element" key = {POST.id}>
-                <p className="post-date">{POST.date}</p>
-                <div className="post-goal-mood">
-                  <p className="post-goal">{POST.goal}</p>
-                  { POST.mood === "smile" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceSmileBeam} /></p> :
-                    POST.mood === "sad" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceSadTear} /></p> :
-                    POST.mood === "surprise" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceSurprise} /></p> :
-                    POST.mood === "rolling" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceRollingEyes} /></p> :
-                    POST.mood === "meh" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceMeh} /></p> :
-                    <p className="post-mood"><FontAwesomeIcon icon={faFaceMehBlank} /></p> }
-                </div>
-              </li>
-            </Link>
-            <button className = "del-button" onClick={(e) => deletePost(POST.id)}><FontAwesomeIcon icon={faTrash} /></button>
+        SLogInStatus ? 
+        <div>
+          <header className="header">
+            <div className="title">
+              <img alt="DLT" className="logo" src={mainLogo}/>
+              <p className="DLT">Daily Life Tracker</p>
             </div>
-          ))
-        }
-        {SLogInStatus ? <p></p> : <p className = "login-plz">오늘 하루를 기록하려면 로그인 하세요.</p>}
-      </ul>
+            <div className="buttons">
+              <p className="username">{SUsername}</p>
+              <button className="add-post-button" onClick={(e) => showAddPost()}><FontAwesomeIcon icon={faPlus} /></button>
+              <AddPost pop={SShowAddPost} close={closeAddPost} username={SUsername} increase={setNPostCount} postcount={NPostCount} />
+              <button className="login" onClick={(e) => LogOut()}><FontAwesomeIcon icon={faRightFromBracket} /></button>
+              <LogIn pop={SShowLogIn} close={closeLogIn} handleLogin={handleLogin}/>
+            </div>
+          </header>
+          <ul className="post-list">
+          {
+            SPostlist.map(POST => (
+              <div className = "post-one" key={POST.id}>
+              <Link className="post-link" to={`/post/${SUsername}/${POST.date}`} key = {POST.id}>
+                <li className="post-element" key = {POST.id}>
+                  <p className="post-date">{POST.date}</p>
+                  <div className="post-goal-mood">
+                    <p className="post-goal">{POST.goal}</p>
+                    { POST.mood === "smile" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceSmileBeam} /></p> :
+                      POST.mood === "sad" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceSadTear} /></p> :
+                      POST.mood === "surprise" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceSurprise} /></p> :
+                      POST.mood === "rolling" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceRollingEyes} /></p> :
+                      POST.mood === "meh" ? <p className="post-mood"><FontAwesomeIcon icon={faFaceMeh} /></p> :
+                      <p className="post-mood"><FontAwesomeIcon icon={faFaceMehBlank} /></p> }
+                  </div>
+                </li>
+              </Link>
+              <button className = "del-button" onClick={(e) => deletePost(POST.id)}><FontAwesomeIcon icon={faTrash} /></button>
+              </div>
+            ))
+          }
+          </ul>
+        </div>
+        :
+        <div>
+            <div className="not-login-buttons">
+              <div className="welcome">오늘 하루를 기록하려면 로그인 하세요.</div>
+              <button className="login" onClick={(e) => showLogIn()}><FontAwesomeIcon icon={faRightToBracket} /></button>
+              <LogIn pop={SShowLogIn} close={closeLogIn} handleLogin={handleLogin}/>
+              <button className="register" onClick={(e) => showRegister()}><FontAwesomeIcon icon={faUserPlus} /></button>
+              <Register pop={SShowRegister} close={closeRegister}/>
+            </div>
+            <div id="body">
+              
+              <div><img alt="DLT" className="big-logo" src={homeLogo}/></div>
+
+            </div>
+        </div>
+        } 
     </div>
   )
 }
