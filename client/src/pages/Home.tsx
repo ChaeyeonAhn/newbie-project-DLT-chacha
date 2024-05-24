@@ -34,14 +34,14 @@ const HomePage = () => {
         setSUsername(token);
         setSLogInStatus(true);
         setSShowLogIn(false);
-        const POSTS = await axios.post('http://localhost:8000/posts/get', {username: token});
+        const POSTS = await axios.post('https://api.chacha.newbie.sparcsandbox.com/posts/get', {username: token});
         if (POSTS.length === 0) return;
 
         setSPostlist(POSTS.data); /* json.data */
       }
       else if (SUsername) {
         setSUsername(SUsername);
-        const POSTS = await axios.post('http://localhost:8000/posts/get', {username: SUsername});
+        const POSTS = await axios.post('https://api.chacha.newbie.sparcsandbox.com/posts/get', {username: SUsername});
         // console.log(POSTS);
         setSPostlist(POSTS.data); /* json.data */
       }
@@ -104,7 +104,7 @@ const HomePage = () => {
 
     if (delete_confirm) {
       const asyncFun = async () => {
-        await axios.post(`http://localhost:8000/posts/:${id}/delete`, {
+        await axios.post(`https://api.chacha.newbie.sparcsandbox.com/posts/:${id}/delete`, {
           id: id
         });
       }; asyncFun().catch((e) => window.alert(`Error while Running API Call: ${e}`));

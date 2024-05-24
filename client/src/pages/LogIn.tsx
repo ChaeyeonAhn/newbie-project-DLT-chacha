@@ -17,7 +17,7 @@ const LogIn = ({ pop, close, handleLogin }) => {
 
   const sendLogIn = () => {
     const asyncFun = async () => {
-      const { data } = await axios.post("http://localhost:8000/login/check", {
+      const { data } = await axios.post("https://api.chacha.newbie.sparcsandbox.com/login/check", {
         nickname: SNickname,
         password: SPassword
       });

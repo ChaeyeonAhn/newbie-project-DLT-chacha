@@ -38,7 +38,7 @@ const Schedule = () => {
   useEffect(() => {
 
     const getSchedule = async () => {
-      const { data } = await axios.get(`http://localhost:8000/schedule/:${username}/:${date}/get`);
+      const { data } = await axios.get(`https://api.chacha.newbie.sparcsandbox.com/schedule/:${username}/:${date}/get`);
       
       /* null 값 처리 */
       setSAMTime1(data[0].amTime1 ? data[0].amTime1 : "");
@@ -64,7 +64,7 @@ const Schedule = () => {
 
   const sendPost = () => {
     const asyncFun = async () => {
-      await axios.post(`http://localhost:8000/schedule/:${username}/:${date}/update`, {
+      await axios.post(`https://api.chacha.newbie.sparcsandbox.com/schedule/:${username}/:${date}/update`, {
         username: username,
         date: date,
         amTime1: SAMTime1,

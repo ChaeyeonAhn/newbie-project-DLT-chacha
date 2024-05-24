@@ -16,7 +16,7 @@ const AddPost = ({ pop, close, username, increase, postcount, show }) => {
 
   const sendNewPost = () => {
     const asyncFun = async () => {
-      await axios.post('http://localhost:8000/posts/add', {
+      await axios.post('https://api.chacha.newbie.sparcsandbox.com/posts/add', {
         date: new Date().toLocaleDateString('ko-KR'),
         goal: SGoal,
         username: username,

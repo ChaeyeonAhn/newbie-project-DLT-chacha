@@ -22,7 +22,7 @@ const Register = ({ pop, close }) => {
     if (SFemale) {
       const gender = 'f';
       const asyncFun = async () => {
-        const { data } = await axios.post("http://localhost:8000/register/new", {
+        const { data } = await axios.post("https://api.chacha.newbie.sparcsandbox.com/register/new", {
           nickname: SNickname,
           password: SPassword,
           gender: gender,
@@ -41,7 +41,7 @@ const Register = ({ pop, close }) => {
     else if (SMale) {
       const gender = 'm';
       const asyncFun = async () => {
-        const { data } = await axios.post("http://localhost:8000/register/new", {
+        const { data } = await axios.post("https://api.chacha.newbie.sparcsandbox.com/register/new", {
           nickname: SNickname,
           password: SPassword,
           gender: gender,

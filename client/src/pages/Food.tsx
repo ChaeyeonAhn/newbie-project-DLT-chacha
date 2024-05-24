@@ -44,7 +44,7 @@ const Food = () => {
   useEffect(() => {
     /* 멤버 정보를 가져온다 */
     const getInfo = async () => {
-      const { data }= await axios.get(`http://localhost:8000/food/:${username}/member-info`);
+      const { data }= await axios.get(`https://api.chacha.newbie.sparcsandbox.com/food/:${username}/member-info`);
       // console.log(data[0]);
       setSGender(data[0].gender);
       setSBirth(data[0].birth); /* 나이는 우리가 직접 계산해서 입력해주기. 그래야 사용자가 나이를 늘 업데이트 하지 않아도 됨 */
@@ -53,7 +53,7 @@ const Food = () => {
 
 
     const getRecord = async () => {
-      const saved = await axios.get(`http://localhost:8000/food/:${username}/:${date}/get`);
+      const saved = await axios.get(`https://api.chacha.newbie.sparcsandbox.com/food/:${username}/:${date}/get`);
       // console.log(saved.data[0]);
 
       setSHeight(saved.data[0].height ? saved.data[0].height : 0);
@@ -101,7 +101,7 @@ const Food = () => {
         setSLeftCal(left);
         setSUsedCal(used);
         setSTotalCalorie(totCal);
-        await axios.post(`http://localhost:8000/food/:${username}/:${date}/update`, {
+        await axios.post(`https://api.chacha.newbie.sparcsandbox.com/:${username}/:${date}/update`, {
           height: SHeight,
           weight: SWeight,
           totalCalorie: totCal,
@@ -135,7 +135,7 @@ const Food = () => {
         setSUsedCal(used);
         setSTotalCalorie(totCal);
 
-        await axios.post(`http://localhost:8000/food/:${username}/:${date}/update`, {
+        await axios.post(`https://api.chacha.newbie.sparcsandbox.com/food/:${username}/:${date}/update`, {
           height: SHeight,
           weight: SWeight,
           totalCalorie: totCal,
