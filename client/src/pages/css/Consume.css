@@ -44,6 +44,10 @@
   background-color: rgb(226, 250, 246);
   box-shadow: 2px 2px 3px 0.5px #ccc;
   margin-left: 10px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: black;
 }
 

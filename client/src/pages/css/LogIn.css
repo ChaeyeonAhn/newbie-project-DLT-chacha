@@ -5,8 +5,8 @@
 
 .loginPopUp {
   font-family: 'Nanum-barun-gothic';
-  height: 350px;
-  width: 300px;
+  height: 45vh;
+  width: 20vw;
   position: fixed;
   top: 50vh;
   left: 50vw;
@@ -75,6 +75,11 @@
   border: 1.5px solid rgb(133, 215, 202);
   background-color: rgb(226, 250, 246);
   box-shadow: 2px 2px 3px 0.5px #ccc;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
 }
 
 #close {
@@ -88,6 +93,11 @@
   border: 1.5px solid rgb(133, 215, 202);
   background-color: rgb(226, 250, 246);
   box-shadow: 2px 2px 3px 0.5px #ccc;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
 }
 
 #confirm:hover, #close:hover {
