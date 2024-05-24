@@ -8,8 +8,8 @@
   height: 520px;
   width: 300px;
   position: fixed;
-  top: 400px;
-  right: 5px;
+  top: 50vh;
+  left: 50vw;
   transform: translate(-50%, -50%); /* 기준점을 중앙으로 배치 */
   background-color: white;
   border: 2px solid rgb(133, 215, 202);
