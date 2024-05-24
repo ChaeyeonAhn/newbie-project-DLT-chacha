@@ -35,7 +35,7 @@
 
 .labels{
   margin-top: 20px;
-  margin-left: 40px;
+  margin-left: 10%;
   font-size: small;
 }
 
@@ -44,7 +44,7 @@
   width: 70%;
   border: 2.5px solid rgb(218, 218, 218);
   border-radius: 30px;
-  height: 30px;
+  height: 5%;
   font-size:small;
 }
 
@@ -54,7 +54,7 @@
   margin-top: 15px;
   border: 2.5px solid rgb(218, 218, 218);
   border-radius: 30px;
-  height: 30px;
+  height: 5%;
   font-size:small;
 }
 

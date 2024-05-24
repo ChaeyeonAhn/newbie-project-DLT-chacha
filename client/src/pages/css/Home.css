@@ -9,12 +9,12 @@
   border: 1px solid #ccc;
   border-radius: 60px;
   margin: 2%;
+  margin-left: 1vw;
   box-shadow: 2px 2px 3px 0.5px rgb(108, 108, 108);
   height: 80px;
 }
 
 .title {
-  margin-left: 40px;
   margin-right: auto;
   float: left;
   display: flex;

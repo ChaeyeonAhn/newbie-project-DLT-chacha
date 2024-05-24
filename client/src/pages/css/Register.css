@@ -31,7 +31,7 @@
 
 .labels{
   margin-top: 20px;
-  margin-left: 40px;
+  margin-left: 12%;
   font-size: small;
 }
 
@@ -41,7 +41,7 @@
   width: 70%;
   border: 1.5px solid #ccc;
   border-radius: 20px;
-  height: 30px;
+  height: 5%;
   font-size: small;
   margin: auto;
   margin-top: 5px;
@@ -54,7 +54,7 @@
   margin-top: 20px;
   border: 1.5px solid #ccc;
   border-radius: 20px;
-  height: 30px;
+  height: 5%;
   font-size: small;
   margin: auto;
   margin-top: 5px;
