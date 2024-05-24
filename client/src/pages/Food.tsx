@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 
 import './css/Food.css';
 
-import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -168,7 +168,7 @@ const Food = () => {
     <div className = "food">
       <div className="food-header">
         <div className="food-title">식단 기록장</div>
-        <button className = "modify-button" onClick={() => Save()}><FontAwesomeIcon icon={faPen} /></button>
+        <button className = "modify-button" onClick={() => Save()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
       </div>
       <div className = "HWC-table">
         <p id="alert">건강 정보를 작성하고 저장하세요.</p>

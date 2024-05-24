@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 
 import './css/Consume.css';
 
-import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -94,7 +94,7 @@ const Consume = () => {
     <div className = "consume">
       <div className="consume-header">
         <div className="consume-title">소비 기록장</div>
-        <button className = "save-button" onClick={() => Save()}><FontAwesomeIcon icon={faPen} /></button>
+        <button className = "save-button" onClick={() => Save()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
       </div>
       <div className="budget">
         <p id="alert">예산을 작성하고 저장하세요.</p>

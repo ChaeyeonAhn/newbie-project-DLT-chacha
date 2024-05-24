@@ -56,6 +56,14 @@
   top: 2px;
 }
 
+.am-pm {
+  margin-left: 50px;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  color: gray;
+  font-size: small;
+}
+
 .schedule-table-top {
   margin: auto;
   border-bottom: 2px solid #ccc;
@@ -65,7 +73,7 @@
 
 .schedule-table-bottom {
   margin: auto;
-  margin-top: 10px;
+  margin-top: 5px;
 
 }
 

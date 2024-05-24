@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom'; 
 import './css/Schedule.css';
 
-import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -98,11 +98,12 @@ const Schedule = () => {
       <div className="schedule">
         <div className="schedule-header">
           <div className="schedule-title">일과 기록장</div>
-          <button className="modify-button" onClick={(e) => sendPost()}><FontAwesomeIcon icon={faPen} /></button>
+          <button className="modify-button" onClick={(e) => sendPost()}><FontAwesomeIcon icon={faFloppyDisk} /></button>
         </div>
         <br />
         <br />
         <div className="total-table">
+          <div className = "am-pm">오전</div>
           <table className="schedule-table-top">
             <tbody>
             <tr>
@@ -119,6 +120,7 @@ const Schedule = () => {
             </tr>
             </tbody>
           </table>
+          <div className = "am-pm">오후</div>
           <table className="schedule-table-bottom">
             <tbody>
             <tr>
