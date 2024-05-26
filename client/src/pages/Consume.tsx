@@ -68,7 +68,7 @@ const Consume = () => {
       setSLeft(left);
       setSUsed(used);
       setSBudget(budget);
-      await axios.post(`http://localhost:8000/consume/:${username}/:${date}/update`, {
+      await axios.post(`https://api.chacha.newbie.sparcsandbox.com/consume/:${username}/:${date}/update`, {
         budget: budget,
         used: used,
         left: left, 
