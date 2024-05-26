@@ -160,7 +160,7 @@ const Food = () => {
         setSChange(!SChange);
       }
     }
-    asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
+    asyncFun().catch((e) => window.alert(`${JSON.stringify(e.response.data.message).replace(/^"+|"+$/g, '')}`));
   };
 
 

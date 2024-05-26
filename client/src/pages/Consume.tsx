@@ -86,7 +86,7 @@ const Consume = () => {
       window.alert(`수정 완료!`);
       setSChange(!SChange);
     }
-    asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
+    asyncFun().catch((e) => window.alert(`${JSON.stringify(e.response.data.message).replace(/^"+|"+$/g, '')}`));
   };
 
 

@@ -28,6 +28,13 @@ router.post('/:username/:date/update', async (req, res) => {
     content5,
   } = req.body;
 
+  if ((content1.length > 20) || (content2.length > 20) 
+    || (content3.length > 20) || (content4.length > 20) 
+    || (content5.length > 20)) 
+    {
+      return res.status(400).json({message: `글자 수가 20자를 초과합니다.`});
+    }
+
   const username_fixed = username.replace(/^:+|:+$/g, ''); /* 자꾸 : 가 포함되는 오류 수정 */
   const dateCode = username_fixed.concat(date);
   const dateCode_fixed = dateCode.replace(/:/g, ''); /* 자꾸 : 가 포함되는 오류 수정 */
