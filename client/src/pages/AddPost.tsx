@@ -25,8 +25,7 @@ const AddPost = ({ pop, close, username, increase, postcount, show }) => {
       increase(postcount + 1);
       setSGoal("");
     }
-    asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
-    window.alert('포스트 추가 완료');
+    asyncFun().catch((e) => window.alert(`${JSON.stringify(e.response.data.message).replace(/^"+|"+$/g, '')}`));
     close();
 
   };

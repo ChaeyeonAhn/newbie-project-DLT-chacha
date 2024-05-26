@@ -133,7 +133,7 @@ router.post('/add', async (req, res) => {
     });
   return res.status(200).json({ isOk: true });
  } catch(e){
-  res.status(400).json({message: `Already posted ${e}`});
+  res.status(400).json({message: `오늘의 포스트가 이미 있습니다.`});
   }
 });
 

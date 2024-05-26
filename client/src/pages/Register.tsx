@@ -35,7 +35,7 @@ const Register = ({ pop, close }) => {
         window.alert(`회원가입 완료. 이용하려면 로그인 하세요.`);
         close();
       }
-      asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
+      asyncFun().catch((e) => window.alert(`${JSON.stringify(e.response.data.message).replace(/^"+|"+$/g, '')}`));
     }
 
     else if (SMale) {
@@ -54,7 +54,7 @@ const Register = ({ pop, close }) => {
         window.alert(`회원가입 완료. 이용하려면 로그인 하세요.`);
         close();
       }
-      asyncFun().catch((e) => window.alert(`ERROR: ${e}`));
+      asyncFun().catch((e) => window.alert(`${JSON.stringify(e.response.data.message).replace(/^"+|"+$/g, '')}`));
     }
 
     

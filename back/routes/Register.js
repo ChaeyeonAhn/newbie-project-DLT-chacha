@@ -37,7 +37,7 @@ router.post('/new', async (req, res) => {
     res.status(200).json({ message: `Welcome, ${nickname}!` });
   }
   else {
-    return res.status(400).json({ message: "Already Registered! Please Log In" });
+    return res.status(400).json({ message: "존재하는 아이디입니다." });
   }
 
 })
