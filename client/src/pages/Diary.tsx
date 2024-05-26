@@ -31,7 +31,7 @@ const Diary = () => {
 
   const sendDiary = () => {
     const asyncFun = async () => {
-      await axios.post(`hhttps://api.chacha.newbie.sparcsandbox.com/diary/:${username}/:${date}/update`, {
+      await axios.post(`https://api.chacha.newbie.sparcsandbox.com/diary/:${username}/:${date}/update`, {
         content: SContent,
         textsize: NTextCount
       });
