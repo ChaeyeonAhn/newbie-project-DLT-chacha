@@ -101,7 +101,7 @@ const Food = () => {
         setSLeftCal(left);
         setSUsedCal(used);
         setSTotalCalorie(totCal);
-        await axios.post(`https://api.chacha.newbie.sparcsandbox.com/:${username}/:${date}/update`, {
+        await axios.post(`https://api.chacha.newbie.sparcsandbox.com/food/:${username}/:${date}/update`, {
           height: SHeight,
           weight: SWeight,
           totalCalorie: totCal,
