@@ -58,7 +58,7 @@ app.use('/diary', diaryRouter);
 
 app.get('/', function (req, res) {
   res.send('Server chacha');
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Origin', 'https://chacha.newbie.sparcsandbox.com');
 });
 
 app.listen(port, () => {
