@@ -20,7 +20,7 @@ const Diary = () => {
 
   useEffect(() => {
     const getDiary= async () => {
-      const { data } = await axios.get(`https://api.chacha.newbie.sparcsandbox.com/diary/:${username}/:${date}/get`);
+      const { data } = await axios.get(`http://localhost:8000/diary/:${username}/:${date}/get`);
         
       setSContent( data[0].content ? data[0].content : "" );
       setNTextCount( data[0].textsize ? data[0].textsize : "" );
@@ -31,7 +31,7 @@ const Diary = () => {
 
   const sendDiary = () => {
     const asyncFun = async () => {
-      await axios.post(`https://api.chacha.newbie.sparcsandbox.com/diary/:${username}/:${date}/update`, {
+      await axios.post(`http://localhost:8000/diary/:${username}/:${date}/update`, {
         content: SContent,
         textsize: NTextCount
       });

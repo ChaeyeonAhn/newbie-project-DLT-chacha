@@ -17,7 +17,7 @@ const LogIn = ({ pop, close, handleLogin }) => {
 
   const sendLogIn = () => {
     const asyncFun = async () => {
-      const { data } = await axios.post("https://api.chacha.newbie.sparcsandbox.com/login/check", {
+      const { data } = await axios.post("http://localhost:8000/login/check", {
         nickname: SNickname,
         password: SPassword
       });
@@ -25,7 +25,7 @@ const LogIn = ({ pop, close, handleLogin }) => {
       setSNickname("");
       setSPassword("");
       // setSGender("");
-      window.alert(`로그인 성공! 환영합니다, ${JSON.stringify(data.message).replace(/^"+|"+$/g, '')}`);
+      window.alert(`로그인 성공!`);
       handleLogin({SNickname});
       close();
 

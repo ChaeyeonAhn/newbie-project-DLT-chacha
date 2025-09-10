@@ -31,7 +31,7 @@ const PostPage = () => {
 
   useEffect(() => {
     const getMood = async () => {
-      const { data } = await axios.get(`https://api.chacha.newbie.sparcsandbox.com/posts/:${username}/:${date}/getMood`);
+      const { data } = await axios.get(`http://localhost:8000/posts/:${username}/:${date}/getMood`);
       // console.log(data);
       const mood = data[0].mood;
       switch (mood) {
@@ -88,7 +88,7 @@ const PostPage = () => {
         setSSad(false);
         setSRolling(false);
         setSSmile(true);
-        await axios.post(`https://api.chacha.newbie.sparcsandbox.com/posts/:${username}/:${date}/updateMood`, {
+        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
           mood: "smile"
         });
         setSChange(!SChange);
@@ -107,7 +107,7 @@ const PostPage = () => {
         setSSad(false);
         setSRolling(false);
         setSMeh(true);
-        await axios.post(`https://api.chacha.newbie.sparcsandbox.com/posts/:${username}/:${date}/updateMood`, {
+        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
           mood: "meh"
         });
         setSChange(!SChange);
@@ -125,7 +125,7 @@ const PostPage = () => {
         setSSad(false);
         setSRolling(false);
         setSSurprise(true);
-        await axios.post(`https://api.chacha.newbie.sparcsandbox.com/posts/:${username}/:${date}/updateMood`, {
+        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
           mood: "surprise"
         });
         setSChange(!SChange);
@@ -143,7 +143,7 @@ const PostPage = () => {
         setSSurprise(false);
         setSRolling(false);
         setSSad(true);
-        await axios.post(`https://api.chacha.newbie.sparcsandbox.com/posts/:${username}/:${date}/updateMood`, {
+        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
           mood: "sad"
         });
         setSChange(!SChange);
@@ -161,7 +161,7 @@ const PostPage = () => {
         setSSurprise(false);
         setSSad(false);
         setSRolling(true);
-        await axios.post(`https://api.chacha.newbie.sparcsandbox.com/posts/:${username}/:${date}/updateMood`, {
+        await axios.post(`http://localhost:8000/posts/:${username}/:${date}/updateMood`, {
           mood: "rolling"
         });
         setSChange(!SChange);

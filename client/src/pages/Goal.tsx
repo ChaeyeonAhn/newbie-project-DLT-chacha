@@ -21,7 +21,7 @@ const Goal = () => {
   useEffect(() => {
 
     const getGoal = async () => {
-      const { data } = await axios.get(`https://api.chacha.newbie.sparcsandbox.com/goal/:${username}/:${date}/get`);
+      const { data } = await axios.get(`http://localhost:8000/goal/:${username}/:${date}/get`);
 
       if (data.length === 0) {
         window.alert('New Post! Record your Day.');
@@ -37,7 +37,7 @@ const Goal = () => {
 
   const sendGoal = () => {
     const asyncFun = async () => {
-      await axios.post(`https://api.chacha.newbie.sparcsandbox.com/goal/:${username}/:${date}/update`, {
+      await axios.post(`http://localhost:8000/goal/:${username}/:${date}/update`, {
         goal: SGoal,
         textsize: NTextCount
       });

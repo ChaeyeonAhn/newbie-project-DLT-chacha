@@ -38,6 +38,7 @@ router.post('/get', async (req, res) => {
   }));
   // console.log(final_post);
   res.json(final_post);
+  console.log(final_post);
 
 });
 

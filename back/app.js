@@ -1,68 +1,58 @@
 const express = require('express');
-const cors = require('cors'); 
-
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
 const port = 8000;
 
-app.use(express.json()); /* Parsing */
+app.use(express.json());
 
-const homeRouter = require('./routes/Home.js');
-const postRouter = require('./routes/Post.js');
-const logInRouter = require('./routes/LogIn.js');
-const regisRouter = require('./routes/Register.js');
-const goalRouter = require('./routes/Goal.js');
-const foodRouter = require('./routes/Food.js');
-const scheduleRouter = require('./routes/Schedule.js');
-const consumeRouter = require('./routes/Consume.js');
-const diaryRouter = require('./routes/Diary.js');
+// ✅ 개발용: 실제 사용하는 오리진들을 모두 명시
+const whitelist = [
+    'http://localhost:3000',
+    'http://172.16.209.74:3000',
+    'https://chacha.newbie.sparcsandbox.com',
+];
 
-const whitelist = ['https://chacha.newbie.sparcsandbox.com', 'http://localhost:3000']; 
-
+// ✅ credentials:true이면 origin을 *로 못 씀 → 콜백으로 필터링
 const corsOptions = {
-  /* 요청의 출처 (origin) 가 화이트 리스트에 있는지 확인. */
-    origin: (origin, callback) => { 
-        console.log('[CORS] Request from : ', origin);
-
-        if (!origin || whitelist.indexOf(origin) !== -1) {
-          /* 만약 인증이 통과 되면, callback 함수의 오른쪽 부분에 true 를 반환해야 함.
-          만약 에러가 난다면, 왼쪽 부분에 에러 값을 넣어야 함. */
-          // res.setHeader('Access-Control-Allow-Origin', origin);
-          callback(null, true);
-        }
-        /* 화이트 리스트에서 요청의 출처가 나타나는 인덱스를 찾는데, 화이트 리스트 배열에 출처가 보이지 않으면 -1 을 반환.
-           출처가 화이트 리스트에 있다면 -1 을 반환하지 않음. */
-        else {
-          // res.setHeader('Access-Control-Allow-Origin', null);
-          callback(new Error('Not Allowed by CORS'), false);  
+    origin: (origin, callback) => {
+        console.log('[CORS] Request from:', origin);
+        if (!origin || whitelist.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not Allowed by CORS'));
         }
     },
-    /* 인증 정보를 요청과 함께 전송. */
-    credentials: true, 
-}
+    credentials: true,
+    methods: ['GET','POST','PUT','PATCH','DELETE','OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+};
 
-/* 미들웨어, 처리한 값을 다음 단계로 넘겨준다. */
-app.use(cors(corsOptions)); 
-app.use('/', homeRouter);
-app.use('/posts', postRouter);
-app.use('/login', logInRouter);
-app.use('/register', regisRouter);
-app.use('/goal', goalRouter);
-app.use('/food', foodRouter);
-app.use('/schedule', scheduleRouter);
-app.use('/consume', consumeRouter);
-app.use('/diary', diaryRouter);
+// ✅ CORS 미들웨어 최상단
+app.use(cors(corsOptions));
 
+// ✅ (선택) 사전 요청 빠르게 허용
+app.options('*', cors(corsOptions));
 
+// ------ 라우터들 ------
+app.use('/', require('./routes/Home.js'));
+app.use('/posts', require('./routes/Post.js'));
+app.use('/login', require('./routes/LogIn.js'));
+app.use('/register', require('./routes/Register.js'));
+app.use('/goal', require('./routes/Goal.js'));
+app.use('/food', require('./routes/Food.js'));
+app.use('/schedule', require('./routes/Schedule.js'));
+app.use('/consume', require('./routes/Consume.js'));
+app.use('/diary', require('./routes/Diary.js'));
 
-app.get('/', function (req, res) {
-  res.send('Server chacha');
-  res.setHeader('Access-Control-Allow-Origin', 'https://chacha.newbie.sparcsandbox.com');
+// ✅ 헤더는 send 전에 설정
+app.get('/', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://172.16.209.74:3000');
+    res.send('Server chacha');
 });
 
-app.listen(port, () => {
-  console.log(`Running Server`);
+// ✅ 외부에서 접속 가능하게 명시
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Running Server on 0.0.0.0:${port}`);
 });
-
-

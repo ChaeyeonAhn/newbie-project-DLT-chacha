@@ -36,7 +36,7 @@ const Consume = () => {
   
   useEffect(() => {
     const getRecord = async () => {
-      const saved = await axios.get(`https://api.chacha.newbie.sparcsandbox.com/consume/:${username}/:${date}/get`);
+      const saved = await axios.get(`http://localhost:8000/consume/:${username}/:${date}/get`);
       // console.log(saved.data[0]);
 
       setSBudget(saved.data[0].budget ? saved.data[0].budget : 0);
@@ -68,7 +68,7 @@ const Consume = () => {
       setSLeft(left);
       setSUsed(used);
       setSBudget(budget);
-      await axios.post(`https://api.chacha.newbie.sparcsandbox.com/consume/:${username}/:${date}/update`, {
+      await axios.post(`http://localhost:8000/consume/:${username}/:${date}/update`, {
         budget: budget,
         used: used,
         left: left, 
