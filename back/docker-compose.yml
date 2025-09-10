@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: chacha-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpw
+      MYSQL_DATABASE: chacha
+      TZ: Asia/Seoul
+    ports:
+      - "3306:3306"
+    command: ["--default-authentication-plugin=mysql_native_password"]
+    volumes:
+      - chacha-mysql-data:/var/lib/mysql
+volumes:
+  chacha-mysql-data:
